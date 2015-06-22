@@ -1,0 +1,80 @@
+<class-diagram version="0.9.86" automaticImage="PNG" icons="true" always-add-relationships="false" 
+  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <class corner="BOTTOM_RIGHT" language="java" name="br.remoto.servlet.SpindleStart" project="ReMoto" 
+    file="/ReMoto/src/br/remoto/servlet/SpindleStart.java" binary="false">    
+    <position x="177" y="671" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="br.remoto.servlet.SpindleSuper" project="ReMoto" 
+    file="/ReMoto/src/br/remoto/servlet/SpindleSuper.java" binary="false">    
+    <position x="677" y="300" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="br.remoto.servlet.SpindleResults" project="ReMoto" 
+    file="/ReMoto/src/br/remoto/servlet/SpindleResults.java" binary="false">    
+    <position x="818" y="671" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="br.remoto.servlet.SpindleExportResults" project="ReMoto" 
+    file="/ReMoto/src/br/remoto/servlet/SpindleExportResults.java" binary="false">    
+    <position x="1155" y="695" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="br.remoto.servlet.SpindleSimulation" project="ReMoto" 
+    file="/ReMoto/src/br/remoto/servlet/SpindleSimulation.java" binary="false">    
+    <position x="495" y="687" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="br.remoto.servlet.ServletChartGenerator" project="ReMoto" 
+    file="/ReMoto/src/br/remoto/servlet/ServletChartGenerator.java" binary="false">    
+    <position x="1085" y="176" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <generalization>    
+    <source project="ReMoto" name="br.remoto.servlet.SpindleSimulation" 
+      file="/ReMoto/src/br/remoto/servlet/SpindleSimulation.java" binary="false"/>    
+    <target project="ReMoto" name="br.remoto.servlet.SpindleSuper" 
+      file="/ReMoto/src/br/remoto/servlet/SpindleSuper.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="ReMoto" name="br.remoto.servlet.SpindleResults" 
+      file="/ReMoto/src/br/remoto/servlet/SpindleResults.java" binary="false"/>    
+    <target project="ReMoto" name="br.remoto.servlet.SpindleSuper" 
+      file="/ReMoto/src/br/remoto/servlet/SpindleSuper.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="ReMoto" name="br.remoto.servlet.SpindleExportResults" 
+      file="/ReMoto/src/br/remoto/servlet/SpindleExportResults.java" binary="false"/>    
+    <target project="ReMoto" name="br.remoto.servlet.SpindleSuper" 
+      file="/ReMoto/src/br/remoto/servlet/SpindleSuper.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="ReMoto" name="br.remoto.servlet.SpindleStart" 
+      file="/ReMoto/src/br/remoto/servlet/SpindleStart.java" binary="false"/>    
+    <target project="ReMoto" name="br.remoto.servlet.SpindleSuper" 
+      file="/ReMoto/src/br/remoto/servlet/SpindleSuper.java" binary="false"/>  
+  </generalization>  
+  <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

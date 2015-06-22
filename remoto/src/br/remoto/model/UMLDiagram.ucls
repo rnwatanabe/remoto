@@ -1,0 +1,393 @@
+<class-diagram version="1.0.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="br.remoto.model.Joint.JointSuperClass" project="remoto" 
+    file="/remoto/src/br/remoto/model/Joint/JointSuperClass.java" binary="false">    
+    <position x="184" y="187" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="br.remoto.model.Joint.Ankle.AnkleSuperClass" 
+    project="remoto" file="/remoto/src/br/remoto/model/Joint/Ankle/AnkleSuperClass.java" binary="false">    
+    <position x="71" y="284" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="br.remoto.model.Joint.Ankle.Models.Ankle_Model" 
+    project="remoto" file="/remoto/src/br/remoto/model/Joint/Ankle/Models/Ankle_Model.java" binary="false">    
+    <position x="70" y="376" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="4" corner="BOTTOM_RIGHT" language="java" 
+    name="br.remoto.model.Joint.Metacarpophalangeal.MetacarpophalangealSuperClass" project="remoto" 
+    file="/remoto/src/br/remoto/model/Joint/Metacarpophalangeal/MetacarpophalangealSuperClass.java" binary="false">    
+    <position x="266" y="289" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="5" corner="BOTTOM_RIGHT" language="java" 
+    name="br.remoto.model.Joint.Metacarpophalangeal.Models.Metacarpophalangeal_Model" project="remoto" 
+    file="/remoto/src/br/remoto/model/Joint/Metacarpophalangeal/Models/Metacarpophalangeal_Model.java" binary="false">    
+    <position x="266" y="374" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="6" corner="BOTTOM_RIGHT" language="java" name="br.remoto.model.Joint.Wrist.WristSuperClass" 
+    project="remoto" file="/remoto/src/br/remoto/model/Joint/Wrist/WristSuperClass.java" binary="false">    
+    <position x="462" y="288" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="7" corner="BOTTOM_RIGHT" language="java" name="br.remoto.model.Joint.Wrist.Models.Wrist_model" 
+    project="remoto" file="/remoto/src/br/remoto/model/Joint/Wrist/Models/Wrist_model.java" binary="false">    
+    <position x="462" y="374" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="8" corner="BOTTOM_RIGHT" language="java" name="br.remoto.model.Musculotendon.MusculotendonSuperClass" 
+    project="remoto" file="/remoto/src/br/remoto/model/Musculotendon/MusculotendonSuperClass.java" binary="false">    
+    <position x="1134" y="-177" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="9" corner="BOTTOM_RIGHT" language="java" name="br.remoto.model.Musculotendon.Muscle.MuscleSuperClass" 
+    project="remoto" file="/remoto/src/br/remoto/model/Musculotendon/Muscle/MuscleSuperClass.java" binary="false">    
+    <position x="882" y="16" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="10" corner="BOTTOM_RIGHT" language="java" 
+    name="br.remoto.model.Musculotendon.Muscle.ExtrafusalMuscle.ExtrafusalMuscleSuperClass" project="remoto" 
+    file="/remoto/src/br/remoto/model/Musculotendon/Muscle/ExtrafusalMuscle/ExtrafusalMuscleSuperClass.java" 
+    binary="false">    
+    <position x="813" y="391" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="11" corner="BOTTOM_RIGHT" language="java" 
+    name="br.remoto.model.Musculotendon.Muscle.ExtrafusalMuscle.Models.DistributedMoments" project="remoto" 
+    file="/remoto/src/br/remoto/model/Musculotendon/Muscle/ExtrafusalMuscle/Models/DistributedMoments.java" 
+    binary="false">    
+    <position x="1077" y="551" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="12" corner="BOTTOM_RIGHT" language="java" 
+    name="br.remoto.model.Musculotendon.Muscle.ExtrafusalMuscle.Models.Hill" project="remoto" 
+    file="/remoto/src/br/remoto/model/Musculotendon/Muscle/ExtrafusalMuscle/Models/Hill.java" binary="false">    
+    <position x="919" y="632" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="13" corner="BOTTOM_RIGHT" language="java" 
+    name="br.remoto.model.Musculotendon.Muscle.ExtrafusalMuscle.Models.Raikova" project="remoto" 
+    file="/remoto/src/br/remoto/model/Musculotendon/Muscle/ExtrafusalMuscle/Models/Raikova.java" binary="false">    
+    <position x="629" y="635" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="14" corner="BOTTOM_RIGHT" language="java" 
+    name="br.remoto.model.Musculotendon.Muscle.ExtrafusalMuscle.Models.SecondOrderCriticallyDampedSystem" 
+    project="remoto" 
+    file="/remoto/src/br/remoto/model/Musculotendon/Muscle/ExtrafusalMuscle/Models/SecondOrderCriticallyDampedSystem.java" 
+    binary="false">    
+    <position x="500" y="565" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="15" corner="BOTTOM_RIGHT" language="java" 
+    name="br.remoto.model.Musculotendon.Muscle.IntrafusalMuscle.IntrafusalMuscleSuperClass" project="remoto" 
+    file="/remoto/src/br/remoto/model/Musculotendon/Muscle/IntrafusalMuscle/IntrafusalMuscleSuperClass.java" 
+    binary="false">    
+    <position x="1807" y="350" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="16" corner="BOTTOM_RIGHT" language="java" 
+    name="br.remoto.model.Musculotendon.Muscle.IntrafusalMuscle.Bag1.Bag1SuperClass" project="remoto" 
+    file="/remoto/src/br/remoto/model/Musculotendon/Muscle/IntrafusalMuscle/Bag1/Bag1SuperClass.java" binary="false">    
+    <position x="1444" y="485" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="17" corner="BOTTOM_RIGHT" language="java" 
+    name="br.remoto.model.Musculotendon.Muscle.IntrafusalMuscle.Bag1.Models.Bag1_Mileusnic" project="remoto" 
+    file="/remoto/src/br/remoto/model/Musculotendon/Muscle/IntrafusalMuscle/Bag1/Models/Bag1_Mileusnic.java" 
+    binary="false">    
+    <position x="1444" y="581" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="18" corner="BOTTOM_RIGHT" language="java" 
+    name="br.remoto.model.Musculotendon.Muscle.IntrafusalMuscle.Bag2.Bag2SuperClass" project="remoto" 
+    file="/remoto/src/br/remoto/model/Musculotendon/Muscle/IntrafusalMuscle/Bag2/Bag2SuperClass.java" binary="false">    
+    <position x="1772" y="489" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="19" corner="BOTTOM_RIGHT" language="java" 
+    name="br.remoto.model.Musculotendon.Muscle.IntrafusalMuscle.Bag2.Models.Bag2_Mileusnic" project="remoto" 
+    file="/remoto/src/br/remoto/model/Musculotendon/Muscle/IntrafusalMuscle/Bag2/Models/Bag2_Mileusnic.java" 
+    binary="false">    
+    <position x="1772" y="582" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="20" corner="BOTTOM_RIGHT" language="java" 
+    name="br.remoto.model.Musculotendon.Muscle.IntrafusalMuscle.Chain.ChainSuperClass" project="remoto" 
+    file="/remoto/src/br/remoto/model/Musculotendon/Muscle/IntrafusalMuscle/Chain/ChainSuperClass.java" binary="false">    
+    <position x="2097" y="491" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="21" corner="BOTTOM_RIGHT" language="java" 
+    name="br.remoto.model.Musculotendon.Muscle.IntrafusalMuscle.Chain.Models.Chain_Mileusnic" project="remoto" 
+    file="/remoto/src/br/remoto/model/Musculotendon/Muscle/IntrafusalMuscle/Chain/Models/Chain_Mileusnic.java" 
+    binary="false">    
+    <position x="2097" y="584" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="22" corner="BOTTOM_RIGHT" language="java" 
+    name="br.remoto.model.Musculotendon.Muscle.IntrafusalMuscle.Lumped.LumpedSuperClass" project="remoto" 
+    file="/remoto/src/br/remoto/model/Musculotendon/Muscle/IntrafusalMuscle/Lumped/LumpedSuperClass.java" binary="false">    
+    <position x="2427" y="492" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="23" corner="BOTTOM_RIGHT" language="java" 
+    name="br.remoto.model.Musculotendon.Muscle.IntrafusalMuscle.Lumped.Models.Lumped_Prochazka" project="remoto" 
+    file="/remoto/src/br/remoto/model/Musculotendon/Muscle/IntrafusalMuscle/Lumped/Models/Lumped_Prochazka.java" 
+    binary="false">    
+    <position x="2427" y="585" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="24" corner="BOTTOM_RIGHT" language="java" name="br.remoto.model.Musculotendon.Tendon.TendonSuperClass" 
+    project="remoto" file="/remoto/src/br/remoto/model/Musculotendon/Tendon/TendonSuperClass.java" binary="false">    
+    <position x="2052" y="31" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="25" corner="BOTTOM_RIGHT" language="java" 
+    name="br.remoto.model.Musculotendon.Tendon.Innerveted.InnervatedTendonSuperClass" project="remoto" 
+    file="/remoto/src/br/remoto/model/Musculotendon/Tendon/Innerveted/InnervatedTendonSuperClass.java" binary="false">    
+    <position x="2189" y="133" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="26" corner="BOTTOM_RIGHT" language="java" 
+    name="br.remoto.model.Musculotendon.Tendon.Innerveted.Lumped.LumpedSuperClass" project="remoto" 
+    file="/remoto/src/br/remoto/model/Musculotendon/Tendon/Innerveted/Lumped/LumpedSuperClass.java" binary="false">    
+    <position x="2189" y="223" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="27" corner="BOTTOM_RIGHT" language="java" 
+    name="br.remoto.model.Musculotendon.Tendon.Innerveted.Lumped.Models.Lumped_Crago" project="remoto" 
+    file="/remoto/src/br/remoto/model/Musculotendon/Tendon/Innerveted/Lumped/Models/Lumped_Crago.java" binary="false">    
+    <position x="2189" y="306" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="28" corner="BOTTOM_RIGHT" language="java" 
+    name="br.remoto.model.Musculotendon.Tendon.NonInnerveted.NonInnervatedTendon" project="remoto" 
+    file="/remoto/src/br/remoto/model/Musculotendon/Tendon/NonInnerveted/NonInnervatedTendon.java" binary="false">    
+    <position x="1914" y="134" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="29" corner="BOTTOM_RIGHT" language="java" name="br.remoto.model.Proprioceptors.GolgiTendonOrgan" 
+    project="remoto" file="/remoto/src/br/remoto/model/Proprioceptors/GolgiTendonOrgan.java" binary="false">    
+    <position x="1907" y="222" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="30" corner="BOTTOM_RIGHT" language="java" name="br.remoto.model.Proprioceptors.MuscleSpindle" 
+    project="remoto" file="/remoto/src/br/remoto/model/Proprioceptors/MuscleSpindle.java" binary="false">    
+    <position x="1544" y="376" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <association>    
+    <end type="SOURCE" nodeId="1" navigable="false">      
+      <attribute name="soleus"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" nodeId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization>    
+    <end type="SOURCE" nodeId="23"/>    
+    <end type="TARGET" nodeId="22"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="21"/>    
+    <end type="TARGET" nodeId="20"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="27"/>    
+    <end type="TARGET" nodeId="26"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="16"/>    
+    <end type="TARGET" nodeId="15"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="10"/>    
+    <end type="TARGET" nodeId="9"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="20"/>    
+    <end type="TARGET" nodeId="15"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="19"/>    
+    <end type="TARGET" nodeId="18"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="2"/>    
+    <end type="TARGET" nodeId="1"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="4"/>    
+    <end type="TARGET" nodeId="1"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="25"/>    
+    <end type="TARGET" nodeId="24"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="5"/>    
+    <end type="TARGET" nodeId="4"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="3"/>    
+    <end type="TARGET" nodeId="2"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="13"/>    
+    <end type="TARGET" nodeId="10"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="28"/>    
+    <end type="TARGET" nodeId="24"/>  
+  </generalization>  
+  <association>    
+    <end type="SOURCE" nodeId="1" navigable="false">      
+      <attribute name="musculotendon"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" nodeId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization>    
+    <end type="SOURCE" nodeId="18"/>    
+    <end type="TARGET" nodeId="15"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="17"/>    
+    <end type="TARGET" nodeId="16"/>  
+  </generalization>  
+  <association>    
+    <end type="SOURCE" nodeId="8" navigable="false">      
+      <attribute name="extrafusalMuscle"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" nodeId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization>    
+    <end type="SOURCE" nodeId="7"/>    
+    <end type="TARGET" nodeId="6"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="26"/>    
+    <end type="TARGET" nodeId="25"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="11"/>    
+    <end type="TARGET" nodeId="10"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="14"/>    
+    <end type="TARGET" nodeId="10"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="6"/>    
+    <end type="TARGET" nodeId="1"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="15"/>    
+    <end type="TARGET" nodeId="9"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="12"/>    
+    <end type="TARGET" nodeId="10"/>  
+  </generalization>  
+  <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
+    <attributes public="false" package="false" protected="false" private="false"/>    
+    <operations public="false" package="false" protected="false" private="false"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

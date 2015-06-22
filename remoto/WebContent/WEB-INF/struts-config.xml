@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+	<!-- ======================================== Form Bean Definitions -->
+	<form-beans>
+		<form-bean name="ConductanceForm" type="br.remoto.control.form.ConductanceForm" />
+		<form-bean name="SynapseForm" type="br.remoto.control.form.SynapseForm" />
+		<form-bean name="MarkovForm" type="br.remoto.control.form.MarkovForm" />
+		<form-bean name="MotorUnitForm" type="br.remoto.control.form.MotorUnitForm" />
+		<form-bean name="GeneralForm" type="br.remoto.control.form.GeneralForm" />
+		<form-bean name="StartForm" type="br.remoto.control.form.StartForm" />
+		<form-bean name="LoginForm" type="br.remoto.control.form.LoginForm" />
+		<form-bean name="NetworkForm" type="br.remoto.control.form.NetworkForm" />
+		<form-bean name="NeuronForm" type="br.remoto.control.form.NeuronForm" />
+		<form-bean name="ModulationForm" type="br.remoto.control.form.ModulationForm" />
+		<form-bean name="ResultsForm" type="br.remoto.control.form.ResultsForm" />
+		<form-bean name="SimulationForm" type="br.remoto.control.form.SimulationForm" />
+		<form-bean name="InputForm" type="br.remoto.control.form.InputForm" />
+		<form-bean name="StimulationForm" type="br.remoto.control.form.StimulationForm" />
+		<form-bean name="DynamicsForm" type="br.remoto.control.form.DynamicsForm" />
+		<form-bean name="MiscellaneousForm" type="br.remoto.control.form.MiscellaneousForm" />
+		<form-bean name="InjectedCurrentForm" type="br.remoto.control.form.InjectedCurrentForm" />
+		
+		<form-bean name="MuscleSpindleForm" type="br.remoto.control.form.MuscleSpindleForm" />
+		<form-bean name="GolgiTendonOrganForm" type="br.remoto.control.form.GolgiTendonOrganForm" />
+		<form-bean name="BiomechanicalElementsForm" type="br.remoto.control.form.BiomechanicalElementsForm" />
+		<form-bean name="JointForm" type="br.remoto.control.form.JointForm" />
+		<form-bean name="MusculotendonForm" type="br.remoto.control.form.MusculotendonForm" />
+		<form-bean name="BiomechanicalInputForm" type="br.remoto.control.form.BiomechanicalInputForm" />
+		
+		<form-bean name="ScenarioHReflexForm" type="br.remoto.control.form.ScenarioHReflexForm" />
+		<form-bean name="SpindleSimulatorForm" type="br.remoto.control.form.SpindleSimulatorForm" />
+		<form-bean name="SpindleSimulatorConfForm" type="br.remoto.control.form.SpindleSimulatorConfForm" />
+		
+		<form-bean name="EMGForm" type="br.remoto.control.form.EMGForm" />
+		
+	</form-beans>
+
+	<!-- =================================== Action Mapping Definitions -->
+	<action-mappings>
+		<action path="/login" type="br.remoto.control.action.LoginAction"
+			name="LoginForm" validate="false" input="/jsp/login.jsp" scope="request">
+			<forward name="login" path="/jsp/login.jsp" />
+			<forward name="authenticate" path="/jsp/main.jsp" />
+		</action>
+
+		<action path="/main" type="br.remoto.control.action.MainAction"
+			name="GeneralForm" validate="false" input="/jsp/main.jsp" scope="request">
+			<forward name="sucess" path="/jsp/main.jsp" />
+			<forward name="running" path="/jsp2/main2.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+		<action path="/general" type="br.remoto.control.action.GeneralAction"
+			name="GeneralForm" validate="false" input="/jsp/general.jsp" scope="request">
+			<forward name="configuration" path="/jsp/general.jsp" />
+			<forward name="savedb" path="/jsp/save.jsp" />
+			<forward name="reset" path="/jsp/reset.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+
+		<action path="/start" type="br.remoto.control.action.StartAction"
+			name="StartForm" validate="false" input="/jsp/start.jsp" scope="request">
+			<forward name="configuration" path="/jsp/start.jsp" />
+			<forward name="running" path="/jsp/simulation.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+		<action path="/motoneuron" type="br.remoto.control.action.NeuronAction"
+			name="NeuronForm" validate="false" input="/jsp/motoneuron.jsp" scope="request">
+			<forward name="configuration" path="/jsp/motoneuron.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+		<action path="/interneuron" type="br.remoto.control.action.NeuronAction"
+			name="NeuronForm" validate="false" input="/jsp/interneuron.jsp"
+			scope="request">
+			<forward name="configuration" path="/jsp/interneuron.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+		<action path="/sensory" type="br.remoto.control.action.NeuronAction"
+			name="NeuronForm" validate="false" input="/jsp/sensory.jsp" scope="request">
+			<forward name="configuration" path="/jsp/sensory.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+		<action path="/mn_electrotonic" type="br.remoto.control.action.ElectrotonicAction"
+			name="NeuronForm" validate="false" input="/jsp/mn_electrotonic.jsp"
+			scope="request">
+			<forward name="configuration" path="/jsp/mn_electrotonic.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+		<action path="/in_electrotonic" type="br.remoto.control.action.ElectrotonicAction"
+			name="NeuronForm" validate="false" input="/jsp/in_electrotonic.jsp"
+			scope="request">
+			<forward name="configuration" path="/jsp/in_electrotonic.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+		<action path="/motorunit" type="br.remoto.control.action.MotorUnitAction"
+			name="MotorUnitForm" validate="false" input="/jsp/motorunit.jsp"
+			scope="request">
+			<forward name="configuration" path="/jsp/motorunit.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+		<action path="/conductance" type="br.remoto.control.action.ConductanceAction"
+			name="ConductanceForm" validate="false" input="/jsp/conductance.jsp"
+			scope="request">
+			<forward name="configuration" path="/jsp/conductance.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+		<action path="/synapse" type="br.remoto.control.action.SynapseAction"
+			name="SynapseForm" validate="false" input="/jsp/synapse.jsp" scope="request">
+			<forward name="configuration" path="/jsp/synapse.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+		<action path="/markov" type="br.remoto.control.action.MarkovAction"
+			name="MarkovForm" validate="false" input="/jsp/markov.jsp" scope="request">
+			<forward name="configuration" path="/jsp/markov.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+		<action path="/network" type="br.remoto.control.action.NetworkAction"
+			name="NetworkForm" validate="false" input="/jsp/network.jsp" scope="request">
+			<forward name="configuration" path="/jsp/network.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+		<action path="/stimulation" type="br.remoto.control.action.StimulationAction"
+			name="StimulationForm" validate="false" input="/jsp/stimulation.jsp"
+			scope="request">
+			<forward name="configuration" path="/jsp/stimulation.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+		<action path="/input" type="br.remoto.control.action.InputAction"
+			name="InputForm" validate="false" input="/jsp/input.jsp" scope="request">
+			<forward name="configuration" path="/jsp/input.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+		<action path="/simulation" type="br.remoto.control.action.SimulationAction"
+			name="SimulationForm" validate="false" input="/jsp/simulation.jsp"
+			scope="request">
+			<forward name="finish" path="/jsp/finish.jsp" />
+			<forward name="wait" path="/jsp/simulation.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+		<action path="/modulation" type="br.remoto.control.action.ModulationAction"
+			name="ModulationForm" validate="false" input="/jsp/modulation.jsp"
+			scope="request">
+			<forward name="configuration" path="/jsp/modulation.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+		<action path="/dynamics" type="br.remoto.control.action.DynamicsAction"
+			name="DynamicsForm" validate="false" input="/jsp/dynamics.jsp" scope="request">
+			<forward name="configuration" path="/jsp/dynamics.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+		<action path="/miscellaneous" type="br.remoto.control.action.MiscellaneousAction"
+			name="MiscellaneousForm" validate="false" input="/jsp/miscellaneous.jsp"
+			scope="request">
+			<forward name="configuration" path="/jsp/miscellaneous.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+		<action path="/results" type="br.remoto.control.action.ResultsAction"
+			name="ResultsForm" validate="false" input="/jsp/simulation.jsp"
+			scope="request">
+			<forward name="results" path="/jsp/results.jsp" />
+			<forward name="chart" path="/jsp/chart.jsp" />
+			<forward name="chart_img_new" path="/jsp/chart_img.jsp" />
+			<forward name="summary" path="/jsp/summary.jsp" />
+			<forward name="fileSpikes" path="/results/spikes.txt"
+				redirect="true" />
+			<forward name="fileVm" path="/results/vm.txt" redirect="true" />
+			<forward name="fileEMG" path="/results/emg.txt" redirect="true" />
+			<forward name="fileForce" path="/results/force.txt" redirect="true" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+		<!-- Created by Vitor -->
+
+		<action path="/spindleSimulator" type="br.remoto.control.action.SpindleSimulatorAction"
+			name="SpindleSimulatorForm" validate="false" input="/jsp/spindle_start.jsp"
+			scope="request">
+			<forward name="configuration" path="/jsp/spindle_start.jsp" />
+		</action>
+
+		<action path="/spindleSimulatorConf"
+			type="br.remoto.control.action.SpindleSimulatorConfAction" name="SpindleSimulatorConfForm"
+			validate="false" input="/jsp/spindle_conf.jsp" scope="request">
+			<forward name="configuration" path="/jsp/spindle_conf.jsp" />
+		</action>
+
+		<action path="/injectedCurrent" type="br.remoto.control.action.InjectedCurrentAction"
+			name="InjectedCurrentForm" validate="false" input="/jsp/injectedCurrent.jsp"
+			scope="request">
+			<forward name="configuration" path="/jsp/injectedCurrent.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+		
+		<action path="/muscleSpindle" type="br.remoto.control.action.MuscleSpindleAction"
+			name="MuscleSpindleForm" validate="false" input="/jsp/muscleSpindle.jsp"
+			scope="request">
+			<forward name="configuration" path="/jsp/muscleSpindle.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+		
+		
+		
+		<action path="/golgiTendonOrgan" type="br.remoto.control.action.GolgiTendonOrganAction"
+			name="GolgiTendonOrganForm" validate="false" input="/jsp/golgiTendonOrgan.jsp"
+			scope="request">
+			<forward name="configuration" path="/jsp/golgiTendonOrgan.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+		
+		
+		<action path="/biomechanicalElements" type="br.remoto.control.action.BiomechanicalElementsAction"
+			name="BiomechanicalElementsForm" validate="false" input="/jsp/biomechanicalElements.jsp"
+			scope="request">
+			<forward name="configuration" path="/jsp/biomechanicalElements.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+		
+		
+		<action path="/joint" type="br.remoto.control.action.JointAction"
+			name="JointForm" validate="false" input="/jsp/joint.jsp"
+			scope="request">
+			<forward name="configuration" path="/jsp/joint.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+		
+		
+		<action path="/musculotendon" type="br.remoto.control.action.MusculotendonAction"
+			name="MusculotendonForm" validate="false" input="/jsp/musculotendon.jsp"
+			scope="request">
+			<forward name="configuration" path="/jsp/musculotendon.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+		
+		<action path="/biomechanicalInput" type="br.remoto.control.action.BiomechanicalInputAction"
+			name="BiomechanicalInputForm" validate="false" input="/jsp/biomechanicalInput.jsp"
+			scope="request">
+			<forward name="configuration" path="/jsp/biomechanicalInput.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+		
+		
+
+		<action path="/scenarioHReflex" type="br.remoto.control.action.ScenarioHReflexAction"
+			name="ScenarioHReflexForm" validate="false" input="/jsp/scenarioHReflex.jsp"
+			scope="request">
+			<forward name="configuration" path="/jsp/scenarioHReflex.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+		
+		<action path="/emg" type="br.remoto.control.action.EMGAction"
+			name="EMGForm" validate="false" input="/jsp/emg.jsp"
+			scope="request">
+			<forward name="configuration" path="/jsp/emg.jsp" />
+			<forward name="noConfiguration" path="/jsp/error.jsp" />
+		</action>
+
+	</action-mappings>
+
+	<!-- ================================ Message Resources Definitions -->
+	<message-resources parameter="Application" />
+	<!-- ======================================= Plug Ins Configuration -->
+
+</struts-config>
