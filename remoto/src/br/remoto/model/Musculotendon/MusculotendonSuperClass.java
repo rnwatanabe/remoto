@@ -87,14 +87,14 @@ public class MusculotendonSuperClass
 		
 				force = tendon.getForce();
 				gto.atualize(t, tendon.getForce());
-				
+				spindle.atualize(t, extrafusalMuscle.getLengthNorm(), extrafusalMuscle.getStretchVelocity(), extrafusalMuscle.getStretchAcceleration() );
 			}
 			else{
 				force = extrafusalMuscle.getForce();
 				gto.atualize(t, force);
 			}
 			
-			spindle.atualize(t, extrafusalMuscle.getLengthNorm(), extrafusalMuscle.getStretchVelocity(), extrafusalMuscle.getStretchAcceleration() );
+			
 		
 			//lengthStore.add( new Signal( "musculotendonLength", length, t) );
 			//momentArmStore.add( new Signal( "musculotendonMomentArmStore", momentArm, t) );

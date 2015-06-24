@@ -276,6 +276,7 @@ Current Version: 2.2 beta</div>
                   <html:option value="square">pulse</html:option>
                   <html:option value="trapezoid">trapezoid</html:option>
                   <html:option value="triangle">triangle</html:option>
+                   <html:option value="AM">AM</html:option>
                 </html:select></td>
               </tr></table></td></tr>
               </logic:equal>
@@ -322,15 +323,65 @@ Current Version: 2.2 beta</div>
                       </logic:notEqual>
                       </logic:notEqual>
                       
-                      <logic:equal name="neuronType" property="cdSignal" value="sine">
-                      <td height="30" align="center" valign="middle" bgcolor="#CBE0E2"><font size="2" face="Arial, Helvetica, sans-serif">
+                    <logic:notEqual name="neuronType" property="cdSignal" value="ramp">
+                    <logic:notEqual name="neuronType" property="cdSignal" value="constant">                        
+                    <logic:notEqual name="neuronType" property="cdSignal" value="trapezoid">
+                    <logic:notEqual name="neuronType" property="cdSignal" value="random">
+                    <logic:notEqual name="neuronType" property="cdSignal" value="triangle">
+                    <logic:notEqual name="neuronType" property="cdSignal" value="pulse">
+                      
+                    <td height="30" align="center" valign="middle" bgcolor="#CBE0E2"><font size="2" face="Arial, Helvetica, sans-serif">
                     Delay:</font><html:text name="neuronType" property="delay" size="5" indexed="true"/><font size="2" face="Arial, Helvetica, sans-serif">[ms]</font> 
+                    </td>
+                    </logic:notEqual>
+                    </logic:notEqual>
+                    </logic:notEqual>
+                    </logic:notEqual>
+                    </logic:notEqual>
+                    </logic:notEqual>
+                       
+                     
+                     <logic:notEqual name="neuronType" property="cdSignal" value="ramp">
+                     <logic:notEqual name="neuronType" property="cdSignal" value="constant">
+                     <logic:notEqual name="neuronType" property="cdSignal" value="sine">
+                     <logic:notEqual name="neuronType" property="cdSignal" value="pulse">
+                     <logic:notEqual name="neuronType" property="cdSignal" value="trapezoid">
+                     <logic:notEqual name="neuronType" property="cdSignal" value="random">
+                     <logic:notEqual name="neuronType" property="cdSignal" value="triangle">
+                     <td height="30" align="center" valign="middle" bgcolor="#CBE0E2"><font size="2" face="Arial, Helvetica, sans-serif">
+                    Modulation Frequency:</font><html:text name="neuronType" property="modFreq" size="5" indexed="true"/><font size="2" face="Arial, Helvetica, sans-serif">[Hz]</font> 
                       </td>
-                      </logic:equal>
+                      </logic:notEqual>
+                      </logic:notEqual>
+                      </logic:notEqual>
+                      </logic:notEqual>
+                      </logic:notEqual>
+                     </logic:notEqual>
+                      </logic:notEqual>
+                      
+                       <logic:notEqual name="neuronType" property="cdSignal" value="ramp">
+                     <logic:notEqual name="neuronType" property="cdSignal" value="constant">
+                     <logic:notEqual name="neuronType" property="cdSignal" value="sine">
+                     <logic:notEqual name="neuronType" property="cdSignal" value="pulse">
+                     <logic:notEqual name="neuronType" property="cdSignal" value="trapezoid">
+                     <logic:notEqual name="neuronType" property="cdSignal" value="random">
+                     <logic:notEqual name="neuronType" property="cdSignal" value="triangle">
+                     <td height="30" align="center" valign="middle" bgcolor="#CBE0E2"><font size="2" face="Arial, Helvetica, sans-serif">
+                    Modulation Factor:</font><html:text name="neuronType" property="modFactor" size="5" indexed="true"/><font size="2" face="Arial, Helvetica, sans-serif"></font> 
+                      </td>
+                      </logic:notEqual>
+                      </logic:notEqual>
+                      </logic:notEqual>
+                      </logic:notEqual>
+                      </logic:notEqual>
+                     </logic:notEqual>
+                      </logic:notEqual>
+                     
                       
                       <logic:notEqual name="neuronType" property="cdSignal" value="constant">
                         <logic:notEqual name="neuronType" property="cdSignal" value="random">
                         <logic:notEqual name="neuronType" property="cdSignal" value="sine">
+                        <logic:notEqual name="neuronType" property="cdSignal" value="AM">
                       <td height="30" align="center" valign="middle" bgcolor="#CBE0E2">
                       <font size="2" face="Arial, Helvetica, sans-serif">
                     <logic:equal name="neuronType" property="cdSignal" value="square">
@@ -338,7 +389,12 @@ Current Version: 2.2 beta</div>
                       </logic:notEqual>
                       </logic:notEqual>
                       </logic:notEqual>
-                    </tr></table></td></tr>
+                      </logic:notEqual>
+                      
+                      
+                        
+                        
+                      </tr></table></td></tr>
                     </logic:notEqual>
                       </logic:notEqual>
                       </logic:equal>

@@ -70,6 +70,8 @@ public class NeuronVO extends NeuronProperties implements Comparable
     private double freq;
     private double width;
     private double delay;
+    private double modFreq;
+    private double modFactor;
 
 	protected String cdNerve;
 	protected String nameNucleus;
@@ -523,6 +525,23 @@ public class NeuronVO extends NeuronProperties implements Comparable
 
 	public double getFreq() {
 		return freq;
+	}
+
+
+	public void setModFreq(double modFreq) {
+		this.modFreq = modFreq;
+	}
+	
+	public double getModFreq() {
+		return modFreq;
+	}
+	
+	public void setModFactor(double modFactor) {
+		this.modFactor = modFactor;
+	}
+	
+	public double getModFactor() {
+		return modFactor;
 	}
 
 

@@ -63,8 +63,8 @@ public class ConfigurationDAO extends BasicDAO
     	
     	//Provis�rio
     	conf.setCdJoint("ankle");
-    	conf.setCdMuscleModel(ReMoto.Hill);
-    	conf.setCdJointModel("pendulum");
+    	conf.setCdMuscleModel(ReMoto.SOCDS);
+    	conf.setCdJointModel("isometric");
     	conf.setCdSpindleModel(ReMoto.spindleModelMileusnic);
     	conf.setCdGtoModel(ReMoto.lumpedGtoModelCrago);
     	conf.setCdEMGModel(ReMoto.emgModelHermiteRodriguez);
@@ -464,6 +464,8 @@ public class ConfigurationDAO extends BasicDAO
         		inj.setActive( rs.getBoolean(11) );
         		inj.setIndex( rs.getInt(12) );
         		inj.setDelay( rs.getDouble(13));
+        		inj.setModFreq( 1);
+        		inj.setModFactor( 1);
         		
         		// Created by Vitor 05/06/11
         		
@@ -476,6 +478,8 @@ public class ConfigurationDAO extends BasicDAO
         		signal.setFreq(inj.getFreq());
         		signal.setWidth(inj.getWidth());
         		signal.setDelay(inj.getDelay());
+        		signal.setModFreq(inj.getModFreq());
+        		signal.setModFactor(inj.getModFactor());
         		
         		inj.setSignal(signal);
         		
@@ -525,6 +529,8 @@ public class ConfigurationDAO extends BasicDAO
         		signal.setFreq( rs.getDouble(8) );
         		signal.setWidth( rs.getDouble(9) );
         		signal.setDelay( rs.getDouble(10) );
+        		signal.setModFreq( 1);
+        		signal.setModFactor( 0.5);
         		
         		list.add( signal );
         	}
@@ -757,6 +763,8 @@ public class ConfigurationDAO extends BasicDAO
         			neu.setFin( signal.getTfin() );
         			neu.setModType( signal.getModType() );
         			neu.setWidth( signal.getWidth() );
+        			neu.setModFreq( signal.getModFreq() );
+        			neu.setModFactor( signal.getModFactor() );
     			}
 
     			list.add( neu );
@@ -1205,6 +1213,8 @@ public class ConfigurationDAO extends BasicDAO
         		nerve.setModulating_freq( rs.getDouble(15) );
         		nerve.setWidth( rs.getDouble(16) );
         		nerve.setDelay( rs.getDouble(17));
+        		nerve.setModFreq( 1);
+        		nerve.setModFactor(0.5);
         		
         		ModulatingSignal signal = new ModulatingSignal();
         		
@@ -1215,6 +1225,8 @@ public class ConfigurationDAO extends BasicDAO
         		signal.setFreq(nerve.getFreq());
         		signal.setWidth(nerve.getWidth());
         		signal.setDelay(nerve.getDelay());
+        		signal.setModFreq(nerve.getModFreq());
+        		signal.setModFactor(nerve.getModFactor());
         		
         		nerve.setSignal(signal);
         		
@@ -1507,6 +1519,8 @@ public class ConfigurationDAO extends BasicDAO
         		biomechanicalInput.setActive( rs.getBoolean(11) );
         		biomechanicalInput.setIndex( rs.getInt(12) );
         		biomechanicalInput.setDelay( rs.getDouble(13));
+        		biomechanicalInput.setModFreq( 1);
+        		biomechanicalInput.setModFactor( 0.5);
         		
         		//System.out.println("loading biomechanicalInputs: Imax: " + rs.getDouble(1));
         		
@@ -1521,6 +1535,8 @@ public class ConfigurationDAO extends BasicDAO
         		signal.setFreq(biomechanicalInput.getFreq());
         		signal.setWidth(biomechanicalInput.getWidth());
         		signal.setDelay(biomechanicalInput.getDelay());
+        		signal.setModFreq(biomechanicalInput.getModFreq());
+        		signal.setModFactor(biomechanicalInput.getModFactor());
         		
         		biomechanicalInput.setSignal(signal);
         		
@@ -1785,8 +1801,7 @@ public class ConfigurationDAO extends BasicDAO
     		ps.setDouble(7, signal.getTfin());
     		ps.setDouble(8, signal.getAmp());
     		ps.setDouble(9, signal.getFreq());
-    		ps.setDouble(10, signal.getWidth());
-    		
+    		ps.setDouble(10, signal.getWidth());    		
     		ps.setDouble(11, signal.getDelay());
         	
     		ps.executeUpdate();

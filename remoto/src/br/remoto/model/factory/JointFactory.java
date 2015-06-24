@@ -138,29 +138,29 @@ public class JointFactory
 			}
 			
 			
-			double gammaDynamic = conf.getGammaDynamic();
-			double gammaStatic = conf.getGammaStatic();
+				double gammaDynamic = conf.getGammaDynamic();
+				double gammaStatic = conf.getGammaStatic();
+				
+				System.out.println("gammaDynamic: " + gammaDynamic);
+				System.out.println("gammaStatic: " + gammaStatic);
+				
+				//NonInnervatedTendon tendon = new NonInnervatedTendon(conf, muscle.getOptimalLength(), muscle.getMaximumMuscleForce());
+				
+				NonInnervatedTendon tendon = new NonInnervatedTendon(conf, muscle.getOptimalLength(), muscle.getMaximumMuscleForce(), muscle.getSlackTendonLength(), muscle.getC_T(), muscle.getK_T(), muscle.getLR_T());
+				
+				MuscleSpindle spindle = new MuscleSpindle(cdNucleus, neurons, conf, gammaDynamic, gammaStatic, spindle_model);
+				
+				GolgiTendonOrgan gto = new GolgiTendonOrgan(cdNucleus, neurons, conf, gto_model);
+				
+				MusculotendonSuperClass musculotendon = new MusculotendonSuperClass(conf, muscle, tendon, spindle, gto);
+								
+				muscle.setAssociatedMusculotendon(musculotendon);
+				
+				spindles[ind] = spindle;
+				gtos[ind] = gto;
+				musculotendons[ind] = musculotendon;
+				ind++;
 			
-			System.out.println("gammaDynamic: " + gammaDynamic);
-			System.out.println("gammaStatic: " + gammaStatic);
-			
-			//NonInnervatedTendon tendon = new NonInnervatedTendon(conf, muscle.getOptimalLength(), muscle.getMaximumMuscleForce());
-			
-			NonInnervatedTendon tendon = new NonInnervatedTendon(conf, muscle.getOptimalLength(), muscle.getMaximumMuscleForce(), muscle.getSlackTendonLength(), muscle.getC_T(), muscle.getK_T(), muscle.getLR_T());
-			
-			MuscleSpindle spindle = new MuscleSpindle(cdNucleus, neurons, conf, gammaDynamic, gammaStatic, spindle_model);
-			
-			GolgiTendonOrgan gto = new GolgiTendonOrgan(cdNucleus, neurons, conf, gto_model);
-			
-			MusculotendonSuperClass musculotendon = new MusculotendonSuperClass(conf, muscle, tendon, spindle, gto);
-			
-			
-			muscle.setAssociatedMusculotendon(musculotendon);
-			
-			spindles[ind] = spindle;
-			gtos[ind] = gto;
-			musculotendons[ind] = musculotendon;
-			ind++;
 		}
 	}
 	

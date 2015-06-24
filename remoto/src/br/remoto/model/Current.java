@@ -27,6 +27,8 @@ public class Current implements Serializable
     private double freq;
     private double width;
     private double delay;
+    private double modFreq;
+    private double modFactor;
 	
 	
 	public Current()
@@ -225,6 +227,22 @@ public class Current implements Serializable
 	
 	public void setDelay(double delay) {
 		this.delay = delay;
+	}
+	
+	public double getModFreq() {
+		return modFreq;
+	}
+	
+	public void setModFreq(double modFreq) {
+		this.modFreq = modFreq;
+	}
+	
+	public double getModFactor() {
+		return modFactor;
+	}
+	
+	public void setModFactor(double modFactor) {
+		this.modFactor = modFactor;
 	}
 	
 }

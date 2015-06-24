@@ -44,6 +44,7 @@ public class Nerve extends NerveVO
 		this.tfin = vo.getTfin();
 		this.amp = vo.getAmp();
 		this.freq = vo.getFreq();
+		this.modFreq = vo.getModFreq();
 		this.active = vo.isActive();
 		this.index = vo.getIndex();
 		this.stimulusSpinalEntry = vo.getStimulusSpinalEntry();

@@ -21,6 +21,8 @@ public class ModulatingSignal implements Serializable
     private double width;
     private double delay;
     private double ret;
+    private double modFreq;
+    private double modFactor;
     
     
     public ModulatingSignal()
@@ -78,6 +80,10 @@ public class ModulatingSignal implements Serializable
     	{
     		ret = stochasticGammaModulation( time );
     	}
+    	else if( cdSignal.equals( ReMoto.AM ) )
+    	{
+    		ret = amModulation( time );
+    	}
     	else
     	{
     		ret = 0;
@@ -112,28 +118,20 @@ public class ModulatingSignal implements Serializable
 	
 	private double sineModulation( double time )
 	{
-		/*ret = amp * Math.sin( 2*Math.PI * freq * time / 1000 + (2*Math.PI * freq * -delay / 1000));
+		ret = amp * Math.sin( 2*Math.PI * freq * time / 1000 + (2*Math.PI * freq * -delay / 1000));
 		if (time > 120000){
 			ret = ret - 7;
-		}*/
-		//ret = amp * Math.cos(2 * Math.PI * freq * time / 1000 - 1 * Math.sin(2 * Math.PI * 1 * time / 1000));
-		//ret = amp * Math.sin( 2*Math.PI * freq * time / 1000 + (2*Math.PI * freq * -delay / 1000)) + amp/2 * Math.sin( 2*Math.PI * 6.5 * time / 1000) + amp/2 * Math.sin( 2*Math.PI * 7 * time / 1000) + amp/3 * Math.sin( 2*Math.PI * 7.5 * time / 1000) + amp/4 * Math.sin( 2*Math.PI * 9 * time / 1000);
-		//ret = amp * Math.sin( 2*Math.PI * freq * time / 1000 + (2*Math.PI * freq * -delay / 1000)) * Math.sin( 2*Math.PI * 0.5 * time / 1000 );
-		 ret = amp * Math.sin( 2*Math.PI * freq * time / 1000 + (2*Math.PI * freq * -delay / 1000)) * (1 + 0.5 * Math.sin( 2*Math.PI * 1 * time / 1000 ));
-		 //ret = amp * Math.sin( 2*Math.PI * freq * time / 1000 + (2*Math.PI * freq * -delay / 1000)) + amp/2 * Math.sin( 2*Math.PI * 3 * time / 1000);
-		//ret = amp * Math.sin( 2*Math.PI * (freq + 0.0004* Math.sin(2*Math.PI * 1 * time / 1000))* time / 1000 +  (2*Math.PI * freq * -delay / 1000)); 
-		//ret = amp * Math.sin( 2*Math.PI * freq * time / 1000 + (2*Math.PI * freq * -delay / 1000));
-		//ret = amp * Math.sin( 2*Math.PI * (5 + 15/50*(time-tini)/1000) * time / 1000 + (2*Math.PI * freq * -delay / 1000));
-		/*ret = 0;
-		for (int i = 0; i < 200; i++){
-			Random fRandom = new Random();
-			//double tau = 1000 / (15 + 0.1 * i) *fRandom.nextLong();
-			double tau = 0;
-			ret = ret + amp / 100 * Math.sin( 2 * Math.PI * (15 + 0.1 * i) * time / 1000 + (2*Math.PI * (15 + 0.1 * i) * -tau / 1000));
-		}*/
+		}		
 		return ret;
 	}
 	
+	private double amModulation( double time )
+	{
+		
+		 ret = amp * Math.sin( 2*Math.PI * freq * time / 1000 + (2*Math.PI * freq * -delay / 1000)) * (1 + modFactor * Math.sin( 2*Math.PI * modFreq * time / 1000 ));
+		 
+		return ret;
+	}
 	
 	private double squareModulation( double time )
 	{
@@ -231,6 +229,18 @@ public class ModulatingSignal implements Serializable
 	}
 	public double getFreq() {
 		return freq;
+	}
+	public void setModFreq(double modFreq) {
+		this.modFreq = modFreq;
+	}
+	public double getModFactor() {
+		return modFactor;
+	}
+	public void setModFactor(double modFactor) {
+		this.modFactor = modFactor;
+	}
+	public double getModFreq() {
+		return modFreq;
 	}
 	public void setFreq(double freq) {
 		this.freq = freq;

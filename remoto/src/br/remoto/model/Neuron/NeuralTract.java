@@ -55,11 +55,13 @@ public class NeuralTract extends Neuron
 			signal.setAmp( neu.getAmp() );
 			signal.setCdSignal( neu.getCdSignal() );
 			signal.setFreq( neu.getFreq() );
+			signal.setModFreq( neu.getModFreq() );
 			signal.setTini( neu.getIni() );
 			signal.setTfin( neu.getFin() );
 			signal.setModType( neu.getModType() );
 			signal.setWidth( neu.getWidth() );
 			signal.setDelay( neu.getDelay() );
+			signal.setModFactor( neu.getModFactor() );
 		}
 			
 		reset();

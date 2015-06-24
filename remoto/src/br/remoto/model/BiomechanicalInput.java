@@ -27,6 +27,8 @@ public class BiomechanicalInput implements Serializable
     private double freq;
     private double width;
     private double delay;
+    private double modFreq;
+    private double modFactor;
 	
 	
 	public BiomechanicalInput()
@@ -180,6 +182,24 @@ public class BiomechanicalInput implements Serializable
 		this.freq = freq;
 	}
 
+		
+	public double getModFreq() {
+		return modFreq;
+	}
+
+
+	public void setModFactor(double modFactor) {
+		this.modFactor = modFactor;
+	}
+	
+	public double getModFactor() {
+		return modFactor;
+	}
+
+
+	public void setModFreq(double modFreq) {
+		this.modFreq = modFreq;
+	}
 
 	public double getIni() {
 		return ini;

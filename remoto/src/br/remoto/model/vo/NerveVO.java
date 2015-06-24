@@ -14,7 +14,9 @@ public class NerveVO implements Serializable
     protected double tfin;
     protected double amp;
     protected double freq;
-	protected double stimulusSpinalEntry;
+    protected double modFreq;
+    protected double modFactor;
+    protected double stimulusSpinalEntry;
 	protected double stimulusEndPlate;    
 	protected boolean active;
 
@@ -75,10 +77,31 @@ public class NerveVO implements Serializable
 		return freq;
 	}
 
-
 	public void setFreq(double freq) {
 		this.freq = freq;
 	}
+	
+	
+	public void setModFreq(double modFreq) {
+		this.modFreq = modFreq;
+	}
+	
+	public double getModFreq() {
+		return modFreq;
+	}
+
+	public void setModFactor(double modFactor) {
+		this.modFactor = modFactor;
+	}
+	
+	public double getModFactor() {
+		return modFactor;
+	}
+	
+
+
+	
+	
 
 
 	public int getIndex() {

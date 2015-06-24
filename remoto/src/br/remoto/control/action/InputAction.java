@@ -25,7 +25,7 @@ public class InputAction extends MainAction
 {
 	/**
 	 * Busca a lista de eventos de um determinado dia na base de dados.
-	 * Se não houver eventos para a data especificada, retorna um formulário em branco.
+	 * Se nï¿½o houver eventos para a data especificada, retorna um formulï¿½rio em branco.
 	 */
 	public ActionForward execute(ActionMapping map, ActionForm form, HttpServletRequest req, HttpServletResponse res)
 	{
@@ -99,6 +99,8 @@ public class InputAction extends MainAction
 				signal.setCdNeuronType(neu.getType());
         		signal.setModType( neu.getModType() );
         		signal.setDelay( neu.getDelay() );
+        		signal.setModFreq( neu.getModFreq() );
+        		signal.setModFactor( neu.getModFactor() );
         		
 				modulations.add(signal);
 				

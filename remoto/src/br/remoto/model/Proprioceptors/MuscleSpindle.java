@@ -112,6 +112,8 @@ public class MuscleSpindle {
 			IaFiringRate = lumpedProchazka.calculateIaFiringRate();
 			IIFiringRate = lumpedProchazka.calculateIIFiringRate();
 			
+			System.out.println("  IaFiringRate: " + IaFiringRate + "   length: " + fascicleLength);
+			
 		}
 		else if(spindle_model.equals(ReMoto.spindleModelMileusnic)){
 			
@@ -148,6 +150,8 @@ public class MuscleSpindle {
 			
 			IaFiringRate = calculateIaMileusnic(Conversion.convertMillisecondsToSeconds(t));
 			IIFiringRate = calculateIIMileusnic(Conversion.convertMillisecondsToSeconds(t));
+			
+			System.out.println("  IaFiringRate: " + IaFiringRate + "   length: " + fascicleLength);
 		}
 		
 		

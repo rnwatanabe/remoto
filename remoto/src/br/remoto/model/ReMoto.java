@@ -309,6 +309,7 @@ public class ReMoto
 	public static final String triangle =  "triangle";
 	public static final String trapezoid = "trapezoid";
 	public static final String stochasticGamma = "stochastic";
+	public static final String AM = "AM";
 	
 
 	// ------------------------
