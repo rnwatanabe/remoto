@@ -804,9 +804,18 @@ public class Configuration implements Serializable
     
 	public DynamicVO getDynamicType( String cdConductanceType, String cdNucleusPre, String cdNucleus )
 	{
+		
+		DynamicVO vo = null;
+		
 		for(int i = 0; i < dynamicTypes.size(); i++)
 		{
-			DynamicVO vo = (DynamicVO)dynamicTypes.get(i);
+			vo = (DynamicVO)dynamicTypes.get(i);
+			
+			/*
+			System.out.println("in Configuration.java: 		at getDynamicType:		vo.getCdConductanceType(): " + vo.getCdConductanceType() +
+																				"   vo.getDynamicType(): " + vo.getDynamicType());
+			*/
+			
 			
 			if( vo.getCdConductanceType().equals( cdConductanceType ) &&
 				vo.getCdNucleusPre().equals( cdNucleusPre ) &&  
@@ -814,9 +823,18 @@ public class Configuration implements Serializable
 			{
 				return vo;
 			}
+			
 		}
 		
-		return null;
+		// Code added by Vitor Chaud in March 28th, 2014
+		// The following code was added in order to avoid mistakes associated with problems fetching information from the DB
+			
+		vo.setCdConductanceType(cdConductanceType);
+		vo.setCdNucleus(cdNucleus);
+		vo.setCdNucleusPre(cdNucleusPre);
+		vo.setDynamicType(ReMoto.noDynamics);
+		
+		return vo;
 	}
 	
 	

@@ -155,7 +155,7 @@ public class MultSynapticConductance extends ConductanceProperties
     	if( active == false )
     		return 0;
     	
-    	// If the Runge–Kutta method is in the first or third slope, 
+    	// If the Rungeâ€“Kutta method is in the first or third slope, 
 		// use the same value calculated for the fourth or second one,
 		// in order to speed-up simulations
 
@@ -175,7 +175,8 @@ public class MultSynapticConductance extends ConductanceProperties
     		
     		if( t > spike.getTime() - ReMoto.T_TOLERANCE )
     		{
-    			start(t, spike.getCd());
+    			//start(t, spike.getCd());
+    			startAlternativeDynamics(t, spike.getCd());
     			
     			spikesReceived.remove(0);
     		}
@@ -200,7 +201,7 @@ public class MultSynapticConductance extends ConductanceProperties
     	
     	double value = gMaxTot * (Ron + Roff);
 
-    	// If the Runge–Kutta method is in the second or fourth slope, keep the value
+    	// If the Rungeâ€“Kutta method is in the second or fourth slope, keep the value
     	if( slope == 2 )
     		value2thSlope = value;
     	else if( slope == 4 )
@@ -208,7 +209,6 @@ public class MultSynapticConductance extends ConductanceProperties
     	
     	return value;
 	}
-
 	
     public double getLastValue() 
 	{

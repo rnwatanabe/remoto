@@ -193,10 +193,6 @@ public class Motoneuron extends SpinalNeuron
 				{
 					addDendritePIC(t);
 				}
-				if(t%500 == 0){
-					System.out.println( "time " + t + " thresholdCa" + thresholdCa);
-				}	
-				
 			}
 		}
 		catch(Exception e)
@@ -274,6 +270,7 @@ public class Motoneuron extends SpinalNeuron
 		double iSynaptic = 0;
 
 		iIonic += gNa.getCurrent(slope, t, Vs);
+		System.out.println( "time " + t + " INa" + iIonic);
 		iIonic += gKf.getCurrent(slope, t, Vs);
 		iIonic += gKs.getCurrent(slope, t, Vs);
 
