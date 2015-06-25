@@ -147,10 +147,10 @@ public class Motoneuron extends SpinalNeuron
 	{
 		try
 		{
-			double k1 = dVd_dt( 1, t,									saturate( vd ) );
+			double k1 = dVd_dt( 2, t,									saturate( vd ) );
 			double k2 = dVd_dt( 2, t + miscellaneous.getStepByTwo(),	saturate( vd + miscellaneous.getStepByTwo() * k1 ) );
-			double k3 = dVd_dt( 3, t + miscellaneous.getStepByTwo(),	saturate( vd + miscellaneous.getStepByTwo() * k2 ) );
-			double k4 = dVd_dt( 4, t + miscellaneous.getStep(),			saturate( vd + miscellaneous.getStep() * k3 ) );
+			double k3 = dVd_dt( 2, t + miscellaneous.getStepByTwo(),	saturate( vd + miscellaneous.getStepByTwo() * k2 ) );
+			double k4 = dVd_dt( 2, t + miscellaneous.getStep(),			saturate( vd + miscellaneous.getStep() * k3 ) );
 
 			vd = saturate( vd + miscellaneous.getStepBySix() * (k1 + 2*k2 + 2*k3 + k4) );	
 		}
@@ -165,10 +165,10 @@ public class Motoneuron extends SpinalNeuron
 	{
 		try
 		{
-			double k1 = dVs_dt( 1, t,									saturate( vs ) );
+			double k1 = dVs_dt( 2, t,									saturate( vs ) );
 			double k2 = dVs_dt( 2, t + miscellaneous.getStepByTwo(),	saturate( vs + miscellaneous.getStepByTwo() * k1 ) );
-			double k3 = dVs_dt( 3, t + miscellaneous.getStepByTwo(),	saturate( vs + miscellaneous.getStepByTwo() * k2 ) );
-			double k4 = dVs_dt( 4, t + miscellaneous.getStep(),			saturate( vs + miscellaneous.getStep() * k3 ) );
+			double k3 = dVs_dt( 2, t + miscellaneous.getStepByTwo(),	saturate( vs + miscellaneous.getStepByTwo() * k2 ) );
+			double k4 = dVs_dt( 2, t + miscellaneous.getStep(),			saturate( vs + miscellaneous.getStep() * k3 ) );
 	
 			vs = saturate( vs + miscellaneous.getStepBySix() * (k1 + 2*k2 + 2*k3 + k4) );
 			

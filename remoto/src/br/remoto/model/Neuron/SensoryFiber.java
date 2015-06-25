@@ -165,7 +165,9 @@ public class SensoryFiber extends Neuron
 
 				// Default code
 				double IaFiringRate = spindle.getIaFiringRate();
-												
+						
+				//System.out.println("  IaFiringRate: " + IaFiringRate );
+				
 				double minimalFiring = 5;
 				
 				if(IaFiringRate > this.recruitmentThreshold){
