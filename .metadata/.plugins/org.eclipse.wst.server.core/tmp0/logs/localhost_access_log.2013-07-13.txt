@@ -1,0 +1,13 @@
+221.10.55.222 - - [13/Jul/2013:07:43:16 -0300] "GET / HTTP/1.0" 404 951
+221.10.55.222 - - [13/Jul/2013:07:43:51 -0300] "GET / HTTP/1.0" 404 951
+173.208.241.195 - - [13/Jul/2013:14:24:43 -0300] "GET /manager/html HTTP/1.1" 404 975
+115.238.185.136 - - [13/Jul/2013:17:46:24 -0300] "GET /w00tw00t.at.blackhats.romanian.anti-sec:) HTTP/1.1" 404 1033
+115.238.185.136 - - [13/Jul/2013:17:46:25 -0300] "GET /phpMyAdmin/scripts/setup.php HTTP/1.1" 404 1007
+115.238.185.136 - - [13/Jul/2013:17:46:26 -0300] "GET /phpmyadmin/scripts/setup.php HTTP/1.1" 404 1007
+115.238.185.136 - - [13/Jul/2013:17:46:26 -0300] "GET /pma/scripts/setup.php HTTP/1.1" 404 993
+115.238.185.136 - - [13/Jul/2013:17:46:27 -0300] "GET /myadmin/scripts/setup.php HTTP/1.1" 404 1001
+115.238.185.136 - - [13/Jul/2013:17:46:28 -0300] "GET /MyAdmin/scripts/setup.php HTTP/1.1" 404 1001
+115.238.185.136 - - [13/Jul/2013:17:46:28 -0300] "GET /pma/scripts/setup.php HTTP/1.1" 404 993
+115.238.185.136 - - [13/Jul/2013:17:46:29 -0300] "GET /admin/scripts/setup.php HTTP/1.1" 404 997
+115.238.185.136 - - [13/Jul/2013:17:46:30 -0300] "GET /admin/pma/scripts/setup.php HTTP/1.1" 404 1005
+115.238.185.136 - - [13/Jul/2013:17:46:30 -0300] "GET /admin/phpmyadmin/scripts/setup.php HTTP/1.1" 404 1019

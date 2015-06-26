@@ -1,0 +1,8 @@
+@charset "utf-8";
+
+.hint {
+	font-size: medium;
+	font-weight: bold;
+	color: #C30;
+	text-align: right;
+}

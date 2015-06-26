@@ -1,0 +1,9 @@
+INDEX VERSION 1.126
+/home/renato/Documents/ReMoto/remoto2/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2458954989.index
+/remoto/src
+/home/renato/Documents/ReMoto/remoto2/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1296565976.index
+/remoto/src
+/home/renato/Documents/ReMoto/remoto2/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1391915624.index
+/remoto/src
+/home/renato/Documents/ReMoto/remoto2/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2465494104.index
+/remoto/src

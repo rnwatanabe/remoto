@@ -1,0 +1,4 @@
+61.142.254.89 - - [14/Apr/2014:01:04:04 -0300] "GET /phpTest/zologize/axa.php HTTP/1.1" 404 999
+61.142.254.89 - - [14/Apr/2014:01:04:05 -0300] "GET /phpMyAdmin/scripts/setup.php HTTP/1.1" 404 1007
+61.142.254.89 - - [14/Apr/2014:01:04:07 -0300] "GET /pma/scripts/setup.php HTTP/1.1" 404 993
+61.142.254.89 - - [14/Apr/2014:01:04:10 -0300] "GET /myadmin/scripts/setup.php HTTP/1.1" 404 1001

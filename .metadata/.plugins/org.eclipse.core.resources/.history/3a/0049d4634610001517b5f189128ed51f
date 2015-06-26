@@ -1,0 +1,1103 @@
+package br.remoto.teste;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
+import org.hsqldb.DatabaseManager;
+import org.hsqldb.DatabaseURL;
+ //import org.hsqldb.HSQLClientConnection;
+ //import org.hsqldb.HTTPClientConnection;
+ import org.hsqldb.HsqlException;
+import org.hsqldb.persist.HsqlProperties;
+ //import org.hsqldb.Result;
+ //import org.hsqldb.ResultConstants;
+ import org.hsqldb.Session;
+import org.hsqldb.SessionInterface;
+ //import org.hsqldb.Trace;
+ import org.hsqldb.lib.StringUtil;
+import org.hsqldb.jdbcDriver;
+
+import br.remoto.dao.ConfigurationDAO;
+import br.remoto.dao.UserDAO;
+import br.remoto.model.Configuration;
+import br.remoto.model.ModulatingSignal;
+import br.remoto.model.Nerve;
+import br.remoto.model.ReMoto;
+import br.remoto.model.ResultDisplay;
+import br.remoto.model.Simulation;
+import br.remoto.model.Neuron.Miscellaneous;
+import br.remoto.model.Neuron.NeuralTract;
+import br.remoto.model.vo.ConductanceVO;
+import br.remoto.model.vo.DynamicVO;
+import br.remoto.model.vo.MiscellaneousVO;
+import br.remoto.model.vo.NerveVO;
+import br.remoto.model.vo.NeuronVO;
+import br.remoto.model.vo.Nucleus;
+import br.remoto.model.vo.ResultVO;
+import br.remoto.model.vo.User;
+import br.remoto.util.PlotCombinedGraph;
+import br.remoto.util.PlotScatter;
+import br.remoto.util.PlotXYLine;
+import br.remoto.util.Point;
+
+
+public class SDNTest 
+{
+	UserDAO userDAO = new UserDAO();
+	User user;
+	Configuration conf;
+	
+	MessageFormat mf = new MessageFormat("{0,number,#.#####}", Locale.US);
+	
+	public SDNTest()
+	{
+		// Specify ReMoto's path
+		
+		
+		ReMoto.path = "/home/renato/Dropbox/Doutorado/SDN/";
+		//ReMoto.path = "C:\\Users\\Vitor\\Desktop\\Workspace2\\remoto\\WebContent\\";
+		
+		// Specify user account
+		
+		user = userDAO.loadUser("rnwatanabe", "5o3iuzi");
+		//user = userDAO.loadUser("vitor", "lodemarta");
+		
+		conf = new Configuration();
+	}
+		
+	
+	public static void main(String[] args) throws FileNotFoundException 
+	{
+		SDNTest teste = new SDNTest();
+		
+		teste.run();
+	}
+	
+	public void run() throws FileNotFoundException
+	{
+		ConfigurationDAO simDAO = new ConfigurationDAO();
+    	String cdSimulation = "1234";
+    	
+    	
+    	// LOAD SCENARIO
+    	
+		conf = simDAO.getConfiguration(40);
+		
+		//conf.setMerge( true );
+		ResultVO resultVO = new ResultVO();
+		
+		
+		// CONFIGURATION SETTINGS
+		
+		
+		resultVO.setWithEMGnoise( true );
+		resultVO.setWithEMGattenuation( true );
+		resultVO.setOpt( ReMoto.array );
+		resultVO.setTask("");
+		resultVO.setCdAnalysis("parameters");
+		conf.setResult( resultVO );
+		
+		//conf.setCdMuscleModel("hill");
+		
+		/*
+		conf.setGammaDynamic(34);
+		conf.setGammaStatic(32);
+		conf.setPrimaryBag1Gain(7500);
+		conf.setPrimaryBag2AndChainGain(3800);
+		conf.setSecondaryBag2AndChainGain(3000);
+			*/					
+		conf.setCdJoint("ankle");
+		conf.setCdJointModel("isometric");
+		conf.setDecimationFrequency(20000);
+		//conf.setRecruitmentOrderFES("uniform");
+		conf.setCdMuscleModel("SOCDS");
+		conf.setStep(0.05);
+		conf.setTFin(10000);
+		conf.setMiscellaneous("step", conf.getStep());
+		
+		int numOfSimulations = 8;
+		
+		conf.setChangedConfiguration( true );
+		conf.setKeepProperties( false );
+		
+		String synapticDynamics = ReMoto.none;
+		
+		String dataPath;
+		String graphicPath;
+		
+		dataPath = ReMoto.path + "data";
+		graphicPath = ReMoto.path + "figures";
+		
+		//dataPath = ReMoto.path + "simulation\\data\\tests\\"  +  (int) (conf.getStep() * 1000) + "\\" ;
+		//graphicPath = ReMoto.path + "simulation\\graphics\\tests\\" +  (int) (conf.getStep() * 1000)  + "\\" ;
+		
+		String timeStepString = "TimeStep: " + String.valueOf((int) (conf.getStep() * 1000)) + " us";
+		String synapticDynamicsString = "SynapticDynamics: " + synapticDynamics;
+		
+		Simulation sim = new Simulation( conf, cdSimulation, timeStepString, synapticDynamicsString );
+    	
+    	sim.createNetwork();
+    	sim.createJoint();
+		sim.resetMuscles(conf.getStep());
+		sim.createInputs();
+		sim.createStimulation();
+		sim.createSynapses();
+		
+		/*
+		for(int i = 0; i < conf.getNeuronTypes(ReMoto.DT, ReMoto.TR).size(); i++){
+    		
+	    	NeuronVO dt = (NeuronVO) conf.getNeuronTypes(ReMoto.DT, ReMoto.TR).get(i);
+	    	if(dt.isActive()){
+	    		dt.setMean(10.5);
+	    		dt.setStd(12);
+	    		dt.setOrder(12);
+	    	}
+	    }
+		*/
+		String path = null;
+		
+		//double amp = -1.5;
+		
+		//path = "Amp=" + ((int)(-10 * amp));
+		path = "";
+		
+		//for(int y = 0; y < conf.getNeuronTypes().size(); y++)
+		//{
+	    //	NeuronVO reference = (NeuronVO)conf.getNeuronTypes().get(y);
+		//	
+		//	if( !reference.isActive() || reference.getQuantity() == 0) 
+	    //		continue;
+		//	
+		//	for(int index = 0; index < reference.getQuantity(); index++)
+		//	{
+		//	if( reference.getCategory().equals( ReMoto.TR ) )
+		//    	{
+		//    		reference.setAmp(amp);
+		//    		reference.setWidth(3000);
+		//    	}
+		//	}
+		//}
+		// m-trial ;  k - variação dentro do nivel de contração j - nivel de contracao
+		for(int m = 1; m<=6; m=m+1){
+		 for (int j = 1; j <= 1; j++){
+		  for(int k = 2; k <= 2; k++){
+			
+			
+			System.out.println("-> SCENARIO:  " + timeStepString + "  " + 
+								"  Sim.: " + k + "Trial " + j);
+			
+						
+			for(int i = 0; i < conf.getNeuronTypes(ReMoto.DT, ReMoto.TR).size(); i++){	    		
+		    	NeuronVO dt = (NeuronVO) conf.getNeuronTypes(ReMoto.DT, ReMoto.TR).get(i);
+		    	if(dt.isActive()){
+		    			if(j == 1){
+		    				dt.setMean(1000 / (Math.pow(1.02, k-8)/0.0124));
+		    				dt.setStd(7);
+		    				dt.setOrder(7);
+		    				if (k == 1){
+		    					dt.setAmp(30.2);
+		    				}
+		    				if (k == 2){
+		    					dt.setAmp(27.6);
+		    				}
+		    				if (k == 3){
+		    					dt.setAmp(25);
+		    				}
+		    				if (k == 4){
+		    					dt.setAmp(22);
+		    				}
+		    				if (k==5){
+		    					dt.setAmp(19);
+		    				}
+		    				if (k == 6){
+		    					dt.setAmp(17.3);
+		    				}
+		    				if (k == 7){
+		    					dt.setAmp(14.9);
+		    				}
+		    				if (k==8){
+		    					dt.setAmp(11.4);
+		    				}
+		    				if (k == 9){
+		    					dt.setAmp(8.8);
+		    				}
+		    				if (k == 10){
+		    					dt.setAmp(4.5);
+		    				}
+		    				if (k == 11){
+		    					dt.setAmp(0.8);
+		    				}		    				
+		    			} else if(j==2){
+		    				dt.setMean(1000 / (Math.pow(1.02, k-8)/0.0102));
+		    				dt.setStd(4);
+		    				dt.setOrder(4);
+		    				if (k == 1){
+		    					dt.setAmp(36.9);
+		    				}
+		    				if (k == 2){
+		    					dt.setAmp(33.9);
+		    				}
+		    				if (k == 3){
+		    					dt.setAmp(30.5);
+		    				}
+		    				if (k == 4){
+		    					dt.setAmp(27);
+		    				}
+		    				if (k==5){
+		    					dt.setAmp(24.5);
+		    				}
+		    				if (k == 6){
+		    					dt.setAmp(20.8);
+		    				}
+		    				if (k == 7){
+		    					dt.setAmp(18.7);
+		    				}
+		    				if (k==8){
+		    					dt.setAmp(15);
+		    				}
+		    				if (k == 9){
+		    					dt.setAmp(11.5);
+		    				}
+		    				if (k == 10){
+		    					dt.setAmp(6.9);
+		    				}
+		    				if (k == 11){
+		    					dt.setAmp(1.2);
+		    				}
+		    			} else if(j==3){
+		    				dt.setMean(1000 / (Math.pow(1.02, k-8)/0.0088));
+		    				dt.setStd(2);
+		    				dt.setOrder(2);
+		    				if (k == 1){
+		    					dt.setAmp(41.1);
+		    				}
+		    				if (k == 2){
+		    					dt.setAmp(37.7);
+		    				}
+		    				if (k == 3){
+		    					dt.setAmp(34);
+		    				}
+		    				if (k == 4){
+		    					dt.setAmp(30.7);
+		    				}
+		    				if (k==5){
+		    					dt.setAmp(27.4);
+		    				}
+		    				if (k == 6){
+		    					dt.setAmp(24);
+		    				}
+		    				if (k == 7){
+		    					dt.setAmp(21.1);
+		    				}
+		    				if (k==8){
+		    					dt.setAmp(16.1);
+		    				}
+		    				if (k == 9){
+		    					dt.setAmp(11.9);
+		    				}
+		    				if (k == 10){
+		    					dt.setAmp(7.6);
+		    				}
+		    				if (k == 11){
+		    					dt.setAmp(1.3);
+		    				}
+		    			} else if(j==4){
+		    				dt.setMean(1000 / (Math.pow(1.02, k-8)/0.0077));
+		    				dt.setStd(2);
+		    				dt.setOrder(2);
+		    				if (k == 1){
+		    					dt.setAmp(45.4);
+		    				}
+		    				if (k == 2){
+		    					dt.setAmp(41.6);
+		    				}
+		    				if (k == 3){
+		    					dt.setAmp(37.5);
+		    				}
+		    				if (k == 4){
+		    					dt.setAmp(34.1);
+		    				}
+		    				if (k==5){
+		    					dt.setAmp(30.6);
+		    				}
+		    				if (k == 6){
+		    					dt.setAmp(26.8);
+		    				}
+		    				if (k == 7){
+		    					dt.setAmp(24.1);
+		    				}
+		    				if (k==8){
+		    					dt.setAmp(18.1);
+		    				}
+		    				if (k == 9){
+		    					dt.setAmp(13.4);
+		    				}
+		    				if (k == 10){
+		    					dt.setAmp(8.1);
+		    				}
+		    				if (k == 11){
+		    					dt.setAmp(1.5);
+		    				}
+		    			} else if(j==5){
+		    				dt.setMean(1000 / (Math.pow(1.02, k-8)/0.007));
+		    				dt.setStd(2);
+		    				dt.setOrder(2);
+		    				if (k == 1){
+		    					dt.setAmp(51.8);
+		    				}
+		    				if (k == 2){
+		    					dt.setAmp(47.5);
+		    				}
+		    				if (k == 3){
+		    					dt.setAmp(42.8);
+		    				}
+		    				if (k == 4){
+		    					dt.setAmp(38.6);
+		    				}
+		    				if (k==5){
+		    					dt.setAmp(34.4);
+		    				}
+		    				if (k == 6){
+		    					dt.setAmp(30.1);
+		    				}
+		    				if (k == 7){
+		    					dt.setAmp(27.1);
+		    				}
+		    				if (k==8){
+		    					dt.setAmp(20.2);
+		    				}
+		    				if (k == 9){
+		    					dt.setAmp(14.9);
+		    				}
+		    				if (k == 10){
+		    					dt.setAmp(8.9);
+		    				}
+		    				if (k == 11){
+		    					dt.setAmp(1.7);
+		    				}
+		    			} else if(j==6){
+		    				dt.setMean(1000 / (Math.pow(1.02, k-8)/0.0064));
+		    				dt.setStd(2);
+		    				dt.setOrder(2);
+		    				if (k == 1){
+		    					dt.setAmp(56.5);
+		    				}
+		    				if (k == 2){
+		    					dt.setAmp(51.8);
+		    				}
+		    				if (k == 3){
+		    					dt.setAmp(46.7);
+		    				}
+		    				if (k == 4){
+		    					dt.setAmp(42.2);
+		    				}
+		    				if (k==5){
+		    					dt.setAmp(37.6);
+		    				}
+		    				if (k == 6){
+		    					dt.setAmp(32.9);
+		    				}
+		    				if (k == 7){
+		    					dt.setAmp(29.1);
+		    				}
+		    				if (k==8){
+		    					dt.setAmp(22.5);
+		    				}
+		    				if (k == 9){
+		    					dt.setAmp(16.3);
+		    				}
+		    				if (k == 10){
+		    					dt.setAmp(10.1);
+		    				}
+		    				if (k == 11){
+		    					dt.setAmp(1.8);
+		    				}
+		    			} else if(j==7){
+		    				dt.setMean(1000 / (Math.pow(1.02, k-8)/0.0059));
+		    				dt.setStd(1);
+		    				dt.setOrder(1);
+		    				if (k == 1){
+		    					dt.setAmp(60.1);
+		    				}
+		    				if (k == 2){
+		    					dt.setAmp(55.2);
+		    				}
+		    				if (k == 3){
+		    					dt.setAmp(49.7);
+		    				}
+		    				if (k == 4){
+		    					dt.setAmp(45.1);
+		    				}
+		    				if (k==5){
+		    					dt.setAmp(40);
+		    				}
+		    				if (k == 6){
+		    					dt.setAmp(35);
+		    				}
+		    				if (k == 7){
+		    					dt.setAmp(31);
+		    				}
+		    				if (k==8){
+		    					dt.setAmp(23.2);
+		    				}
+		    				if (k == 9){
+		    					dt.setAmp(17);
+		    				}
+		    				if (k == 10){
+		    					dt.setAmp(10.5);
+		    				}
+		    				if (k == 11){
+		    					dt.setAmp(1.9);
+		    				}
+		    			} else if(j==8){
+		    				dt.setMean(1000 / (Math.pow(1.02, k-8)/0.0055 ));
+		    				dt.setStd(1);
+		    				dt.setOrder(1);
+		    				if (k == 1){
+		    					dt.setAmp(65.1);
+		    				}
+		    				if (k == 2){
+		    					dt.setAmp(59.7);
+		    				}
+		    				if (k == 3){
+		    					dt.setAmp(53.8);
+		    				}
+		    				if (k == 4){
+		    					dt.setAmp(48.5);
+		    				}
+		    				if (k==5){
+		    					dt.setAmp(43.2);
+		    				}
+		    				if (k == 6){
+		    					dt.setAmp(38);
+		    				}
+		    				if (k == 7){
+		    					dt.setAmp(34);
+		    				}
+		    				if (k==8){
+		    					dt.setAmp(25.2);
+		    				}
+		    				if (k == 9){
+		    					dt.setAmp(18.8);
+		    				}
+		    				if (k == 10){
+		    					dt.setAmp(11.2);
+		    				}
+		    				if (k == 11){
+		    					dt.setAmp(2);
+		    				}
+		    			}
+		    	}
+		    }
+			
+			sim.run();
+			System.out.println(j);
+			
+			generateLogOfScenario(k, dataPath, path, j);
+			
+			//generateAndStoreData("emgSOL", sim, dataPath, graphicPath, path, k, j);
+			//generateAndStoreData("emgMG", sim, dataPath, graphicPath, path, k, j);
+			//generateAndStoreData("emgLG", sim, dataPath, graphicPath, path, k, j);
+			//generateAndStoreData("emg", sim, dataPath, graphicPath, path, k);
+			generateAndStoreData("spikesMNsSOL", sim, dataPath, graphicPath, path, k, j, m);
+			generateAndStoreData("spikesMNsMG", sim, dataPath, graphicPath, path, k, j, m);
+			generateAndStoreData("spikesMNsLG", sim, dataPath, graphicPath, path, k, j, m);
+			generateAndStoreData("spikesDesc", sim, dataPath, graphicPath, path, k, j, m);
+			//generateAndStoreData("spikesIasSOL", sim, dataPath, graphicPath, path, k);
+			//generateAndStoreData("spikesIasMG", sim, dataPath, graphicPath, path, k);
+			//generateAndStoreData("spikesIasLG", sim, dataPath, graphicPath, path, k);
+			//generateAndStoreData("meanFiringRateIa", sim, dataPath, graphicPath, path, k);
+			//generateAndStoreData("firingRateMNs", sim, dataPath, graphicPath, path, k);
+			generateAndStoreData("muscleForceSOL", sim, dataPath, graphicPath, path, k, j, m);
+			generateAndStoreData("muscleForceMG", sim, dataPath, graphicPath, path, k,j, m);
+			generateAndStoreData("muscleForceLG", sim, dataPath, graphicPath, path, k, j, m);
+			//generateAndStoreData("spikesIaINs", sim, dataPath, graphicPath, path, k);
+			//generateAndStoreData("muscleLength", sim, dataPath, graphicPath, path, k);
+			//generateAndStoreData("jointAngle", sim, dataPath, graphicPath, path, k);
+			generateAndStoreData("jointTorque", sim, dataPath, graphicPath, path, k, j,m);
+			//generateAndStoreData("jointDisturbance", sim, dataPath, graphicPath, path, k);
+			generateAndStoreData("conductanceSOL", sim, dataPath, graphicPath, path, k,j,m);
+			//generateAndStoreData("conductanceMG", sim, dataPath, graphicPath, path, k,j,m);
+			generateAndStoreData("twitchPeakSOL", sim, dataPath, graphicPath, path, k,j,m);
+			generateAndStoreData("twitchPeakMG", sim, dataPath, graphicPath, path, k,j,m);
+			generateAndStoreData("twitchPeakLG", sim, dataPath, graphicPath, path, k,j,m);
+			
+			
+			System.out.println("-> Simulation - Var " + k + "Force" + j*10 + "Trial" + m + "end");
+		}
+		}
+		}
+		System.out.println("-> SIMULATION END");
+
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void generateAndStoreData(String output, Simulation sim, String dataPath, String graphicPath, String path, int simCount, int simCount2, int simCount3) throws FileNotFoundException{
+		
+		int numSubplots = 1;
+		
+		conf.setNumOfSubplots(numSubplots);
+		
+		List[] nmMuscles 			= new List[numSubplots];
+		List[] nmSubplots 			= new List[numSubplots];
+		List[] nmCdNeurons 			= new List[numSubplots];
+		List[] nmCdSpecification 	= new List[numSubplots];
+		List[] yLabels 				= new List[numSubplots];
+		List[] legendLabels 		= new List[numSubplots];
+				
+		for(int k = 0; k < numSubplots; k++){
+			nmSubplots[k] 			= new ArrayList();
+			nmCdNeurons[k] 			= new ArrayList();
+			nmCdSpecification[k] 	= new ArrayList();
+			yLabels[k] 				= new ArrayList();
+			legendLabels[k] 		= new ArrayList();
+			nmMuscles[k] 			= new ArrayList();
+		}
+		
+		if(output.equals("emgSOL")){
+			nmSubplots[0].add(			"EMG");
+			nmCdNeurons[0].add(			"All MUs");
+			nmCdSpecification[0].add(	"");
+			yLabels[0].add(				"EMG SOL");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add(			"SOL");
+		}
+		else if(output.equals("emgMG")){
+			nmSubplots[0].add(			"EMG");
+			nmCdNeurons[0].add(			"All MUs");
+			nmCdSpecification[0].add(	"");
+			yLabels[0].add(				"EMG MG");
+			legendLabels[0].add(		"MG");
+			nmMuscles[0].add(			"MG");
+		}
+		else if(output.equals("emgLG")){
+			nmSubplots[0].add(			"EMG");
+			nmCdNeurons[0].add(			"All MUs");
+			nmCdSpecification[0].add(	"");
+			yLabels[0].add(				"EMG LG");
+			legendLabels[0].add(		"LG");
+			nmMuscles[0].add(			"LG");
+		}
+		else if(output.equals("spikesMNsSOL")){
+			nmSubplots[0].add(			"spikeTimes");
+			nmCdNeurons[0].add(			"All MNs");
+			nmCdSpecification[0].add(	"atTerminal");
+			yLabels[0].add(				"MNs SOL");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add(			"SOL");
+		}
+		else if(output.equals("spikesMNsMG")){
+			nmSubplots[0].add(			"spikeTimes");
+			nmCdNeurons[0].add(			"All MNs");
+			nmCdSpecification[0].add(	"atTerminal");
+			yLabels[0].add(				"MNs MG");
+			legendLabels[0].add(		"MG");
+			nmMuscles[0].add(			"MG");
+		}
+		else if(output.equals("spikesMNsLG")){
+			nmSubplots[0].add(			"spikeTimes");
+			nmCdNeurons[0].add(			"All MNs");
+			nmCdSpecification[0].add(	"atTerminal");
+			yLabels[0].add(				"MNs LG");
+			legendLabels[0].add(		"LG");
+			nmMuscles[0].add(			"LG");
+		}
+		else if(output.equals("spikesDesc")){
+			nmSubplots[0].add(			"spikeTimes");
+			nmCdNeurons[0].add(			"CM_ext");
+			nmCdSpecification[0].add(	"atTerminal");
+			yLabels[0].add(				"CM_ext");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add(			"SOL");
+		}
+		else if(output.equals("conductanceSOL")){
+			nmSubplots[0].add(			"conductance");
+			nmCdNeurons[0].add(			"MN S 1");
+			nmCdSpecification[0].add(	"gExc-dend");
+			yLabels[0].add(				"Conductance SOL");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add(			"SOL");
+		}
+		else if(output.equals("conductanceMG")){
+			nmSubplots[0].add(			"conductance");
+			nmCdNeurons[0].add(			"MN S 1");
+			nmCdSpecification[0].add(	"gExc-dend");
+			yLabels[0].add(				"Conductance MG");
+			legendLabels[0].add(		"MG");
+			nmMuscles[0].add(			"MG");
+		}
+		else if(output.equals("firingRateMNs")){
+			nmSubplots[0].add(			"firingRate");
+			nmCdNeurons[0].add(			"All MNs");
+			nmCdSpecification[0].add(	"atTerminal");
+			yLabels[0].add(				"MNs SOL");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add(			"SOL");
+		}
+		else if(output.equals("spikesIasSOL")){
+			nmSubplots[0].add(			"spikeTimes");
+			nmCdNeurons[0].add(			"Ia");
+			nmCdSpecification[0].add(	"atTerminal");
+			yLabels[0].add(				"Ia SOL");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add(			"SOL");
+		}
+		else if(output.equals("spikesIasMG")){
+			nmSubplots[0].add(			"spikeTimes");
+			nmCdNeurons[0].add(			"Ia");
+			nmCdSpecification[0].add(	"atTerminal");
+			yLabels[0].add(				"Ia MG");
+			legendLabels[0].add(		"MG");
+			nmMuscles[0].add(			"MG");
+		}
+		else if(output.equals("spikesIasLG")){
+			nmSubplots[0].add(			"spikeTimes");
+			nmCdNeurons[0].add(			"Ia");
+			nmCdSpecification[0].add(	"atTerminal");
+			yLabels[0].add(				"Ia LG");
+			legendLabels[0].add(		"LG");
+			nmMuscles[0].add(			"LG");
+		}
+		else if(output.equals("meanFiringRateIa")){
+			nmSubplots[0].add(			"meanFiringRate");
+			nmCdNeurons[0].add(			"Ia");
+			nmCdSpecification[0].add(	"atTerminal");
+			yLabels[0].add(				"Ia SOL");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add(			"SOL");
+		}
+		else if(output.equals("jointAngle")){
+			nmSubplots[0].add(			"jointAngle");
+			nmCdNeurons[0].add(			"");
+			nmCdSpecification[0].add(	"");
+			yLabels[0].add(				"Angle");
+			legendLabels[0].add(		"Ankle");
+			nmMuscles[0].add(			"SOL");
+		}
+		else if(output.equals("muscleForceSOL")){
+			nmSubplots[0].add(			"muscleForce");
+			nmCdNeurons[0].add(			"All MUs");
+			nmCdSpecification[0].add(	"");
+			yLabels[0].add(				"Force SOL");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add(			"SOL");
+		}
+		else if(output.equals("muscleForceMG")){
+			nmSubplots[0].add(			"muscleForce");
+			nmCdNeurons[0].add(			"All MUs");
+			nmCdSpecification[0].add(	"");
+			yLabels[0].add(				"Force MG");
+			legendLabels[0].add(		"MG");
+			nmMuscles[0].add(			"MG");
+		}
+		else if(output.equals("muscleForceLG")){
+			nmSubplots[0].add(			"muscleForce");
+			nmCdNeurons[0].add(			"All MUs");
+			nmCdSpecification[0].add(	"");
+			yLabels[0].add(				"Force LG");
+			legendLabels[0].add(		"LG");
+			nmMuscles[0].add(			"LG");
+		}
+		else if(output.equals("muscleForceS1")){
+			nmSubplots[0].add(			"muscleForce");
+			nmCdNeurons[0].add(			"MN S 1");
+			nmCdSpecification[0].add(	"");
+			yLabels[0].add(				"Force SOL");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add(			"SOL");
+		}
+		else if(output.equals("muscleForceS5")){
+			nmSubplots[0].add(			"muscleForce");
+			nmCdNeurons[0].add(			"MN S 5");
+			nmCdSpecification[0].add(	"");
+			yLabels[0].add(				"Force SOL");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add(			"SOL");
+		}
+		else if(output.equals("muscleForceFR3")){
+			nmSubplots[0].add(			"muscleForce");
+			nmCdNeurons[0].add(			"MN FR 3");
+			nmCdSpecification[0].add(	"");
+			yLabels[0].add(				"Force SOL");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add(			"SOL");
+		}
+		else if(output.equals("muscleForceFF3")){
+			nmSubplots[0].add(			"muscleForce");
+			nmCdNeurons[0].add(			"MN FF 3");
+			nmCdSpecification[0].add(	"");
+			yLabels[0].add(				"Force SOL");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add(			"SOL");
+		}
+		else if(output.equals("jointTorque")){
+			nmSubplots[0].add(			"jointTorque");
+			nmCdNeurons[0].add(			"");
+			nmCdSpecification[0].add(	"");
+			yLabels[0].add(				"Torque");
+			legendLabels[0].add(		"Ankle");
+			nmMuscles[0].add(			"SOL");
+		}
+		else if(output.equals("spikesIaINs")){
+			nmSubplots[0].add(			"spikeTimes");
+			nmCdNeurons[0].add(			"IaIN");
+			nmCdSpecification[0].add(	"atTerminal");
+			yLabels[0].add(				"IaINs SOL");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add(			"SOL");
+		}
+		else if(output.equals("somaticPotential")){
+			nmSubplots[0].add(			"somaPotential");
+			nmCdNeurons[0].add(			"IN IaIn 1");
+			nmCdSpecification[0].add(	"atTerminal");
+			yLabels[0].add(				"IaINs SOL");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add(			"SOL");
+		}
+		else if(output.equals("muscleLength")){
+			nmSubplots[0].add(			"muscleLength");
+			nmCdNeurons[0].add(			"");
+			nmCdSpecification[0].add(	"");
+			yLabels[0].add(				"Length [m]");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add("SOL");
+		}		
+		else if(output.equals("jointAngle")){
+			nmSubplots[0].add(			"jointAngle");
+			nmCdNeurons[0].add(			"");
+			nmCdSpecification[0].add(	"");
+			yLabels[0].add(				"Angle [deg]");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add("SOL");
+		}
+		else if(output.equals("jointDisturbance")){
+			nmSubplots[0].add(			"jointDisturbance");
+			nmCdNeurons[0].add(			"");
+			nmCdSpecification[0].add(	"");
+			yLabels[0].add(				"Torque [N.m]");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add("SOL");
+		}
+		else if(output.equals("twitchPeakSOL")){
+			nmSubplots[0].add(			"twitchPeak");
+			nmCdNeurons[0].add(			"All MUs");
+			nmCdSpecification[0].add(	"atTerminal");
+			yLabels[0].add(				"Peak amplitude [N]");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add("SOL");
+		}
+		else if(output.equals("twitchPeakMG")){
+			nmSubplots[0].add(			"twitchPeak");
+			nmCdNeurons[0].add(			"All MUs");
+			nmCdSpecification[0].add(	"atTerminal");
+			yLabels[0].add(				"Peak amplitude [N]");
+			legendLabels[0].add(		"MG");
+			nmMuscles[0].add("MG");
+		}
+		else if(output.equals("twitchPeakLG")){
+			nmSubplots[0].add(			"twitchPeak");
+			nmCdNeurons[0].add(			"All MUs");
+			nmCdSpecification[0].add(	"atTerminal");
+			yLabels[0].add(				"Peak amplitude [N]");
+			legendLabels[0].add(		"LG");
+			nmMuscles[0].add("LG");
+		}
+		else return;
+		
+		conf.setNmSubplots(			nmSubplots);
+		conf.setNmCdNeurons(		nmCdNeurons);
+		conf.setNmCdSpecification(	nmCdSpecification);
+		conf.setyLabels(			yLabels);
+		conf.setLegendLabels(		legendLabels);
+		conf.setNmMuscles(			nmMuscles);
+				
+		ResultDisplay results = new ResultDisplay(conf);
+		
+		ArrayList outputList = new ArrayList();
+		
+		results.generateResults(sim, outputList);
+
+		double y = 0;
+		double t = 0;
+		
+		XYSeries xySeries = new XYSeries(output);
+		
+		File outputFile = null;
+	    
+		
+	
+		
+		outputFile = new File(dataPath + path + "/" + output + "_F_" + simCount2 + "_V_"+ simCount + "_T_" + simCount3 + "_20.txt");
+		
+	    PrintWriter printWriter = new PrintWriter(outputFile);
+	    
+	    String ind;
+	    
+		for(int j = 0; j < outputList.size(); j++)
+		{
+			Point point = (Point)outputList.get(j);
+			
+			ind = point.getIndex();
+			t = point.getX();
+			y = point.getY();
+			
+			Object[] objT = { new Double(t) };
+			Object[] objF = { new Double(y) };
+			
+			printWriter.println(ind + "\t" + mf.format(objT) + "\t" + mf.format(objF));
+			
+			xySeries.add( t, Double.valueOf(y) );
+		}
+		
+		printWriter.close();
+		
+		XYSeriesCollection datasetS = new XYSeriesCollection();
+	    datasetS.addSeries( xySeries );
+
+	    if(output.equals("spikesMNs") || output.equals("spikesIas") || output.equals("firingRateMNs") || output.equals("spikesIaINs") ){
+	    	PlotScatter.generate(datasetS,
+					 graphicPath + path + "/" +  output + "_F_" + simCount2 + "_V_"+ simCount + "_T_" + simCount3 + "_20.jpg",
+					 output, 
+					 "Time [ms]", 
+					 output);
+	    }
+	    else{
+	    	PlotXYLine.generate(datasetS,
+	    			 graphicPath + path + "/"  + output + "_F_" + simCount2 + "_V_"+ simCount + "_T_" + simCount3 + "_20.jpg",
+					 output, 
+					 "Time [ms]", 
+					 output);
+	    }
+	    
+	    results = null;
+
+		System.gc();
+	}
+	
+	public void generateLogOfScenario(int simCount, String dataPath, String path, int simCount2) throws FileNotFoundException{
+		
+		
+		File output;
+		
+		
+	    
+		output = new File(dataPath + path + "/scenario" + (int)(10*simCount) + "p" + simCount2 + ".txt");
+		
+	    PrintWriter printWriter = new PrintWriter(output);
+	    
+	    printWriter.println("");
+	    printWriter.println("*******************************************");
+	    printWriter.println("*********   SIMULATION SCENARIO   *********");
+	    printWriter.println("*******************************************");
+	    printWriter.println("");
+	    
+	    printWriter.println("");
+	    printWriter.println("");
+	    printWriter.println("------CONFIGURATION-------");
+	    printWriter.println("");
+	    
+	    printWriter.println("conf.getCdJoint():             " + conf.getCdJoint());
+	    printWriter.println("conf.getCdJointModel():        " + conf.getCdJointModel());
+	    printWriter.println("conf.getDecimationFrequency(): " + conf.getDecimationFrequency());
+	    printWriter.println("conf.getRecruitmentOrderFES(): " + conf.getRecruitmentOrderFES());
+	    printWriter.println("conf.getStep():                " + conf.getStep());
+	    printWriter.println("conf.getTFin():                " + conf.getTFin());
+	    printWriter.println("conf.isChangedConfiguration(): " + conf.isChangedConfiguration());
+	    printWriter.println("conf.isKeepProperties():       " + conf.isKeepProperties());
+		
+	    printWriter.println("");
+	    printWriter.println("");
+	    printWriter.println("------NEURONS-------");
+	    printWriter.println("");
+	    printWriter.println("Only neurons present in the simulation are shown.");
+	    printWriter.println("");
+	    
+    	for(int i = 0; i < conf.getNeuronTypes().size(); i++){
+    		NeuronVO neuronVO = (NeuronVO) conf.getNeuronTypes().get(i);
+    		
+	    	if(neuronVO.isActive()){
+	    		printWriter.println("conf.getNeuronTypes().get(" + i + "): " + "\t" + 
+	    				"neuronVO.getCdNucleus(): " 	+ neuronVO.getCdNucleus()  		+ "\t" +
+	    				"neuronVO.getCategoryType(): " 	+ neuronVO.getCategoryType() 	+ "\t" +
+	    				"neuronVO.getQuantity(): " 		+ neuronVO.getQuantity());
+	    		
+	    	}
+	    }
+    	
+    	
+    	printWriter.println("");
+	    printWriter.println("");
+	    printWriter.println("------SYNAPSES-------");
+	    printWriter.println("");
+	    printWriter.println("Only conductances present in the simulation are shown.");
+	    printWriter.println("");
+	    
+	    
+	    List conductances = conf.getAllActiveSynapticConductances();
+	    
+	    for(int i = 0; i < conductances.size(); i++){
+	    	ConductanceVO g = (ConductanceVO) conductances.get(i);
+	    	
+	    	printWriter.println("g.getCdConductanceType(): " + g.getCdConductanceType() + "\t" +
+	    						"g.getGmax(): " + g.getGmax() + "\t" + 
+	    						"g.getDynamicType(): " + g.getDynamicType());
+	    	
+	    }
+	    
+	    printWriter.println("");
+	    printWriter.println("");
+	    printWriter.println("------DESCENDING COMMANDS-------");
+	    printWriter.println("");
+	    printWriter.println("Only DTs present in the simulation are shown.");
+	    printWriter.println("");
+	    
+	    
+	    for(int i = 0; i < conf.getNeuronTypes(ReMoto.DT, ReMoto.TR).size(); i++){
+    		
+	    	NeuronVO dt = (NeuronVO) conf.getNeuronTypes(ReMoto.DT, ReMoto.TR).get(i);
+	    	
+	    	printWriter.println("conf.getNeuronTypes(ReMoto.DT, ReMoto.TR).get(" + i + "): " + "\t" + 
+    				"dt.getCategoryType(): " 	+ dt.getCategoryType()+ "\t" + 
+    				"dt.getMean(): " 	+ dt.getMean()+ "\t" + 
+    				"dt.getStd(): " 	+ dt.getStd()+ "\t" + 
+    				"dt.getOrder(): " 	+ dt.getOrder()+ "\t" + 
+    				"dt.getDistribution(): " 	+ dt.getDistribution()
+    				);
+	    }
+
+
+	    
+	    for(int y = 0; y < conf.getNeuronTypes().size(); y++)
+		{
+	    	NeuronVO reference = (NeuronVO)conf.getNeuronTypes().get(y);
+			
+			if( !reference.isActive() || reference.getQuantity() == 0) 
+	    		continue;
+			
+			for(int index = 0; index < reference.getQuantity(); index++)
+			{
+			    if( reference.getCategory().equals( ReMoto.TR ) )
+		    	{
+		    		
+		    		printWriter.println("conf.getNeuronTypes().get(" + y + "): " + "\t" + 
+		    				"reference.getCategory().equals( ReMoto.TR )" + 
+		    				"reference.getCdSignal(): " 	+ reference.getCdSignal()+ "\t" + 
+		    				"reference.getAmp(): " 	+ reference.getAmp()+ "\t" + 
+		    				"reference.getFreq(): " 	+ reference.getFreq()+ "\t" + 
+		    				"reference.getIni(): " 	+ reference.getIni()+ "\t" + 
+		    				"reference.getFin(): " 	+ reference.getFin()+ "\t" + 
+		    				"reference.getWidth(): " 	+ reference.getWidth()+ "\t" 
+		    				);
+		    	}
+			}
+		}
+	    
+    	    printWriter.println("");
+	    printWriter.println("");
+	    printWriter.println("------NERVES-------");
+	    printWriter.println("");
+	    printWriter.println("Only nerves present in the simulation are shown.");
+	    printWriter.println("");
+	    
+	    for(int i = 0; i < conf.getAllNerves().size(); i++){
+	    	NerveVO nerveVO = (NerveVO) conf.getAllNerves().get(i);
+	    	
+	    	if(nerveVO.isActive()){
+	    		printWriter.println("conf.getAllNerves().get(" + i + "): " + "\t" + 
+	    							"nerveVO.getCdNerve(): " + nerveVO.getCdNerve() + "\t" + 
+	    							nerveVO.isActive());
+	    		printWriter.println("");
+		    	printWriter.println("\t"  + ".getAmp():      " 		+ nerveVO.getAmp());
+	    		printWriter.println("\t"  + ".getCdJoint():  " 	 	+ nerveVO.getCdJoint());
+	    		printWriter.println("\t"  + ".getCdSignal(): " 	 	+ nerveVO.getCdSignal());
+	    		printWriter.println("\t"  + ".getDelay():    " 	 	+ nerveVO.getDelay());
+	    		printWriter.println("\t"  + ".getFreq():     " 		+ nerveVO.getFreq());
+	    		printWriter.println("\t"  + ".getTini():     " 		+ nerveVO.getTini());
+	    		printWriter.println("\t"  + ".getTfin():     " 		+ nerveVO.getTfin());
+	    		
+	    	}
+	    }
+	    
+	    printWriter.println("");
+	    printWriter.println("");
+	    printWriter.println("------JOINT-------");
+	    printWriter.println("");
+	    
+	    printWriter.println("conf.getCdJoint():                  " + conf.getCdJoint());
+	    printWriter.println("conf.getCdJointModel():             " + conf.getCdJointModel());
+	    
+	    //printWriter.println("conf.getJointStimulusInitialTime(): " + conf.getJointStimulusInitialTime());
+	    //printWriter.println("conf.getJointStimulusFinalTime(): 	 " + conf.getJointStimulusFinalTime());
+	    
+	    //printWriter.println("conf.getJointInitialAngle():        " + conf.getJointInitialAngle());
+	    //printWriter.println("conf.getJointFinalAngle():          " + conf.getJointFinalAngle());
+	    printWriter.println("conf.getJointVelocity():            " + conf.getJointVelocity());
+	    
+	    
+	    printWriter.println("");
+	    printWriter.println("");
+	    printWriter.println("------MUSCLE-------");
+	    printWriter.println("");
+	    
+	    printWriter.println("conf.getCdMuscleModel(): " + conf.getCdMuscleModel());
+	    
+	    printWriter.println("");
+	    printWriter.println("");
+	    printWriter.println("------EMG-------");
+	    printWriter.println("");
+	    
+	    printWriter.println("conf.getCdEMGModel(): " + conf.getCdEMGModel());
+	    
+	    printWriter.println("");
+	    printWriter.println("");
+	    printWriter.println("------MUSCLE SPINDLE-------");
+	    printWriter.println("");
+	    
+	    printWriter.println("conf.getCdSpindleModel():                " 	+ conf.getCdSpindleModel());
+	    printWriter.println("conf.getGammaStatic():                   " 	+ conf.getGammaStatic());
+	    printWriter.println("conf.getGammaDynamic():                  "  	+ conf.getGammaDynamic());
+	    printWriter.println("conf.getPrimaryBag1Gain():               " 	+ conf.getPrimaryBag1Gain());
+	    printWriter.println("conf.getPrimaryBag2AndChainGain():       " 	+ conf.getPrimaryBag2AndChainGain());
+	    printWriter.println("conf.getSecondaryBag2AndChainGain():       " 	+ conf.getSecondaryBag2AndChainGain());
+	    printWriter.println("conf.getInitialRecruitmentThresholdIa(): " 	+ conf.getInitialRecruitmentThresholdIa());
+	    printWriter.println("conf.getFinalRecruitmentThresholdIa():   " 	+ conf.getFinalRecruitmentThresholdIa());
+	    printWriter.println("conf.getInitialRecruitmentThresholdII(): " 	+ conf.getInitialRecruitmentThresholdII());
+	    printWriter.println("conf.getFinalRecruitmentThresholdII():   " 	+ conf.getFinalRecruitmentThresholdII());
+	    
+	    printWriter.println("");
+	    printWriter.println("");
+	    printWriter.println("------GOLGI TENDON ORGAN-------");
+	    printWriter.println("");
+	    
+	    printWriter.println("conf.getCdGtoModel():                    "  + conf.getCdGtoModel());
+	    printWriter.println("conf.getInitialRecruitmentThresholdIb(): "  + conf.getInitialRecruitmentThresholdIb());
+	    printWriter.println("conf.getFinalRecruitmentThresholdIb():   "  + conf.getFinalRecruitmentThresholdIb());
+	    
+    	
+	    
+	    printWriter.println("");
+	    printWriter.println("");
+	    printWriter.println("------MISCELLANEOUS-------");
+	    printWriter.println("");
+	    
+	    for(int i = 0; i < conf.getMiscellaneous().size(); i++){
+	    	MiscellaneousVO misc = (MiscellaneousVO) conf.getMiscellaneous().get(i);
+	    	printWriter.println("conf.getMiscellaneous().get(" + i + "): " + "\t" + 
+	    							misc.getValue() 	+ "\t"  + 
+	    							misc.getProperty());
+	    	
+	    }
+	    
+	    printWriter.close();
+	    
+	}
+
+}

@@ -1,0 +1,16 @@
+127.0.0.1 - - [22/Aug/2013:18:27:54 -0300] "GET / HTTP/1.1" 404 951
+143.107.162.166 - - [22/Aug/2013:18:28:08 -0300] "GET /remoto/overview.htm HTTP/1.1" 200 7661
+143.107.162.166 - - [22/Aug/2013:18:28:08 -0300] "GET /remoto/bg.css HTTP/1.1" 200 84
+143.107.162.166 - - [22/Aug/2013:18:28:08 -0300] "GET /remoto/SpryAssets/SpryTooltip.js HTTP/1.1" 200 29953
+143.107.162.166 - - [22/Aug/2013:18:28:08 -0300] "GET /remoto/SpryAssets/SpryTooltip_quickguide.css HTTP/1.1" 200 449
+143.107.162.166 - - [22/Aug/2013:18:28:08 -0300] "GET /remoto/SpryAssets/SpryMenuBar.js HTTP/1.1" 200 22007
+143.107.162.166 - - [22/Aug/2013:18:28:08 -0300] "GET /remoto/SpryAssets/SpryMenuBarHorizontal.css HTTP/1.1" 200 6080
+143.107.162.166 - - [22/Aug/2013:18:28:08 -0300] "GET /remoto/downloads.png HTTP/1.1" 200 32639
+143.107.162.166 - - [22/Aug/2013:18:28:08 -0300] "GET /remoto/CompleteCircuitry.png HTTP/1.1" 200 87679
+143.107.162.166 - - [22/Aug/2013:18:28:08 -0300] "GET /remoto/SpryAssets/SpryMenuBarDownHover.gif HTTP/1.1" 200 55
+143.107.162.166 - - [22/Aug/2013:18:28:08 -0300] "GET /remoto/SpryAssets/SpryMenuBarRightHover.gif HTTP/1.1" 200 55
+143.107.162.166 - - [22/Aug/2013:18:28:08 -0300] "GET /remoto/bg1.jpg HTTP/1.1" 200 561841
+143.107.162.166 - - [22/Aug/2013:18:28:08 -0300] "GET /remoto/SpryAssets/SpryMenuBarDown.gif HTTP/1.1" 200 55
+143.107.162.166 - - [22/Aug/2013:18:28:08 -0300] "GET /remoto/SpryAssets/SpryMenuBarRight.gif HTTP/1.1" 200 55
+143.107.162.166 - - [22/Aug/2013:18:28:08 -0300] "GET /remoto/remoto_top.png HTTP/1.1" 200 96503
+143.107.162.166 - - [22/Aug/2013:18:28:09 -0300] "GET /remoto/favicon.ico HTTP/1.1" 200 2102

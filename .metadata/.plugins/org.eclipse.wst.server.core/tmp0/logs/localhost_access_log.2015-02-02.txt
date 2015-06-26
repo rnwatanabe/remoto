@@ -1,0 +1,8 @@
+202.101.72.20 - - [02/Feb/2015:00:06:22 -0200] "GET / HTTP/1.1" 404 951
+221.7.133.76 - - [02/Feb/2015:06:30:03 -0200] "GET / HTTP/1.1" 404 951
+199.188.195.53 - - [02/Feb/2015:10:52:27 -0200] "GET /w00tw00t.at.blackhats.romanian.anti-sec:) HTTP/1.1" 404 1033
+199.188.195.53 - - [02/Feb/2015:10:52:28 -0200] "GET /phpMyAdmin/scripts/setup.php HTTP/1.1" 404 1007
+199.188.195.53 - - [02/Feb/2015:10:52:28 -0200] "GET /phpmyadmin/scripts/setup.php HTTP/1.1" 404 1007
+199.188.195.53 - - [02/Feb/2015:10:52:29 -0200] "GET /pma/scripts/setup.php HTTP/1.1" 404 993
+199.188.195.53 - - [02/Feb/2015:10:52:29 -0200] "GET /myadmin/scripts/setup.php HTTP/1.1" 404 1001
+199.188.195.53 - - [02/Feb/2015:10:52:30 -0200] "GET /MyAdmin/scripts/setup.php HTTP/1.1" 404 1001

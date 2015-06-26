@@ -1,0 +1,1 @@
+115.200.87.60 - - [29/Sep/2013:06:20:56 -0300] "GET /science/jrnlbook/t/fulltext HTTP/1.1" 404 1005

@@ -1,0 +1,10 @@
+94.100.26.13 - - [30/Mar/2014:05:17:07 -0300] "GET //pma/config/config.inc.php?p=phpinfo(); HTTP/1.1" 404 1003
+94.100.26.13 - - [30/Mar/2014:05:17:15 -0300] "GET //mysql/config/config.inc.php?p=phpinfo(); HTTP/1.1" 404 1007
+94.100.26.13 - - [30/Mar/2014:05:17:17 -0300] "GET //php-my-admin/config/config.inc.php?p=phpinfo(); HTTP/1.1" 404 1021
+94.100.26.13 - - [30/Mar/2014:05:17:17 -0300] "GET //myadmin/config/config.inc.php?p=phpinfo(); HTTP/1.1" 404 1011
+111.73.45.204 - - [30/Mar/2014:13:26:59 -0300] "GET /proxy.txt HTTP/1.1" 404 969
+140.123.102.162 - - [30/Mar/2014:17:38:54 -0300] "GET /phpTest/zologize/axa.php HTTP/1.1" 404 999
+140.123.102.162 - - [30/Mar/2014:17:38:55 -0300] "GET /phpMyAdmin/scripts/setup.php HTTP/1.1" 404 1007
+140.123.102.162 - - [30/Mar/2014:17:38:56 -0300] "GET /pma/scripts/setup.php HTTP/1.1" 404 993
+140.123.102.162 - - [30/Mar/2014:17:38:57 -0300] "GET /myadmin/scripts/setup.php HTTP/1.1" 404 1001
+115.200.88.82 - - [30/Mar/2014:20:34:37 -0300] "GET / HTTP/1.1" 404 951

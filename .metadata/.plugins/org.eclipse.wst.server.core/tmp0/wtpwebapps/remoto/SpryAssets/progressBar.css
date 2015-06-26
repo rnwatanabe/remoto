@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+.progressBar {
+	width: 300px;
+	text-align: center;
+	height: 50px;
+	margin-right: auto;
+	margin-left: auto;
+}
