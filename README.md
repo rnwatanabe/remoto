@@ -78,7 +78,7 @@
 
 <p>28 - In this file, subsititute the address of the hsqldb.jar file to "remotoPath/WebContent/WEB-INF/lib/hsqldb.jar" and the address of the remoto database to "remotoPath/WebContent/db/remoto". Save the file.</p>
 
-<p>If you do not have a Static IP address subsititute the steps 23-26 by the following:</p>
+<p>If you do not have a Static IP address substitute the steps 23-26 by the following:</p>
 
 <pre><code>23.1 - Maintain the Port Number of the "HTTP/1.1" Port as 8080.
 
