@@ -21,6 +21,7 @@ Steps to install:
 6 - Click "Help" -> "Install New Software".
 
 7 - Install the following:
+	
 	* Eclipse Java EE Developer Tools
 	
 	* Eclipse Java Web Developer Tools
