@@ -297,4 +297,4 @@ Steps to execute:
 5 - If you do not have a Static IP address and followed step 27.1 during the installation process, type in a web-browser "localhost:8080/remoto/overview.htm".
 
 5 - After any change in the code, you have to save the files and Restart the server by left-clicking in "Tomcat v7.0 Server at localhost" and then click "Restart".
->>>>>>> cdc867139da838d9145c2683bac8b645cd52cda7
+
