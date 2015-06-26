@@ -11,7 +11,7 @@
 
 <p>1 - Downloand Java SE JDK, Tomcat 7.0 and Eclipse.</p>
 
-<p>2 - Install Java JDK.</p>
+<p>2 - Install Java SE JDK.</p>
 
 <p>3 - Copy all the files into a folder named "remoto". The address of this folder will be called in this text as "remotoPath"</p>
 
