@@ -78,6 +78,16 @@ Steps to install:
 
 29 - In this file, subsititute the address of the hsqldb.jar file to "remotoPath/WebContent/WEB-INF/lib/hsqldb.jar" and the address of the remoto database to "remotoPath/WebContent/db/remoto". Save the file.
 
+If you do not have a Static IP address subsititute the steps 24-27 by the following:
+
+	24.1 - Maintain the Port Number of the "HTTP/1.1" Port as 8080.
+
+	25.1 - At the "Project Explorer" tab in the Workspace click, "Java Resources"->"src"->"br.remoto"->"dao".
+
+	26.1 - Double-click at the "BasicDAO.java" file.
+
+	27.1 - At the line 46, substitute "143.107.162.166" by "localhost". Save the file. 
+
 
 Steps to execute:
 
@@ -87,6 +97,8 @@ Steps to execute:
 
 3 - In the "Servers" tab, left-click in "Tomcat v7.0 Server at localhost". Click "Start".
 
-4 - In a web-browser, type "youripaddress/remoto/overview.htm". "youripaddress" is the IP address of your computer.
+4 - In a web-browser, type "youripaddress/remoto/overview.htm". "youripaddress" is the IP address of your computer. 
+
+5 - If you do not have a Static IP address and followed step 27.1 during the installation process, type in a web-browser "localhost:8080/remoto/overview.htm".
 
 5 - After any change in the code, you have to save the files and Restart the server by left-clicking in "Tomcat v7.0 Server at localhost" and then click "Restart".
