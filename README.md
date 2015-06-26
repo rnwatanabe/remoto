@@ -9,19 +9,17 @@
 
 <p>Steps to install:</p>
 
-<p>1 - Downloand Java SE, Java JDK, Tomcat 7.0 and Eclipse.</p>
+<p>1 - Downloand Java SE JDK, Tomcat 7.0 and Eclipse.</p>
 
-<p>2 - Install Java SE.</p>
+<p>2 - Install Java JDK.</p>
 
-<p>3 - Install Java JDK.</p>
+<p>3 - Copy all the files into a folder named "remoto". The address of this folder will be called in this text as "remotoPath"</p>
 
-<p>4 - Copy all the files into a folder named "remoto". The address of this folder will be called in this text as "remotoPath"</p>
+<p>4 - Open the Eclipse and point the workspace to the folder "remotoPath". </p>
 
-<p>5 - Open the Eclipse and point the workspace to the folder "remotoPath". </p>
+<p>5 - Click "Help" -&gt; "Install New Software".</p>
 
-<p>6 - Click "Help" -&gt; "Install New Software".</p>
-
-<p>7 - Install the following:</p>
+<p>6 - Install the following:</p>
 
 <pre><code>* Eclipse Java EE Developer Tools
 
@@ -36,59 +34,59 @@
 * JST UI
 </code></pre>
 
-<p>8 - Restart Eclipse;</p>
+<p>7 - Restart Eclipse;</p>
 
-<p>9 - Click "Window" -&gt; "Preferences".</p>
+<p>8 - Click "Window" -&gt; "Preferences".</p>
 
-<p>10 - Inside "Preferences" double-click "Server" -&gt; "Runtime Environments".</p>
+<p>9 - Inside "Preferences" double-click "Server" -&gt; "Runtime Environments".</p>
 
-<p>11 - If the Tomcat runtime environment is present, remove it.</p>
+<p>10 - If the Tomcat runtime environment is present, remove it.</p>
 
-<p>12 - Create a new "Apache Tomcat 7.0" runtime environment and configure the Installation directory to the folder you installed Tomcat 7.0.</p>
+<p>11 - Create a new "Apache Tomcat 7.0" runtime environment and configure the Installation directory to the folder you installed Tomcat 7.0.</p>
 
-<p>13 - In the "Project Explorer" tab in the Worspace, click in the "remoto" project.</p>
+<p>12 - In the "Project Explorer" tab in the Worspace, click in the "remoto" project.</p>
 
-<p>14 - Click "Project" -&gt; "Properties".</p>
+<p>13 - Click "Project" -&gt; "Properties".</p>
 
-<p>15 - Inside "Properties" click "Java Build Path". Select the tab "Libraries".</p>
+<p>14 - Inside "Properties" click "Java Build Path". Select the tab "Libraries".</p>
 
-<p>16 - If the "JRE System Library" is present, remove it.</p>
+<p>15 - If the "JRE System Library" is present, remove it.</p>
 
-<p>17 - Click "Add Library" and select "JRE System Library". Click "Next" and then "Finish".</p>
+<p>16 - Click "Add Library" and select "JRE System Library". Click "Next" and then "Finish".</p>
 
-<p>18 - In the "Servers" tab delete any existent Server.</p>
+<p>17 - In the "Servers" tab delete any existent Server.</p>
 
-<p>19 - Left-click inside the "Servers" tab and click "New" -&gt; "Server"</p>
+<p>18 - Left-click inside the "Servers" tab and click "New" -&gt; "Server"</p>
 
-<p>20 - Select "Tomcat v7.0 Server" and click "Next".</p>
+<p>19 - Select "Tomcat v7.0 Server" and click "Next".</p>
 
-<p>21 - In the "Available" box, click in "remoto"  and then click "Add" and "Finish".</p>
+<p>20 - In the "Available" box, click in "remoto"  and then click "Add" and "Finish".</p>
 
-<p>22 - Double click in "Tomcat v7.0 Server at localhost" at the "Server" tab.</p>
+<p>21 - Double click in "Tomcat v7.0 Server at localhost" at the "Server" tab.</p>
 
-<p>23 - A new Tab will open. Click in "Ports".</p>
+<p>22 - A new Tab will open. Click in "Ports".</p>
 
-<p>24 - Change the Port Number of the "HTTP/1.1" Port to 80.</p>
+<p>23 - Change the Port Number of the "HTTP/1.1" Port to 80.</p>
 
-<p>25 - At the "Project Explorer" tab in the Workspace click, "Java Resources"-&gt;"src"-&gt;"br.remoto"-&gt;"dao".</p>
+<p>24 - At the "Project Explorer" tab in the Workspace click, "Java Resources"-&gt;"src"-&gt;"br.remoto"-&gt;"dao".</p>
 
-<p>26 - Double-click at the "BasicDAO.java" file.</p>
+<p>25 - Double-click at the "BasicDAO.java" file.</p>
 
-<p>27 - At the line 46, substitute "143.107.162.166" by the IP address of your computer. Save the file. </p>
+<p>26 - At the line 46, substitute "143.107.162.166" by the IP address of your computer. Save the file. </p>
 
-<p>28 - At the "remotoPath" Folder, open the "WebContent/db" folder. Open the file "start.sh" (if you are using Linux) or "start.bat" (if you are using Windows) in any text editor.</p>
+<p>27 - At the "remotoPath" Folder, open the "WebContent/db" folder. Open the file "start.sh" (if you are using Linux) or "start.bat" (if you are using Windows) in any text editor.</p>
 
-<p>29 - In this file, subsititute the address of the hsqldb.jar file to "remotoPath/WebContent/WEB-INF/lib/hsqldb.jar" and the address of the remoto database to "remotoPath/WebContent/db/remoto". Save the file.</p>
+<p>28 - In this file, subsititute the address of the hsqldb.jar file to "remotoPath/WebContent/WEB-INF/lib/hsqldb.jar" and the address of the remoto database to "remotoPath/WebContent/db/remoto". Save the file.</p>
 
-<p>If you do not have a Static IP address subsititute the steps 24-27 by the following:</p>
+<p>If you do not have a Static IP address subsititute the steps 23-26 by the following:</p>
 
-<pre><code>24.1 - Maintain the Port Number of the "HTTP/1.1" Port as 8080.
+<pre><code>23.1 - Maintain the Port Number of the "HTTP/1.1" Port as 8080.
 
-25.1 - At the "Project Explorer" tab in the Workspace click, "Java Resources"-&gt;"src"-&gt;"br.remoto"-&gt;"dao".
+24.1 - At the "Project Explorer" tab in the Workspace click, "Java Resources"-&gt;"src"-&gt;"br.remoto"-&gt;"dao".
 
-26.1 - Double-click at the "BasicDAO.java" file.
+25.1 - Double-click at the "BasicDAO.java" file.
 
-27.1 - At the line 46, substitute "143.107.162.166" by "localhost". Save the file. 
+26.1 - At the line 46, substitute "143.107.162.166" by "localhost". Save the file. 
 </code></pre>
 
 <p>Steps to execute:</p>
