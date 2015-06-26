@@ -54,13 +54,13 @@ Steps to install:
 
 17 - Click "Add Library" and select "JRE System Library". Click "Next" and then "Finish".
 
-18 - In the "Servers" delete any existent Server.
+18 - In the "Servers" tab delete any existent Server.
 
 19 - Left-click inside the "Servers" tab and click "New" -> "Server"
 
 20 - Select "Tomcat v7.0 Server" and click "Next".
 
-21 - In the "Available" box, select click in "remoto"  and then click "Add" and "Finish".
+21 - In the "Available" box, click in "remoto"  and then click "Add" and "Finish".
 
 22 - Double click in "Tomcat v7.0 Server at localhost" at the "Server" tab.
 
