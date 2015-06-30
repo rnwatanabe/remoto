@@ -5,6 +5,7 @@ import java.io.OutputStream;
 import java.lang.Double;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -210,6 +211,7 @@ public class ResultDisplay
 		abstractNeurons = sim.getNeuronsByNucleus("DT");
 		
 		descendingTracts = new NeuralTract[abstractNeurons.length];
+		System.out.println(abstractNeurons.length);
 		
 		for(int n = 0; abstractNeurons != null && n < abstractNeurons.length; n++)
 	    {
@@ -1516,11 +1518,11 @@ public class ResultDisplay
 			serie = new XYSeries(legendLabel);
 			List spikes = null;
 			
-			//System.out.println(cdNeuron);
+			System.out.println(cdNeuron);
 			
 			for(int n = 0; abstractNeurons != null && n < abstractNeurons.length; n++)
 		    {
-				
+				spikes = Collections.emptyList();
 				Neuron neuron = (Neuron)abstractNeurons[n];
 		    	
 				//System.out.println(cdNeuron);
@@ -1549,23 +1551,35 @@ public class ResultDisplay
 		    	}
 		    	
 		    	if( cdNeuron.equals( "CM_ext" )){
-		    		spikes = ((NeuralTract)neuron).getTerminalSpikeTrain();
+		    		if(neuron.getType().equals("CM_ext")){
+		    			spikes = ((NeuralTract)neuron).getTerminalSpikeTrain();
+		    		}
 				}
 		    	else if( cdNeuron.equals( "CM_flex" )){
-		    		spikes = ((NeuralTract)neuron).getTerminalSpikeTrain();
-				}
+		    		if(neuron.getType().equals("CM_flex")){
+		    			spikes = ((NeuralTract)neuron).getTerminalSpikeTrain();
+		    		}
+	    		}
 		    	else if( cdNeuron.equals( "ExcINs_ext" )){
-		    		spikes = ((NeuralTract)neuron).getTerminalSpikeTrain();
-				}
+		    		if(neuron.getType().equals("excitatory_MN") ){
+		    			spikes = ((NeuralTract)neuron).getTerminalSpikeTrain();
+		    		}
+		    	}
 		    	else if( cdNeuron.equals( "ExcINs_flex" )){
-		    		spikes = ((NeuralTract)neuron).getTerminalSpikeTrain();
-				}
+		    		if(neuron.getType().equals("excitatory_MN") ){
+		    			spikes = ((NeuralTract)neuron).getTerminalSpikeTrain();
+		    		}
+		    	}
 		    	else if( cdNeuron.equals( "InhINs_ext" )){
-		    		spikes = ((NeuralTract)neuron).getTerminalSpikeTrain();
-				}
+		    		if(neuron.getType().equals("inhibitory_MN") ){
+		    			spikes = ((NeuralTract)neuron).getTerminalSpikeTrain();
+		    		}
+		    	}
 		    	else if( cdNeuron.equals( "InhINs_flex" )){
-		    		spikes = ((NeuralTract)neuron).getTerminalSpikeTrain();
-				}
+		    		if(neuron.getType().equals("inhibitory_MN") ){
+		    			spikes = ((NeuralTract)neuron).getTerminalSpikeTrain();
+		    		}
+		    	}
 		    	else if( cdNeuron.equals( "renshaw" ) ){
 			   		
 			   		if(neuron.getType().equals("RC")){
@@ -1667,14 +1681,15 @@ public class ResultDisplay
 				}
 				else{
 					spikes = abstractNeurons[n].getTerminalSpikeTrain();
+					//spikes = Collections.emptyList();
 				}
-					
+		    		
 
 				for(int i = 0; i < spikes.size(); i++){
 			    		double time = ((Double)(spikes.get(i))).doubleValue();
 			    		
 			    		int index = abstractNeurons[n].getIndex();
-			    		
+			    		System.out.println("Index: " + index);
 			    		if( !xLimit(coord, t) )
 			    			continue;
 			    		
@@ -1682,6 +1697,7 @@ public class ResultDisplay
 			    			continue;
 
 			    		yAxis.add (new Signal( "spikeTimes", new Integer(index), new Double(time)));
+			    		//yAxis.add (new Signal( "spikeTimes", contPass, new Double(time)));
 				}
 		    }
 		}

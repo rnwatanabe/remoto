@@ -270,7 +270,6 @@ public class Motoneuron extends SpinalNeuron
 		double iSynaptic = 0;
 
 		iIonic += gNa.getCurrent(slope, t, Vs);
-		System.out.println( "time " + t + " INa" + iIonic);
 		iIonic += gKf.getCurrent(slope, t, Vs);
 		iIonic += gKs.getCurrent(slope, t, Vs);
 

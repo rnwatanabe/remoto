@@ -44,6 +44,7 @@ public class BasicDAO
 				// Can be stored on HKEY_LOCAL_MACHINESOFTWARE\Microsoft\Windows\CurrentVersion\Run
 				
 				jdbcUrl = "jdbc:hsqldb:hsql://143.107.162.166/remoto";
+				//jdbcUrl = "jdbc:hsqldb:hsql://localhost/remoto";
 				
 				System.out.println("CONNECTING TO " + jdbcUrl);
 				

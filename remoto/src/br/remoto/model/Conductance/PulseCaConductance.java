@@ -64,7 +64,7 @@ public class PulseCaConductance extends PulseConductance {
     	}
     	
     	double lastValue = value;
-
+    	
     	value = gmax * valueP;
     	
     	if( Double.isNaN(value) )

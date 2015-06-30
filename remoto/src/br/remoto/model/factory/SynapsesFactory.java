@@ -86,6 +86,7 @@ public class SynapsesFactory
 				// a) DTs and MNs
 				for(int d = 0; d < nt.size(); d++)
 				{
+					//System.out.println("nt.size():  " + nt.size());
 					Neuron dtNeu = (Neuron)nt.get(d);
 
 					// Place DTs equaly distributed in relation to MN pool
