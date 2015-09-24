@@ -287,7 +287,7 @@ public class Motoneuron extends SpinalNeuron
 			iInjected = current.getCurrent(t);
 		}
 		
-		
+		//System.out.println("Capacitance" + capacitanceSoma);
 
 		// Currents in nA - capacitance in nF
 		double result = (iIonic + iSynaptic + iDendrite + iLeak + iInjected) / capacitanceSoma;

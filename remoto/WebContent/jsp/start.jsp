@@ -167,7 +167,6 @@ Current Version: 2.2 beta</div>
       <ul>
         <li><a href="/remoto/stimulation.do">Nerve Stimulation</a></li>
         <li><a href="/remoto/injectedCurrent.do">Injected Current</a></li>
-        <li><a href="/remoto/biomechanicalInput.do">Biomechanical Input</a></li>
       </ul>
     </li>
     <li><a href="/remoto/start.do">Run</a></li>

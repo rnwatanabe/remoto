@@ -3,6 +3,7 @@ package br.remoto.model.Musculotendon.Muscle.ExtrafusalMuscle.Models;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Random;
 
 import br.remoto.model.Configuration;
 import br.remoto.model.MotorUnit;
@@ -86,22 +87,22 @@ public class Hill extends ExtrafusalMuscleSuperClass
 		
 		if(cdMuscle.equals("SOL")){
 			//lengthNorm = 1.04414; //Ankle Angle = 0deg
-			lengthNorm = 1.10353; //Ankle Angle = 3deg
+			lengthNorm = 0.97026; //Ankle Angle = 3deg
 			length = lengthNorm * optimalLength;
 		}		
 		else if(cdMuscle.equals("MG")){
 			//lengthNorm = 1.06290; //Ankle Angle = 0deg
-			lengthNorm = 1.09123; //Ankle Angle = 3deg
+			lengthNorm = 1.00972; //Ankle Angle = 3deg
 			length = lengthNorm * optimalLength;
 		}
 		else if(cdMuscle.equals("LG")){
 			//lengthNorm = 0.99971; //Ankle Angle = 0deg
-			lengthNorm = 1.02633; //Ankle Angle = 3deg
+			lengthNorm = 1.04775; //Ankle Angle = 3deg
 			length = lengthNorm * optimalLength;
 		}
 		else if(cdMuscle.equals("TA")){
 			//lengthNorm = 1.02823; //Ankle Angle = 0deg
-			lengthNorm = 1.00053; //Ankle Angle = 3deg
+			lengthNorm = 1.23948; //Ankle Angle = 3deg
 			length = lengthNorm * optimalLength;
 		}
 		else{
@@ -351,8 +352,15 @@ public class Hill extends ExtrafusalMuscleSuperClass
 	public double calculateAcceleration(double t, double length, double velocity){				
 		force = calculateContractileElementForce(t, length/optimalLength, velocity/optimalLength);
 		
-		acceleration = (associatedMusculotendon.getTendon().getForce() * Math.cos(pennationAngle) -
-							   force * Math.pow(Math.cos(pennationAngle),2)) / mass;
+		 // acceleration = (associatedMusculotendon.getTendon().getForce() * Math.cos(pennationAngle) -
+					//	   force * Math.pow(Math.cos(pennationAngle),2)) / mass;
+		
+		/*Random  fRandom = new Random();
+		
+		double stdAcc = 0.0025 * (fRandom.nextGaussian());
+		acceleration = 0.0 + stdAcc;*/
+		acceleration = 0;
+		//System.out.println( "acceleration: " + acceleration );
 		
 		return acceleration;
 	}
@@ -371,8 +379,16 @@ public class Hill extends ExtrafusalMuscleSuperClass
 		k4_l = (velocity + step * k3_v);
 		k4_v = DvDt(t + step		, length + 	step * k3_l		, velocity  + 	step * k3_v);
 		
-		length =  length + (step * (k1_l + 2*k2_l + 2*k3_l + k4_l)/6);
-		velocity =  velocity + (step * (k1_v + 2*k2_v + 2*k3_v + k4_v)/6);
+		//length =  length + (step * (k1_l + 2*k2_l + 2*k3_l + k4_l)/6);
+		//velocity =  velocity + (step * (k1_v + 2*k2_v + 2*k3_v + k4_v)/6);
+		length =  length + (step * (k1_l));
+		//velocity =  velocity + (step * (k1_v));
+		
+		
+		Random  fRandom = new Random();
+		
+		double stdVec = 0.084* (fRandom.nextGaussian());
+		velocity = 0.0000 + stdVec;
 		
 	}
 	

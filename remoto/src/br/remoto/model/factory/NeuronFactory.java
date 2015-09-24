@@ -116,7 +116,7 @@ public class NeuronFactory
 				double rmDend = pattern.getRmDend1();
 				double ri = pattern.getRi();
 				double cm = pattern.getCm();
-				
+				System.out.println("ri " + ri);
 				double areaDend = Math.PI * dDend * lDend;
 				double areaSoma = Math.PI * dSoma * lSoma;
 	
@@ -172,7 +172,9 @@ public class NeuronFactory
 				((Motoneuron)neu).setLatencies( axonVelocity, stimulusSpinalDistance, stimulusEndPlateDistance );
 	
 				// Set gMax according to the soma area and put in nS
+				
 				pattern.getGNaMVO().setGmax( pattern.getGNaMVO().getGmax() * 1e6 * areaSoma );
+				System.out.println("gNaMax" + pattern.getGNaMVO().getGmax());
 				pattern.getGNaHVO().setGmax( pattern.getGNaHVO().getGmax() * 1e6 * areaSoma );
 				pattern.getGKNVO().setGmax( pattern.getGKNVO().getGmax() * 1e6 * areaSoma );
 				pattern.getGKQVO().setGmax( pattern.getGKQVO().getGmax() * 1e6 * areaSoma );

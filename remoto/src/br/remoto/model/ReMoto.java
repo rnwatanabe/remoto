@@ -385,8 +385,8 @@ public class ReMoto
 	
 	public static final int numberOfBins = 50;
 
-	public static final double T_MAX = 500000;
-	public static final double T_MAX_NO_SIGNALS = 600000;
+	public static final double T_MAX = 1000000;
+	public static final double T_MAX_NO_SIGNALS = 1000000;
 	public static final double Y_MAX = 1000000;
 	public static final double T_DEFAULT = 2000;
 	public static final double T_TOLERANCE = 0.001;

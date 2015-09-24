@@ -212,7 +212,7 @@ public class PositionTaskModel extends AnkleSuperClass
 		
 		//white noise
 		Random fRandom = new Random();
-		double stdDev = 1.89;
+		double stdDev = 0;
 		double disturbanceTorque = stdDev * fRandom.nextGaussian();
 				
 		//multisine random

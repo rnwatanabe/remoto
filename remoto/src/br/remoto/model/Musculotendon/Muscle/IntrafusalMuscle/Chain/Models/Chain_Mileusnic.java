@@ -78,18 +78,20 @@ public class Chain_Mileusnic extends ChainSuperClass{
 			try
 			{
 				k1_T = f1(t					, intrafusalFiberTension 					, z);
-				k2_T = f1(t + time_step/2	, intrafusalFiberTension + k1_T*time_step/2 , z + k1_z*time_step/2);
+				/*k2_T = f1(t + time_step/2	, intrafusalFiberTension + k1_T*time_step/2 , z + k1_z*time_step/2);
 				k3_T = f1(t + time_step/2	, intrafusalFiberTension + k2_T*time_step/2 , z + k2_z*time_step/2);
 				k4_T = f1(t + time_step		, intrafusalFiberTension + k3_T*time_step   , z + k3_z*time_step);
-		
-				intrafusalFiberTension =  intrafusalFiberTension + (time_step * (k1_T + 2*k2_T + 2*k3_T + k4_T)/6);
+				*/
+				//intrafusalFiberTension =  intrafusalFiberTension + (time_step * (k1_T + 2*k2_T + 2*k3_T + k4_T)/6);
+				intrafusalFiberTension =  intrafusalFiberTension + (time_step * (k1_T));
 				
 				k1_z = f2(t					, intrafusalFiberTension 					, z);
-				k2_z = f2(t + time_step/2	, intrafusalFiberTension + k1_T*time_step/2 , z + k1_z*time_step/2);
+				/*k2_z = f2(t + time_step/2	, intrafusalFiberTension + k1_T*time_step/2 , z + k1_z*time_step/2);
 				k3_z = f2(t + time_step/2	, intrafusalFiberTension + k2_T*time_step/2 , z + k2_z*time_step/2);
 				k4_z = f2(t + time_step		, intrafusalFiberTension + k3_T*time_step   , z + k3_z*time_step);
-				
-				z = z + (time_step * (k1_z + 2*k2_z + 2*k3_z + k4_z)/6);
+				*/
+				//z = z + (time_step * (k1_z + 2*k2_z + 2*k3_z + k4_z)/6);
+				z = z + (time_step * (k1_z));
 			}
 			catch(Exception e)
 			{

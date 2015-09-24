@@ -52,8 +52,9 @@ public class ElectroCalculation
 	
 	public double calcCapacitance(double cm, double area)
 	{
+		
 		cm = cm * 1e3;
-
+		
 		double ret = cm * area;
 		
 		return ret;

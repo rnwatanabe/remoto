@@ -81,6 +81,8 @@ public class PulseNaConductance extends PulseConductance
     	
     	double lastValue = value;
 
+    	
+    	
     	value = gmax * Math.pow(valueM, 3) * valueH;
     	
     	if( Double.isNaN(value) )

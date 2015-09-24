@@ -50,7 +50,7 @@ public class NonInnervatedTendon extends TendonSuperClass
 	{
 		double disturbance = calculateDisturbance(t);
 		
-		length = musculotendonLength - muscleLength *  Math.cos(pennationAngle) + disturbance;
+		length = musculotendonLength - muscleLength *  Math.cos(pennationAngle) + 0*disturbance;
 		lengthNorm = length / L0T;
 		
 		//System.out.println(lengthNorm);

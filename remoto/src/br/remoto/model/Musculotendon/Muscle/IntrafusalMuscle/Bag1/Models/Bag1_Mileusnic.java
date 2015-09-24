@@ -50,19 +50,21 @@ public class Bag1_Mileusnic extends Bag1SuperClass{
 				try
 				{
 					k1_T = f1(t					, intrafusalFiberTension 					, z);
-					k2_T = f1(t + time_step/2	, intrafusalFiberTension + k1_T*time_step/2 , z + k1_z*time_step/2);
+					/*k2_T = f1(t + time_step/2	, intrafusalFiberTension + k1_T*time_step/2 , z + k1_z*time_step/2);
 					k3_T = f1(t + time_step/2	, intrafusalFiberTension + k2_T*time_step/2 , z + k2_z*time_step/2);
 					k4_T = f1(t + time_step		, intrafusalFiberTension + k3_T*time_step   , z + k3_z*time_step);
-			
-					intrafusalFiberTension =  intrafusalFiberTension + (time_step * (k1_T + 2*k2_T + 2*k3_T + k4_T)/6);
+					 */
+					//intrafusalFiberTension =  intrafusalFiberTension + (time_step * (k1_T + 2*k2_T + 2*k3_T + k4_T)/6);
+					intrafusalFiberTension =  intrafusalFiberTension + (time_step * (k1_T));
 
 
 					k1_z = f2(t					, intrafusalFiberTension 					, z);
-					k2_z = f2(t + time_step/2	, intrafusalFiberTension + k1_T*time_step/2 , z + k1_z*time_step/2);
+					/*k2_z = f2(t + time_step/2	, intrafusalFiberTension + k1_T*time_step/2 , z + k1_z*time_step/2);
 					k3_z = f2(t + time_step/2	, intrafusalFiberTension + k2_T*time_step/2 , z + k2_z*time_step/2);
 					k4_z = f2(t + time_step		, intrafusalFiberTension + k3_T*time_step   , z + k3_z*time_step);
-					
-					z = z + (time_step * (k1_z + 2*k2_z + 2*k3_z + k4_z)/6);
+					*/
+					//z = z + (time_step * (k1_z + 2*k2_z + 2*k3_z + k4_z)/6);
+					z = z + (time_step * (k1_z));
 					
 				}
 				catch(Exception e)
@@ -121,10 +123,10 @@ public class Bag1_Mileusnic extends Bag1SuperClass{
 			GAMMA = GAMMA_1 * f_dyn;
 		}
 		
-		// Deve ser feita a atualização do fusimotorActivativation para que o método de integração fique correto
-		// Se for suposto que a ativação gamma é constante, então o fusimotorActivation (normalizado) é uma exponencial
-		// e sua dependência explicita do tempo permite seus cálculos em frações "futuras" no tempo.
-		// Caso a ativação gamma não seja constante, a dependência temporal deve ser buscada mais adiante.
+		// Deve ser feita a atualizaï¿½ï¿½o do fusimotorActivativation para que o mï¿½todo de integraï¿½ï¿½o fique correto
+		// Se for suposto que a ativaï¿½ï¿½o gamma ï¿½ constante, entï¿½o o fusimotorActivation (normalizado) ï¿½ uma exponencial
+		// e sua dependï¿½ncia explicita do tempo permite seus cï¿½lculos em fraï¿½ï¿½es "futuras" no tempo.
+		// Caso a ativaï¿½ï¿½o gamma nï¿½o seja constante, a dependï¿½ncia temporal deve ser buscada mais adiante.
 		
 		
 		public double calculateFusimotorActivation(double t){
@@ -136,11 +138,12 @@ public class Bag1_Mileusnic extends Bag1SuperClass{
 				try
 				{				
 					double k1_bag1 = Df_dynDt(t					, fusimotorActivation);
-					double k2_bag1 = Df_dynDt(t + time_step/2	, fusimotorActivation + k1_bag1*time_step/2);
+					/*double k2_bag1 = Df_dynDt(t + time_step/2	, fusimotorActivation + k1_bag1*time_step/2);
 					double k3_bag1 = Df_dynDt(t + time_step/2	, fusimotorActivation + k2_bag1*time_step/2);
 					double k4_bag1 = Df_dynDt(t + time_step		, fusimotorActivation + k3_bag1*time_step);
-			
-					fusimotorActivation =  fusimotorActivation + (time_step * (k1_bag1 + 2*k2_bag1 + 2*k3_bag1 + k4_bag1)/6);
+					*/
+					//fusimotorActivation =  fusimotorActivation + (time_step * (k1_bag1 + 2*k2_bag1 + 2*k3_bag1 + k4_bag1)/6);
+					fusimotorActivation =  fusimotorActivation + (time_step * (k1_bag1));
 				}
 				catch(Exception e)
 				{

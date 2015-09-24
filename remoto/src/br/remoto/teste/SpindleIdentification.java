@@ -10,25 +10,25 @@ import java.util.Locale;
 
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
+
 import org.hsqldb.DatabaseManager;
-import org.hsqldb.DatabaseURL;
+ import org.hsqldb.DatabaseURL;
  //import org.hsqldb.HSQLClientConnection;
  //import org.hsqldb.HTTPClientConnection;
  import org.hsqldb.HsqlException;
-import org.hsqldb.persist.HsqlProperties;
+ import org.hsqldb.persist.HsqlProperties;
  //import org.hsqldb.Result;
  //import org.hsqldb.ResultConstants;
  import org.hsqldb.Session;
-import org.hsqldb.SessionInterface;
+ import org.hsqldb.SessionInterface;
  //import org.hsqldb.Trace;
  import org.hsqldb.lib.StringUtil;
-import org.hsqldb.jdbcDriver;
+ import org.hsqldb.jdbcDriver;
 
 import br.remoto.dao.ConfigurationDAO;
 import br.remoto.dao.UserDAO;
 import br.remoto.model.Configuration;
 import br.remoto.model.ModulatingSignal;
-import br.remoto.model.Nerve;
 import br.remoto.model.ReMoto;
 import br.remoto.model.ResultDisplay;
 import br.remoto.model.Simulation;
@@ -48,7 +48,7 @@ import br.remoto.util.PlotXYLine;
 import br.remoto.util.Point;
 
 
-public class PoolIdentificationSOLMGScript 
+public class SpindleIdentification 
 {
 	UserDAO userDAO = new UserDAO();
 	User user;
@@ -56,12 +56,11 @@ public class PoolIdentificationSOLMGScript
 	
 	MessageFormat mf = new MessageFormat("{0,number,#.#####}", Locale.US);
 	
-	public PoolIdentificationSOLMGScript()
+	public SpindleIdentification()
 	{
 		// Specify ReMoto's path
-		
-		
-		ReMoto.path = "/home/renato/Dropbox/Doutorado/identRenshaw/";
+				
+		ReMoto.path = "/home/renato/Dropbox/Doutorado/spindleIdentification/";
 		//ReMoto.path = "C:\\Users\\Vitor\\Desktop\\Workspace2\\remoto\\WebContent\\";
 		
 		// Specify user account
@@ -75,7 +74,7 @@ public class PoolIdentificationSOLMGScript
 	
 	public static void main(String[] args) throws FileNotFoundException 
 	{
-		PoolIdentificationSOLMGScript teste = new PoolIdentificationSOLMGScript();
+		SpindleIdentification teste = new SpindleIdentification();
 		
 		teste.run();
 	}
@@ -88,7 +87,7 @@ public class PoolIdentificationSOLMGScript
     	
     	// LOAD SCENARIO
     	
-		conf = simDAO.getConfiguration(44);
+		conf = simDAO.getConfiguration(43);
 		
 		//conf.setMerge( true );
 		ResultVO resultVO = new ResultVO();
@@ -104,25 +103,24 @@ public class PoolIdentificationSOLMGScript
 		resultVO.setCdAnalysis("parameters");
 		conf.setResult( resultVO );
 		
-		//conf.setCdMuscleModel("hill");
+		conf.setCdMuscleModel("hill");
 		
-		/*
-		conf.setGammaDynamic(34);
-		conf.setGammaStatic(32);
+		
+		conf.setGammaDynamic(33);
+		conf.setGammaStatic(31);
 		conf.setPrimaryBag1Gain(7500);
 		conf.setPrimaryBag2AndChainGain(3800);
 		conf.setSecondaryBag2AndChainGain(3000);
-			*/					
+								
 		conf.setCdJoint("ankle");
 		conf.setCdJointModel("isometric");
 		conf.setDecimationFrequency(20000);
 		//conf.setRecruitmentOrderFES("uniform");
-		conf.setCdMuscleModel("SOCDS");
 		conf.setStep(0.05);
-		conf.setTFin(15000);
+		conf.setTFin(100000);
 		conf.setMiscellaneous("step", conf.getStep());
 		
-		int numOfSimulations = 8;
+		int numOfSimulations = 1;
 		
 		conf.setChangedConfiguration( true );
 		conf.setKeepProperties( false );
@@ -150,138 +148,63 @@ public class PoolIdentificationSOLMGScript
 		sim.createStimulation();
 		sim.createSynapses();
 		
-		/*
-		for(int i = 0; i < conf.getNeuronTypes(ReMoto.DT, ReMoto.TR).size(); i++){
+		/*for(int i = 0; i < conf.getNeuronTypes(ReMoto.DT, ReMoto.TR).size(); i++){
     		
 	    	NeuronVO dt = (NeuronVO) conf.getNeuronTypes(ReMoto.DT, ReMoto.TR).get(i);
 	    	if(dt.isActive()){
 	    		dt.setMean(10.5);
-	    		dt.setStd(12);
-	    		dt.setOrder(12);
+	    		dt.setStd(5);
+	    		dt.setOrder(5);
 	    	}
-	    }
-		*/
+	    }*/
+		
 		String path = null;
 		
-		//double amp = -1.5;
-		
-		//path = "Amp=" + ((int)(-10 * amp));
 		path = "";
-		
-		//for(int y = 0; y < conf.getNeuronTypes().size(); y++)
-		//{
-	    //	NeuronVO reference = (NeuronVO)conf.getNeuronTypes().get(y);
-		//	
-		//	if( !reference.isActive() || reference.getQuantity() == 0) 
-	    //		continue;
-		//	
-		//	for(int index = 0; index < reference.getQuantity(); index++)
-		//	{
-		//	if( reference.getCategory().equals( ReMoto.TR ) )
-		//    	{
-		//    		reference.setAmp(amp);
-		//    		reference.setWidth(3000);
-		//    	}
-		//	}
-		//}
-	 
-	 for (int j = 10; j <= 20; j=j+2){
-		for(int k = 1; k <= 1; k++){
+				
+		for(int k = 5; k <= 5; k++){
 			
-			 
+			//conf.setPrimaryBag1Gain(7000 + 10 * (k - 1));
 			
 			System.out.println("-> SCENARIO:  " + timeStepString + "  " + 
-								"  Sim.: " + k + "Trial " + j);
-			
-		  
-			for(int i = 0; i < conf.getNeuronTypes(ReMoto.DT, ReMoto.TR).size(); i++){	    		
-		    	NeuronVO dt = (NeuronVO) conf.getNeuronTypes(ReMoto.DT, ReMoto.TR).get(i);
-		    	if(dt.isActive()){
-		    		if (k == 1){
-		    			dt.setMean(6.7);
-		    			dt.setStd(1);
-			    		dt.setOrder(1);
-		    		}
-		    		else if(k == 2){
-		    			dt.setMean(9.6);
-		    			dt.setStd(5);
-			    		dt.setOrder(5);
-		    		}
-		    		else if(k == 3){
-		    			dt.setMean(9);
-		    			dt.setStd(4);
-			    		dt.setOrder(4);
-		    		}
-		    		else if(k == 4){
-		    			dt.setMean(8);
-		    			dt.setStd(4);
-			    		dt.setOrder(4);
-		    		}
-		    		else if(k == 5){
-		    			dt.setMean(7.2);
-		    			dt.setStd(4);
-			    		dt.setOrder(4);
-		    		}
-		    		else if(k == 6){
-		    			dt.setMean(6.4);
-		    			dt.setStd(3);
-			    		dt.setOrder(3);
-		    		}
-		    		else if(k == 7){
-		    			dt.setMean(6);
-		    			dt.setStd(2);
-			    		dt.setOrder(2);
-		    		}
-		    		else if(k == 8){
-		    			dt.setMean(5.6);
-		    			dt.setStd(2);
-			    		dt.setOrder(2);
-		    		}
-		    		else if(k == 9){
-		    			dt.setMean(4);
-		    			dt.setStd(1);
-			    		dt.setOrder(1);
-		    		}		    		
-		       	}
-		    }
+								"  Sim.: " + k);
 			
 			sim.run();
-			System.out.println(j);
+    		
+			generateLogOfScenario(k, dataPath, path);
 			
-			generateLogOfScenario(k, dataPath, path, j);
-			
-			generateAndStoreData("emgSOL", sim, dataPath, graphicPath, path, k, j);
-			//generateAndStoreData("emgMG", sim, dataPath, graphicPath, path, k, j);
-			//generateAndStoreData("emgLG", sim, dataPath, graphicPath, path, k, j);
+			//generateAndStoreData("emgSOL", sim, dataPath, graphicPath, path, k);
+			//generateAndStoreData("emgMG", sim, dataPath, graphicPath, path, k);
+			//generateAndStoreData("emgLG", sim, dataPath, graphicPath, path, k);
 			//generateAndStoreData("emg", sim, dataPath, graphicPath, path, k);
-			generateAndStoreData("spikesMNsSOL", sim, dataPath, graphicPath, path, k, j);
-			//generateAndStoreData("spikesMNsMG", sim, dataPath, graphicPath, path, k, j);
-			//generateAndStoreData("spikesMNsLG", sim, dataPath, graphicPath, path, k, j);
-			//generateAndStoreData("spikesIasSOL", sim, dataPath, graphicPath, path, k);
+			//generateAndStoreData("spikesMNsSOL", sim, dataPath, graphicPath, path, k);
+			//generateAndStoreData("spikesMNsMG", sim, dataPath, graphicPath, path, k);
+			//generateAndStoreData("spikesMNsLG", sim, dataPath, graphicPath, path, k);
+			generateAndStoreData("spikesIasSOL", sim, dataPath, graphicPath, path, k);
 			//generateAndStoreData("spikesIasMG", sim, dataPath, graphicPath, path, k);
 			//generateAndStoreData("spikesIasLG", sim, dataPath, graphicPath, path, k);
-			//generateAndStoreData("meanFiringRateIa", sim, dataPath, graphicPath, path, k);
+			generateAndStoreData("meanFiringRateIa", sim, dataPath, graphicPath, path, k);
 			//generateAndStoreData("firingRateMNs", sim, dataPath, graphicPath, path, k);
-			generateAndStoreData("conductanceSOL", sim, dataPath, graphicPath, path, k, j);
-			//generateAndStoreData("conductanceMG", sim, dataPath, graphicPath, path, k, j);
-			generateAndStoreData("muscleForceSOL", sim, dataPath, graphicPath, path, k, j);
-			//generateAndStoreData("muscleForceMG", sim, dataPath, graphicPath, path, k, j);
-			//generateAndStoreData("muscleForceLG", sim, dataPath, graphicPath, path, k, j);
+			//generateAndStoreData("muscleForce", sim, dataPath, graphicPath, path, k);
 			//generateAndStoreData("spikesIaINs", sim, dataPath, graphicPath, path, k);
-			//generateAndStoreData("muscleLength", sim, dataPath, graphicPath, path, k);
+			generateAndStoreData("muscleLength", sim, dataPath, graphicPath, path, k);
+			generateAndStoreData("muscleVelocity", sim, dataPath, graphicPath, path, k);
+			generateAndStoreData("muscleAcceleration", sim, dataPath, graphicPath, path, k);
+			generateAndStoreData("activationNormSType", sim, dataPath, graphicPath, path, k);
+			//generateAndStoreData("conductanceSOL", sim, dataPath, graphicPath, path, k);
 			//generateAndStoreData("jointAngle", sim, dataPath, graphicPath, path, k);
-			//generateAndStoreData("jointTorque", sim, dataPath, graphicPath, path, k, j);
+			//generateAndStoreData("jointTorque", sim, dataPath, graphicPath, path, k);
 			//generateAndStoreData("jointDisturbance", sim, dataPath, graphicPath, path, k);
 			
-			System.out.println("-> Simulation Number " + k +  "Trial" + j + " end");
+			System.out.println("-> Simulation Number " + k + " end");
 		}
-		}
+		
 		System.out.println("-> SIMULATION END");
 
 		
 	}
 	
-	public void generateAndStoreData(String output, Simulation sim, String dataPath, String graphicPath, String path, int simCount, int simCount2) throws FileNotFoundException{
+	public void generateAndStoreData(String output, Simulation sim, String dataPath, String graphicPath, String path, int simCount) throws FileNotFoundException{
 		
 		int numSubplots = 1;
 		
@@ -305,42 +228,26 @@ public class PoolIdentificationSOLMGScript
 		
 		if(output.equals("emgSOL")){
 			nmSubplots[0].add(			"EMG");
-			nmCdNeurons[0].add(			"All MUs");
+			nmCdNeurons[0].add(			"");
 			nmCdSpecification[0].add(	"");
 			yLabels[0].add(				"EMG SOL");
 			legendLabels[0].add(		"SOL");
 			nmMuscles[0].add(			"SOL");
 		}
-		else if(output.equals("emgMG")){
+		if(output.equals("emgMG")){
 			nmSubplots[0].add(			"EMG");
-			nmCdNeurons[0].add(			"All MUs");
+			nmCdNeurons[0].add(			"");
 			nmCdSpecification[0].add(	"");
 			yLabels[0].add(				"EMG MG");
 			legendLabels[0].add(		"MG");
 			nmMuscles[0].add(			"MG");
 		}
-		else if(output.equals("emgLG")){
+		if(output.equals("emgLG")){
 			nmSubplots[0].add(			"EMG");
-			nmCdNeurons[0].add(			"All MUs");
+			nmCdNeurons[0].add(			"");
 			nmCdSpecification[0].add(	"");
 			yLabels[0].add(				"EMG LG");
 			legendLabels[0].add(		"MLG");
-			nmMuscles[0].add(			"LG");
-		}
-		else if(output.equals("conductanceSOL")){
-			nmSubplots[0].add(			"conductance");
-			nmCdNeurons[0].add(			"MN S 1");
-			nmCdSpecification[0].add(	"gExc-dend");
-			yLabels[0].add(				"Conductance SOL");
-			legendLabels[0].add(		"SOL");
-			nmMuscles[0].add(			"LG");
-		}
-		else if(output.equals("conductanceMG")){
-			nmSubplots[0].add(			"conductance");
-			nmCdNeurons[0].add(			"MN S 1");
-			nmCdSpecification[0].add(	"gExc-dend");
-			yLabels[0].add(				"Conductance MG");
-			legendLabels[0].add(		"MG");
 			nmMuscles[0].add(			"LG");
 		}
 		else if(output.equals("spikesMNsSOL")){
@@ -415,57 +322,9 @@ public class PoolIdentificationSOLMGScript
 			legendLabels[0].add(		"Ankle");
 			nmMuscles[0].add(			"SOL");
 		}
-		else if(output.equals("muscleForceSOL")){
+		else if(output.equals("muscleForce")){
 			nmSubplots[0].add(			"muscleForce");
 			nmCdNeurons[0].add(			"All MUs");
-			nmCdSpecification[0].add(	"");
-			yLabels[0].add(				"Force SOL");
-			legendLabels[0].add(		"SOL");
-			nmMuscles[0].add(			"SOL");
-		}
-		else if(output.equals("muscleForceMG")){
-			nmSubplots[0].add(			"muscleForce");
-			nmCdNeurons[0].add(			"All MUs");
-			nmCdSpecification[0].add(	"");
-			yLabels[0].add(				"Force MG");
-			legendLabels[0].add(		"MG");
-			nmMuscles[0].add(			"MG");
-		}
-		else if(output.equals("muscleForceLG")){
-			nmSubplots[0].add(			"muscleForce");
-			nmCdNeurons[0].add(			"All MUs");
-			nmCdSpecification[0].add(	"");
-			yLabels[0].add(				"Force LG");
-			legendLabels[0].add(		"LG");
-			nmMuscles[0].add(			"LG");
-		}
-		else if(output.equals("muscleForceS1")){
-			nmSubplots[0].add(			"muscleForce");
-			nmCdNeurons[0].add(			"MN S 1");
-			nmCdSpecification[0].add(	"");
-			yLabels[0].add(				"Force SOL");
-			legendLabels[0].add(		"SOL");
-			nmMuscles[0].add(			"SOL");
-		}
-		else if(output.equals("muscleForceS5")){
-			nmSubplots[0].add(			"muscleForce");
-			nmCdNeurons[0].add(			"MN S 5");
-			nmCdSpecification[0].add(	"");
-			yLabels[0].add(				"Force SOL");
-			legendLabels[0].add(		"SOL");
-			nmMuscles[0].add(			"SOL");
-		}
-		else if(output.equals("muscleForceFR3")){
-			nmSubplots[0].add(			"muscleForce");
-			nmCdNeurons[0].add(			"MN FR 3");
-			nmCdSpecification[0].add(	"");
-			yLabels[0].add(				"Force SOL");
-			legendLabels[0].add(		"SOL");
-			nmMuscles[0].add(			"SOL");
-		}
-		else if(output.equals("muscleForceFF3")){
-			nmSubplots[0].add(			"muscleForce");
-			nmCdNeurons[0].add(			"MN FF 3");
 			nmCdSpecification[0].add(	"");
 			yLabels[0].add(				"Force SOL");
 			legendLabels[0].add(		"SOL");
@@ -502,7 +361,23 @@ public class PoolIdentificationSOLMGScript
 			yLabels[0].add(				"Length [m]");
 			legendLabels[0].add(		"SOL");
 			nmMuscles[0].add("SOL");
-		}		
+		}
+		else if(output.equals("muscleVelocity")){
+			nmSubplots[0].add(			"muscleVelocity");
+			nmCdNeurons[0].add(			"");
+			nmCdSpecification[0].add(	"");
+			yLabels[0].add(				"Length [m]");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add("SOL");
+		}
+		else if(output.equals("muscleAcceleration")){
+			nmSubplots[0].add(			"muscleAcceleration");
+			nmCdNeurons[0].add(			"");
+			nmCdSpecification[0].add(	"");
+			yLabels[0].add(				"Length [m]");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add("SOL");
+		}
 		else if(output.equals("jointAngle")){
 			nmSubplots[0].add(			"jointAngle");
 			nmCdNeurons[0].add(			"");
@@ -518,7 +393,23 @@ public class PoolIdentificationSOLMGScript
 			yLabels[0].add(				"Torque [N.m]");
 			legendLabels[0].add(		"SOL");
 			nmMuscles[0].add("SOL");
-		}			
+		}
+		else if(output.equals("activationNormSType")){
+			nmSubplots[0].add(			"activationNormSType");
+			nmCdNeurons[0].add(			"");
+			nmCdSpecification[0].add(	"");
+			yLabels[0].add(				"[-]");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add("SOL");
+		}
+		else if(output.equals("conductanceSOL")){
+			nmSubplots[0].add(			"conductance");
+			nmCdNeurons[0].add(			"MN S 1");
+			nmCdSpecification[0].add(	"gExc-dend");
+			yLabels[0].add(				"Conductance SOL");
+			legendLabels[0].add(		"SOL");
+			nmMuscles[0].add(			"LG");
+		}
 		else return;
 		
 		conf.setNmSubplots(			nmSubplots);
@@ -541,10 +432,10 @@ public class PoolIdentificationSOLMGScript
 		
 		File outputFile = null;
 	    
-		
+		//double varStep = 7000 + 10 * (simCount - 1);
 	
 		
-		outputFile = new File(dataPath + path + "/" + output + "_Renshaw_" + simCount2 + ".txt");
+		outputFile = new File(dataPath + path + "/" + output + "" + simCount + ".txt");
 		
 	    PrintWriter printWriter = new PrintWriter(outputFile);
 	    
@@ -573,14 +464,14 @@ public class PoolIdentificationSOLMGScript
 
 	    if(output.equals("spikesMNs") || output.equals("spikesIas") || output.equals("firingRateMNs") || output.equals("spikesIaINs") ){
 	    	PlotScatter.generate(datasetS,
-					 graphicPath + path + "/" +  output + "Renshaw_" + simCount2 + ".jpg",
+					 graphicPath + path + "/" + output + "" + simCount + ".jpg",
 					 output, 
 					 "Time [ms]", 
 					 output);
 	    }
 	    else{
 	    	PlotXYLine.generate(datasetS,
-	    			 graphicPath + path + "/"  + output + "_Renshaw_" + simCount2 + ".jpg",
+	    			 graphicPath + path + "/" + output + "" + simCount + ".jpg",
 					 output, 
 					 "Time [ms]", 
 					 output);
@@ -591,14 +482,12 @@ public class PoolIdentificationSOLMGScript
 		System.gc();
 	}
 	
-	public void generateLogOfScenario(int simCount, String dataPath, String path, int simCount2) throws FileNotFoundException{
+	public void generateLogOfScenario(int simCount, String dataPath, String path) throws FileNotFoundException{
 		
 		
 		File output;
-		
-		
 	    
-		output = new File(dataPath + path + "/scenario" +  simCount2 + ".txt");
+		output = new File(dataPath + path + "/scenario" + "" + simCount + ".txt");
 		
 	    PrintWriter printWriter = new PrintWriter(output);
 	    
@@ -709,7 +598,7 @@ public class PoolIdentificationSOLMGScript
 			}
 		}
 	    
-    	    printWriter.println("");
+    	printWriter.println("");
 	    printWriter.println("");
 	    printWriter.println("------NERVES-------");
 	    printWriter.println("");

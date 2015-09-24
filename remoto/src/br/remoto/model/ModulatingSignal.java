@@ -127,9 +127,8 @@ public class ModulatingSignal implements Serializable
 	
 	private double amModulation( double time )
 	{
+		ret = amp * Math.sin( 2*Math.PI * freq * time / 1000 + (2*Math.PI * freq * -delay / 1000)) * (1 + modFactor * Math.sin( 2*Math.PI * modFreq * time / 1000 ));
 		
-		 ret = amp * Math.sin( 2*Math.PI * freq * time / 1000 + (2*Math.PI * freq * -delay / 1000)) * (1 + modFactor * Math.sin( 2*Math.PI * modFreq * time / 1000 ));
-		 
 		return ret;
 	}
 	
