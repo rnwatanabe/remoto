@@ -1209,21 +1209,21 @@ public class ResultsAction extends MainAction
 			
 			
 			nmSubplots[0].add(			"EMG");
-			nmCdNeurons[0].add(			"");
+			nmCdNeurons[0].add(			"All MUs");
 			nmCdSpecification[0].add(	"");
 			yLabels[0].add(				"EMG SOL");
 			legendLabels[0].add(		"SOL");
 			nmMuscles[0].add(			"SOL");
 			
 			nmSubplots[1].add(			"EMG");
-			nmCdNeurons[1].add(			"");
+			nmCdNeurons[1].add(			"All MUs");
 			nmCdSpecification[1].add(	"");
 			yLabels[1].add(				"EMG MG");
 			legendLabels[1].add(		"MG");
 			nmMuscles[1].add(			"MG");
 			
 			nmSubplots[2].add(			"EMG");
-			nmCdNeurons[2].add(			"");
+			nmCdNeurons[2].add(			"All MUs");
 			nmCdSpecification[2].add(	"");
 			yLabels[2].add(				"EMG LG");
 			legendLabels[2].add(		"LG");
@@ -1265,7 +1265,7 @@ public class ResultsAction extends MainAction
 			}
 			
 			nmSubplots[0].add(			"EMG");
-			nmCdNeurons[0].add(			"");
+			nmCdNeurons[0].add(			"All MUs");
 			nmCdSpecification[0].add(	"");
 			yLabels[0].add(				"EMG SOL");
 			legendLabels[0].add(		"SOL");
@@ -1342,7 +1342,7 @@ public class ResultsAction extends MainAction
 			}
 			
 			nmSubplots[0].add(			"EMG");
-			nmCdNeurons[0].add(			"");
+			nmCdNeurons[0].add(			"All MUs");
 			nmCdSpecification[0].add(	"");
 			yLabels[0].add(				"EMG MG");
 			legendLabels[0].add(		"MG");
@@ -1419,7 +1419,7 @@ public class ResultsAction extends MainAction
 			}
 			
 			nmSubplots[0].add(			"EMG");
-			nmCdNeurons[0].add(			"");
+			nmCdNeurons[0].add(			"All MUs");
 			nmCdSpecification[0].add(	"");
 			yLabels[0].add(				"EMG LG");
 			legendLabels[0].add(		"LG");
