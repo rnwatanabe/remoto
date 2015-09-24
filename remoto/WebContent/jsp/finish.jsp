@@ -193,27 +193,26 @@ Current Version: 2.2 beta</div>
 <%
 String start = (String)session.getAttribute("start");
 String finish = (String)session.getAttribute("finish");
+String elapsedTime = (String)session.getAttribute("elapsedTime");
 String duration = (String)session.getAttribute("duration");
 String step = (String)session.getAttribute("step");
 
 String status = request.getParameter("status");
 
-//if( start == null ) start = request.getParameter("start");
-//if( finish == null ) finish = request.getParameter("finish");
-//if( duration == null ) duration = request.getParameter("duration");
-//if( step == null ) step = request.getParameter("step");
 
 if( start == null ) start = "";
 if( finish == null ) finish = "";
+if( elapsedTime == null ) elapsedTime = "";
 if( duration == null ) duration = "200";
 if( step == null ) step = "0.05";
-%> <b>Simulation <%=status%>.</b> <br> <br>Started: <%=start%>
-h (GMT-3) <br>Finished: <%=finish%> h (GMT-3)
-
+%> <b>Simulation finished. Click on tab 'Results'</b> 
+<br> <br>Started: <%=start%>h (GMT-3)
+<br>Finished: <%=finish%> h (GMT-3)
+<br>Elapsed time: <%=elapsedTime%> seconds
 
 <form name="SimulationForm" method="post" action="/remoto/simulation.do">
 
-<input type="hidden" name="task" value="new" /> <br><br>
+<input type="hidden" name="task" value="new" /> <br>
 <table border="0" align="center">
 
 	<tr>

@@ -26,14 +26,7 @@ public class SimulationForm extends ActionForm
 	private String percentage;
 	private String start;
 	private String finish;
-	private String status;
-	private int statusInt;
-	
-
-	int i = 0;
-	
-	//testando
-	private String cdSimulation = "vazio";
+	private double elapsedTime;
 	
 
     public SimulationForm()
@@ -50,7 +43,7 @@ public class SimulationForm extends ActionForm
 	{
 		return super.validate(map, req);
 	}
-	
+
 	public String getPercentage() {
 		return percentage;
 	}
@@ -58,7 +51,6 @@ public class SimulationForm extends ActionForm
 	public void setPercentage(String percentage) {
 		this.percentage = percentage;
 	}
-	
 
 	public String getFinish() {
 		return finish;
@@ -71,35 +63,19 @@ public class SimulationForm extends ActionForm
 	public String getStart() {
 		return start;
 	}
-
+	
 	public void setStart(String start) {
 		this.start = start;
 	}
 	
-	//testando
-	
-	public String getCdSimulation() {
-		return cdSimulation;
-	}
-
-	public void setCdSimulation(String cdSimulation) {
-		this.cdSimulation = cdSimulation;
+	public String getElapsedTime() {
+		return String.valueOf(elapsedTime);
 	}
 	
-	public String getStatus() {
-		return status;
+	public void setElapsedTime(double elapsedTime) {
+		this.elapsedTime = elapsedTime;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 	
-	public int getStatusInt() {
-		return statusInt;
-	}
-
-	public void setStatusInt(int statusInt) {
-		this.statusInt = statusInt;
-	}
 
 }

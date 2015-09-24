@@ -8,6 +8,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="refresh" content="5;URL=simulation.do?task=simulating">
 <link rel="stylesheet" type="text/css" href="bg.css"/>
 <link rel="shortcut icon" href="favicon.ico" />
 <!-- InstanceBeginEditable name="doctitle" -->
@@ -181,57 +182,17 @@ Current Version: 2.2 beta</div>
 <div class="simulation"><html:form method="post"
 	action="/simulation.do?task=cancel">
         
-        Simulation in progress. 
-  	<br />
-	<br />
-    Please wait...
-    <br />
-	<br />
+   
+ Simulation in progress. Please wait...
+<br />
 
 
-	<logic:equal name="SimulationForm" property="status" value="">
-		<div class="progressBar"><jsp:plugin type="applet"
-			archive="ProgressBar.jar" codebase="../remoto"
-			code="br.remoto.applet.ProgressBar.class" width="300" height="50">
-			<jsp:params>
-				<jsp:param name="status" value="starting" />
-				<jsp:param name="cdSimulation" value="vazio" />
-			</jsp:params>
-			<jsp:fallback>
-				<p> Problem in loading progress bar. Please, check if your Java VM is updated.</p>
-			</jsp:fallback>
-		</jsp:plugin>
+<logic:notEqual name="SimulationForm" property="start" value="" >
+<br />Started: <bean:write name="SimulationForm" property="start"/> h (GMT-3)
+<br /><br />&nbsp;&nbsp;&nbsp;Progress: <bean:write name="SimulationForm" property="percentage"/> %
+<br /><br />&nbsp;&nbsp;&nbsp;<input type="button" value=" cancel " onclick="submit();">
 
-		<meta http-equiv="refresh"
-			content="3;URL=simulation.do?task=simulating">
-		</div>
-	</logic:equal>
-
-
-	<logic:equal name="SimulationForm" property="status" value="running">
-		<div class="progressBar"><bean:define id="cdSimulation"
-			name="SimulationForm" property="cdSimulation" toScope="session" /> <jsp:plugin
-			type="applet" archive="ProgressBar.jar" codebase="../remoto"
-			code="br.remoto.applet.ProgressBar.class" width="300" height="50">
-			<jsp:params>
-				<jsp:param name="status" value="simulating" />
-				<jsp:param name="cdSimulation" value="<%=cdSimulation%>" />
-			</jsp:params>
-			<jsp:fallback>
-				<p> Problem in loading progress bar.  Please, check if your Java VM is updated.</p>
-			</jsp:fallback>
-		</jsp:plugin></div>
-
-		<br />
-
-		<div class="apply"><input type="button" value=" Cancel "
-			onClick="submit();"></div>
-
-	</logic:equal>
-
-
-
-
+</logic:notEqual>
 </html:form></div>
 <!-- InstanceEndEditable --></div>
 <div id="links">

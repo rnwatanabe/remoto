@@ -69,6 +69,7 @@ public class Simulation implements Serializable, Runnable
 	private int percentageInt;
 	private String start;
 	private String finish;
+	private double elapsedTime;
 	private Date dateFinish;
 	
 	private int iteration;
@@ -249,6 +250,7 @@ public class Simulation implements Serializable, Runnable
 		// Begin simulation
 		SimpleDateFormat formatter = new SimpleDateFormat("H:mm:ss");
 		start = formatter.format(new Date());
+		long tStart = System.currentTimeMillis();
 		
 		totSteps = (int)(tFin/step);
 		
@@ -305,6 +307,8 @@ public class Simulation implements Serializable, Runnable
     	
     	finish = formatter.format(dateFinish);
 		
+    	long tEnd = System.currentTimeMillis();
+    	elapsedTime = tEnd - tStart;
     	
 		if(status!= SIM_CANCEL)	status = SIM_FINISH;
 		
@@ -555,6 +559,9 @@ public class Simulation implements Serializable, Runnable
 	}
 	public void setStart(String start) {
 		this.start = start;
+	}
+	public String getElapsedTime() {
+		return String.valueOf(elapsedTime/1000);
 	}
 	public Date getDateFinish() {
 		return dateFinish;
