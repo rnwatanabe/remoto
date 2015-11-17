@@ -1,5 +1,35 @@
 #ReMoto
 
+This repository has the Java code to a web-based neuronal simulation system. It has been developed over the last ten years by some authors, including me. The version in this repository is the code as I am using it now. An on-line version of this simulator can be found in: http://remoto.leb.usp.br. The install process can be a little bit difficult due to the Web structure. I tried to give a step-by-step instruction but there is not any guarantee that these steps will work. If you have any problem during the installation, please contact me. The system has been tested in Windows and Ubuntu systems.   
+
+If you use this code, please cite the following papers:
+
+"CISI, R. R. L.; KOHN, A. F. Simulation system of spinal cord motor nuclei and associated
+nerves and muscles, in a Web-based architecture. Journal of Computational Neuroscience,
+v. 25, n. 3, p. 520–542, 2008"
+
+"ELIAS, L. A.; CHAUD, V. M.; KOHN, A. F. Models of passive and active dendrite motoneuron
+pools and their differences in muscle force control. Journal of Computational Neuroscience,
+Springer Netherlands, v. 33, n. 3, p. 515–531, 2012."
+
+"ELIAS, L. A.; KOHN, A. F. Individual and collective properties of computationally efficient
+motoneuron models of types S and F with active dendrites. Neurocomputing, v. 99, p.
+521–533, 2013."
+
+"WATANABE, R. N. et al. Influences of premotoneuronal command statistics on the scaling of
+motor output variability during isometric plantarflexion. Journal of Neurophysiology, v. 110,
+n. 11, p. 2592–2606, set. 2013."
+
+"ELIAS, L. A.; WATANABE, R. N.; KOHN, A. F. Spinal mechanisms may provide a
+combination of intermittent and continuous control of human posture: predictions from a
+biologically based neuromusculoskeletal model. PLoS Computational Biology, v. 10, n. 11,
+p. e1003944, nov. 2014."
+
+"WATANABE, R. N.; KOHN, A. F. Fast Oscillatory Commands from the Motor Cortex Can
+Be Decoded by the Spinal Cord for Force Control. Journal of Neuroscience, v. 35, n. 40, p.
+13687–13697, 2015."
+
+
 
 <p>ReMoto is a web-based neuronal simulation system, intended for studying spinal cord neuronal networks responsible for muscle control. These networks are affected by descending drive, afferent drive, and electrical nerve stimulation. The simulator may be used to investigate phenomena at several levels of organization, e.g., at the neuronal membrane level or at the whole muscle behavior level (e.g., muscle force generation). This versatility is due to the fact that each element (neurons, synapses, muscle fibers) has its own specific mathematical model, usually involving the action of voltage- or neurotransmitter-dependent ionic channels. The simulator should be helpful in activities such as interpretation of results obtained from neurophysiological experiments in humans, proposal of hypothesis or testing models or theories on neuronal dynamics or neuronal network processing, validation of experimental protocols, and teaching neurophysiology.</p>
 
