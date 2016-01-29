@@ -39,6 +39,7 @@ p. e1003944, nov. 2014."
 Be Decoded by the Spinal Cord for Force Control. Journal of Neuroscience, v. 35, n. 40, p.
 13687–13697, 2015."
 
+The Bibtex file of these references can be found [here](https://github.com/rnwatanabe/remoto/blob/master/ref.bib).
 
 How to install
 --------------
