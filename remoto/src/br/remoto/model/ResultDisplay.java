@@ -1566,7 +1566,7 @@ public class ResultDisplay
 		    		}
 		    	}
 		    	else if( cdNeuron.equals( "ExcINs_flex" )){
-		    		if(neuron.getType().equals("excitatory_MN") ){
+		    		if(neuron.getType().equals("excitatory_RC") ){
 		    			spikes = ((NeuralTract)neuron).getTerminalSpikeTrain();
 		    		}
 		    	}
@@ -2373,7 +2373,7 @@ public class ResultDisplay
 			if(isMean) 			serie4 = new XYSeries( "Mean: " + Conversion.convertNumberOfDecimalAlgarisms(mean, 2));
 			if(isVariance)		serie5 = new XYSeries( "Variance: " + Conversion.convertNumberOfDecimalAlgarisms(variance, 2));
 			if(isStd) 			serie6 = new XYSeries( "Standard deviation: " + Conversion.convertNumberOfDecimalAlgarisms(std, 2));
-			if(isCV) 			serie7 = new XYSeries( "Coeficient of variation: " + Conversion.convertNumberOfDecimalAlgarisms(std/mean, 2));
+			if(isCV) 			serie7 = new XYSeries( "Coeficient of variation: " + Conversion.convertNumberOfDecimalAlgarisms(std/mean, 5));
 			if(isMin) 			serie8 = new XYSeries( "Minimum value: " + Conversion.convertNumberOfDecimalAlgarisms(min, 2));
 			if(isMax) 			serie9 = new XYSeries( "Maximum value: " + Conversion.convertNumberOfDecimalAlgarisms(max, 2));
 			

@@ -211,7 +211,7 @@ public class NetworkFactory
 			nucleusXini[x] = conf.getMiscellaneous( "xIni" + cdNucleus );
 			nucleusXend[x] = conf.getMiscellaneous( "xEnd" + cdNucleus );
 		}
-
+    	
     	
 		// The loop begins with the index of the first regular nucleus
 		for(int x = 1; x < neurons.length; x++)

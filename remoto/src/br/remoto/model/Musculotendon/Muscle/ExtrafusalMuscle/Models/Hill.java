@@ -352,14 +352,14 @@ public class Hill extends ExtrafusalMuscleSuperClass
 	public double calculateAcceleration(double t, double length, double velocity){				
 		force = calculateContractileElementForce(t, length/optimalLength, velocity/optimalLength);
 		
-		 // acceleration = (associatedMusculotendon.getTendon().getForce() * Math.cos(pennationAngle) -
-					//	   force * Math.pow(Math.cos(pennationAngle),2)) / mass;
+		acceleration = (associatedMusculotendon.getTendon().getForce() * Math.cos(pennationAngle) -
+						   force * Math.pow(Math.cos(pennationAngle),2)) / mass;
 		
 		/*Random  fRandom = new Random();
 		
 		double stdAcc = 0.0025 * (fRandom.nextGaussian());
 		acceleration = 0.0 + stdAcc;*/
-		acceleration = 0;
+		// acceleration = 0;
 		//System.out.println( "acceleration: " + acceleration );
 		
 		return acceleration;
@@ -382,13 +382,13 @@ public class Hill extends ExtrafusalMuscleSuperClass
 		//length =  length + (step * (k1_l + 2*k2_l + 2*k3_l + k4_l)/6);
 		//velocity =  velocity + (step * (k1_v + 2*k2_v + 2*k3_v + k4_v)/6);
 		length =  length + (step * (k1_l));
-		//velocity =  velocity + (step * (k1_v));
+		velocity =  velocity + (step * (k1_v));
 		
 		
 		Random  fRandom = new Random();
 		
-		double stdVec = 0.084* (fRandom.nextGaussian());
-		velocity = 0.0000 + stdVec;
+		//double stdVec = 0.084* (fRandom.nextGaussian());
+		//velocity = 0.0000 + stdVec;
 		
 	}
 	

@@ -63,7 +63,7 @@ public class NonInnervatedTendon extends TendonSuperClass
 
 		sampler1.sample(lengthStore, "", t, length);
 		sampler2.sample(forceStore, "", t, force);
-		}
+	}
 
 	
 	public double getSlackLengthNorm() {

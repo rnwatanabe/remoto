@@ -107,7 +107,7 @@ public class SynapsesFactory
 				//System.out.println("Noise size: " + noises.size());
 				if( noises != null )
 				{
-					System.out.println("Noise size:  " + noises.size());
+					
 					for(int d = 0; d < noises.size(); d++)
 					{
 						Neuron noise = (Neuron)noises.get(d);
@@ -125,8 +125,7 @@ public class SynapsesFactory
 						// Make synapse only between MN and its respectively noise
 						//if( noise.getIndex() == ((Motoneuron)mnNeu).getIndex() )
 						if( d == m )
-						{
-							System.out.println("Noise Index:  " + noise.getIndex() + "Noise type:  " + noise.getCdNucleus() + "   MN index " + ((Motoneuron)mnNeu).getIndex() + " MN nucleus: " + ((Motoneuron)mnNeu).getCdNucleus() + " MN type: " + ((Motoneuron)mnNeu).getType());
+						{							
 							createSynapticConductance(conf, g, noise, mnNeu, connectivity);
 						}
 					}
@@ -165,11 +164,14 @@ public class SynapsesFactory
 					ConductanceVO g = conf.getSynapseType(rcNeu, mnNeu);
 					double connectivity = conf.getSynapticConnectivity(g);
 					double distance = Math.abs( rcNeu.getXPosition() - mnNeu.getXPosition() );
+					double rand = Math.random();
 					
-					if( connectivity > 0.01 )
+					if( connectivity > 0.01 && rand < connectivity)
 					{
 						double weight = conf.getMiscellaneous( ReMoto.decliningRCtoMN ) / (conf.getMiscellaneous( ReMoto.decliningRCtoMN ) + distance * distance);
-
+						
+						
+						
 						if( weight >= 0.01 )
 						{
 							createSynapticConductance(conf, g, rcNeu, mnNeu, weight);
@@ -187,8 +189,9 @@ public class SynapsesFactory
 
 					g = conf.getSynapseType(mnNeu, rcNeu);
 					connectivity = conf.getSynapticConnectivity(g);
+					rand = Math.random();
 					
-					if( connectivity > 0.01 )
+					if( connectivity > 0.01 && rand < connectivity)
 					{
 						double weight = conf.getMiscellaneous( ReMoto.decliningMNtoRC ) / (conf.getMiscellaneous( ReMoto.decliningMNtoRC ) + distance * distance);
 
@@ -238,6 +241,7 @@ public class SynapsesFactory
 						// Make synapse only between RC and its respectively noise
 						if( noise.getIndex() == ((Interneuron)rcNeu).getIndex() )
 						{
+							System.out.println(noise.getIndex() + "  " + ((Interneuron)rcNeu).getIndex() );
 							createSynapticConductance(conf, g, noise, rcNeu, connectivity);
 						}
 					}

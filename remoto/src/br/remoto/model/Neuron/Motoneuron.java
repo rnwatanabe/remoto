@@ -234,8 +234,8 @@ public class Motoneuron extends SpinalNeuron
 		
 		
 		// Synapses include all inputs and noises
-		iSynaptic += dendExcitSynapses.getCurrent(slope, t, Vd);
-		iSynaptic += dendInhibSynapses.getCurrent(slope, t, Vd);
+		iSynaptic += dendExcitSynapses.getCurrent(2, t, Vd);
+		iSynaptic += dendInhibSynapses.getCurrent(2, t, Vd);
 		
 		
 		
@@ -249,10 +249,11 @@ public class Motoneuron extends SpinalNeuron
 			iInjected = current.getCurrent(t);
 		}
 		
-
+		//System.out.println( "gCoupling " + gCoupling );
 		// Currents in nA - capacitance in nF
 		double retorno = (iIonic + iSynaptic + iSoma + iLeak + iInjected) / capacitanceDend;
 		
+		//System.out.println("capacitanceSDend" + capacitanceDend);
 		if( storedSignals == true)
 		{
 			signalStore.add( new Signal("VsxVdot", iInjected, t) );
@@ -274,8 +275,8 @@ public class Motoneuron extends SpinalNeuron
 		iIonic += gKs.getCurrent(slope, t, Vs);
 
 		// Synapses include all inputs and noises
-		iSynaptic += somaExcitSynapses.getCurrent(slope, t, Vs);
-		iSynaptic += somaInhibSynapses.getCurrent(slope, t, Vs);
+		iSynaptic += somaExcitSynapses.getCurrent(2, t, Vs);
+		iSynaptic += somaInhibSynapses.getCurrent(2, t, Vs);
 		
 		double iDendrite = gCoupling * (vd - Vs);
 		double iLeak = gLeakSoma * (ReMoto.E0 - Vs);
@@ -287,11 +288,11 @@ public class Motoneuron extends SpinalNeuron
 			iInjected = current.getCurrent(t);
 		}
 		
-		//System.out.println("Capacitance" + capacitanceSoma);
+		//System.out.println("iInjected" + iInjected);
 
 		// Currents in nA - capacitance in nF
 		double result = (iIonic + iSynaptic + iDendrite + iLeak + iInjected) / capacitanceSoma;
-		
+		//System.out.println("capacitanceSoma" + capacitanceSoma);
 		
 		
 		return result;

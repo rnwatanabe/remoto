@@ -32,7 +32,6 @@ public class SecondOrderCriticallyDampedSystem extends ExtrafusalMuscleSuperClas
 		
 		for(int i = 0; i < motorunits.length; i++){
 			twitchFunction[i] = new AlphaFunction(null, null, null);
-			System.out.println(motorunits[i].getTpeak());
 			maximumMuscleForce += motorunits[i].getGpeak() * motorunits[i].getTwTet();
 		}
 		
@@ -122,6 +121,7 @@ public class SecondOrderCriticallyDampedSystem extends ExtrafusalMuscleSuperClas
         
         if(mu.getType().equals(ReMoto.S)){
         	output = motorUnitForceSaturationFunction(force, mu.getType(), mu.getB()) * mu.getTwTet() * mu.getGpeak();
+        	//System.out.println("Gpeak" + mu.getGpeak());
         }
         else if(mu.getType().equals(ReMoto.FR)){
         	output = motorUnitForceSaturationFunction(force, mu.getType(), mu.getB()) * mu.getTwTet() * mu.getGpeak();

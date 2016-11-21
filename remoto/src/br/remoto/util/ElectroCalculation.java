@@ -14,7 +14,7 @@ public class ElectroCalculation
 		double pi = Math.PI;
 		double rAxisSoma = (ri * lSoma)/(pi * Math.pow((dSoma/2),2));
 		double rAxisDend = (ri * lDend)/(pi * Math.pow((dDend/2),2));
-
+		
 		double ret = (1e6 * 2) / (rAxisDend + rAxisSoma);
 		
 		return ret;
@@ -24,6 +24,7 @@ public class ElectroCalculation
 	public double calcGLeak(double area, double rm)
 	{
 		double ret = (1e6 * area) / rm;
+		System.out.println( "rm " + rm );
 		
 		return ret;
 	}

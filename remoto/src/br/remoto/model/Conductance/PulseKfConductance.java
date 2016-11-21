@@ -73,7 +73,9 @@ public class PulseKfConductance extends PulseConductance
     	}
     	
     	double lastValue = value;
-
+    	
+    	
+    	
     	value = gmax * Math.pow( valueN, 4 );
     	
     	if( Double.isNaN(value) )

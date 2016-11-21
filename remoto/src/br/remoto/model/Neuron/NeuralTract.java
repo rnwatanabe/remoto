@@ -131,7 +131,7 @@ public class NeuralTract extends Neuron
 				if( mean > ReMoto.T_TOLERANCE || ( signal != null && t > signal.getTini() && t < signal.getTfin() + ReMoto.T_TOLERANCE ) )
 				{
 					double probability = lambda * miscellaneous.getStep() / 1000;
-						
+					System.out.println("Poisson " + mean);	
 					double aux = Math.random();
 					
 					if(aux <= probability){
@@ -148,7 +148,7 @@ public class NeuralTract extends Neuron
 				if( mean > ReMoto.T_TOLERANCE || ( signal != null && t > signal.getTini() && t < signal.getTfin() + ReMoto.T_TOLERANCE ) )
 				{
 					y_int = y_int + (lambda * (miscellaneous.getStep() / 1000));
-					
+					//System.out.println("Gamma " + mean);
 					//Algorithm proposed in Mathematics for Neuroscientists (Gabbiani and Cox, 2010)
 					if(y_int >= thres){
 						tTerminalSpike = t;
@@ -157,7 +157,7 @@ public class NeuralTract extends Neuron
 						thres = Distribution.gammaPoint(1/std, std);
 						terminalSpikeTrain.add(new Double(tTerminalSpike));
 						
-						//System.out.println(tTerminalSpike);
+						//System.out.println(std);
 						}
 					}
 				}
@@ -165,7 +165,7 @@ public class NeuralTract extends Neuron
 				// Propagate spike to all post-synaptic neurons
 				if( t > tTerminalSpike && lastSpike == false ){
 					propagateSpike(t);
-			
+					//System.out.println("Gaussian " + mean);
 					// If tract is susceptible to trigger a spike
 					if( mean > ReMoto.T_TOLERANCE || ( signal != null && t > signal.getTini() && t < signal.getTfin() + ReMoto.T_TOLERANCE ) ){
 						addSpike(t);

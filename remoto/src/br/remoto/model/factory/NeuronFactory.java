@@ -195,7 +195,7 @@ public class NeuronFactory
 				double cm = reference.getCm();
 				//double areaSoma = (Math.PI * reference.getDsoma() * reference.getLsoma()) / 1e8;
 				double area = reference.getTotalArea() / 1e8;
-
+				System.out.println("RC area = " +  area);
 				// Set leak conductances - convert to uS
 				neu.setGLeakSoma( calc.calcGLeak(area, reference.getRmSoma1()) );
 			

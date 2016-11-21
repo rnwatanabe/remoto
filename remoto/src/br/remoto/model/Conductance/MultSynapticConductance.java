@@ -84,7 +84,12 @@ public class MultSynapticConductance extends ConductanceProperties
 		tauOn = 1.0 / (alpha * tMax + beta);
 		tauOff = 1.0 / beta;
 		expFinish = Math.exp(-tpeak/tauOn);
-
+		
+		
+		
+		
+		
+		
 		conductances = new Hashtable();
 		
 		reset();
@@ -100,6 +105,8 @@ public class MultSynapticConductance extends ConductanceProperties
 		roff = 0.0;
 		t0 = 0.0;
 		value4thSlope = 0.0;
+		
+		
 		
 		conductancesOn = new ArrayList();
 		spikesReceived = new ArrayList();
@@ -167,7 +174,9 @@ public class MultSynapticConductance extends ConductanceProperties
     	// Calculate conductances in on and off state
    		Ron = Non*rInf + (ron - Non*rInf) * Math.exp(-(t - t0)/tauOn);
    		Roff = roff * Math.exp(-(t - t0)/tauOff);
-    	
+   		
+   		
+   		
     	// Verify whether is time to start synaptic conductances
     	while( spikesReceived.size() > 0 )
     	{
@@ -206,6 +215,8 @@ public class MultSynapticConductance extends ConductanceProperties
     		value2thSlope = value;
     	else if( slope == 4 )
     		value4thSlope = value;
+    	
+    	
     	
     	return value;
 	}
@@ -307,7 +318,7 @@ public class MultSynapticConductance extends ConductanceProperties
 		SynapticConductance g = (SynapticConductance)conductances.get(cd);
     	
 		// Verify synaptic dynamics
-    	
+		
     	// No dynamics
     	if( g.getDynamics().getType() == ReMoto.NO_DYNAMICS )
     	{
@@ -316,15 +327,22 @@ public class MultSynapticConductance extends ConductanceProperties
     	// Depressing or facilitating dynamics
     	else
     	{
+    		System.out.println("Dynamics: " + g.getDynamics().getType());
     		double lastSpike = g.getLastSpike();
     		double gMax = g.getGmax();
-    		
+    		System.out.println("gmax = " + gMax);
+    		System.out.println("lastSpike = " + lastSpike);
+    		System.out.println("time = " + t);
     		if( lastSpike > 0 )
     		{
         		double tauDynamics = g.getDynamics().getTau();
         		double variation = g.getDynamics().getVariation();
     			double lastGmax = g.getLastGmax();
-
+    			
+    			System.out.println("lgmax = " + lastGmax);
+    			System.out.println("var = " + variation);
+    			System.out.println("tauD = " + tauDynamics);
+    			
     			if( g.getDynamics().getType() == ReMoto.DEPRESSING )
     			{
             		// variation/100 = 1 - p in Capek & Esplin (1977) and in Kohn et al. (1995)
@@ -339,7 +357,7 @@ public class MultSynapticConductance extends ConductanceProperties
         			gMax = lastGmax + (gMax - lastGmax) * (1 - Math.exp( -(t - lastSpike)/tauDynamics ));
     			}
     		}
-
+    		System.out.println("new gmax = " + gMax);
     		synContrib = gMax / gMaxTot;
     		
     		g.setLastSpike( t );
@@ -399,6 +417,8 @@ public class MultSynapticConductance extends ConductanceProperties
 
     		synContrib = gMax / gMaxTot;
     	}
+    	
+    	
 
 		double ri = rInf + (g.getRi() - rInf) * expFinish;
 		
