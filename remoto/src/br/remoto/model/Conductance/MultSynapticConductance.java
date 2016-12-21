@@ -172,8 +172,8 @@ public class MultSynapticConductance extends ConductanceProperties
     		return value2thSlope;
    		
     	// Calculate conductances in on and off state
-   		Ron = Non*rInf + (ron - Non*rInf) * Math.exp(-(t - t0)/tauOn);
-   		Roff = roff * Math.exp(-(t - t0)/tauOff);
+   		Ron = Non*rInf + (ron - Non*rInf) * Math.exp(-this.misc.getStep() /tauOn);
+   		Roff = roff * Math.exp(-this.misc.getStep()/tauOff);
    		
    		
    		
