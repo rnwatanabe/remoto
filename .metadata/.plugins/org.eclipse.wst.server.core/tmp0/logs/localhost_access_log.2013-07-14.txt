@@ -1,8 +1,0 @@
-60.247.114.36 - - [14/Jul/2013:00:10:01 -0300] "GET /w00tw00t.at.blackhats.romanian.anti-sec:) HTTP/1.1" 404 1033
-60.247.114.36 - - [14/Jul/2013:00:10:02 -0300] "GET /phpMyAdmin/scripts/setup.php HTTP/1.1" 404 1007
-60.247.114.36 - - [14/Jul/2013:00:10:03 -0300] "GET /phpmyadmin/scripts/setup.php HTTP/1.1" 404 1007
-60.247.114.36 - - [14/Jul/2013:00:10:04 -0300] "GET /pma/scripts/setup.php HTTP/1.1" 404 993
-60.247.114.36 - - [14/Jul/2013:00:10:04 -0300] "GET /myadmin/scripts/setup.php HTTP/1.1" 404 1001
-60.247.114.36 - - [14/Jul/2013:00:10:05 -0300] "GET /MyAdmin/scripts/setup.php HTTP/1.1" 404 1001
-94.102.51.246 - - [14/Jul/2013:07:04:22 -0300] "GET /?PHPSESSID=7jy745aa00143PVPJWVFYCBZJFT%5B HTTP/1.1" 404 951
-166.111.34.236 - - [14/Jul/2013:19:11:34 -0300] "GET / HTTP/1.1" 404 951

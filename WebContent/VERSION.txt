@@ -1,0 +1,17 @@
+SOURCE CODE
+______________________
+remoto2b5src_
+______________________
+
+IMPROVEMENTS
+______________________
+
+1. Implemented models -> Raikova-Aladjov (twitch), Prochazka-Gorassini (spindle),
+Mileusnic-Loeb (spindle), Crago (GTO), Activation signal (Hill-type muscle)
+2. EMG model rescaled
+3. 
+______________________
+
+DETECTED PROBLEMS
+______________________
+1.

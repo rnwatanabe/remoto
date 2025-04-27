@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+  <display-name>ReMoto</display-name>
+
+  <!-- Standard Action Servlet Configuration (with debugging) -->
+
+  <servlet>
+    <servlet-name>action</servlet-name>
+    <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+    <init-param>
+      <param-name>config</param-name>
+      <param-value>/WEB-INF/struts-config.xml</param-value>
+    </init-param>
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>2</param-value>
+    </init-param>
+    <init-param>
+      <param-name>detail</param-name>
+      <param-value>2</param-value>
+    </init-param>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+
+	<!-- cactus -->
+    <servlet>
+        <servlet-name>ServletRedirector</servlet-name>
+        <servlet-class>org.apache.cactus.server.ServletTestRedirector</servlet-class>
+    </servlet>
+
+	<servlet>
+    	<servlet-name>ServletTestRunner</servlet-name>
+    	<servlet-class>
+        	org.apache.cactus.server.runner.ServletTestRunner
+    	</servlet-class>
+	</servlet>
+
+  	<!-- rcisi@27062007 -->
+	<servlet>
+		<servlet-name>ServletChartGenerator</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.ServletChartGenerator
+		</servlet-class>
+	</servlet>
+	
+	<!-- vitor@26022011 -->
+	<servlet>
+		<servlet-name>ServletChartGeneratorApplet</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.ServletChartGeneratorApplet
+		</servlet-class>
+	</servlet>
+	
+	<!-- vitor@25032011 -->
+	<servlet>
+		<servlet-name>ProgressBarServlet</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.ProgressBarServlet
+		</servlet-class>
+	</servlet>
+	
+	
+	<servlet>
+		<servlet-name>GTOStart</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.GTOStart
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>GTOConfig</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.GTOConfig
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>GTOConfig2</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.GTOConfig2
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>GTOSimulation</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.GTOSimulation
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>GTOResults</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.GTOResults
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>SpindleStart</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.SpindleStart
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>SpindleSimulation</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.SpindleSimulation
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>SpindleResults</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.SpindleResults
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>SpindleSendResultsToApplet</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.SpindleSendResultsToApplet
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>SpindleSendResultsToApplet2</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.SpindleSendResultsToApplet2
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>SpindleExportResults</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.SpindleExportResults
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>SpindleExportResultAsFigure</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.SpindleExportResultAsFigure
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>PlotGTOGraphs</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.PlotGTOGraphs
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>PlotGTOConstantInput</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.PlotGTOConstantInput
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>PlotGTORampAndHoldInput</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.PlotGTORampAndHoldInput
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>PlotGTOSinusoidalInput</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.PlotGTOSinusoidalInput
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>PlotGTOTriangularInput</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.PlotGTOTriangularInput
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>PlotGTOResult</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.PlotGTOResult
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>PlotSpindleGraphs</servlet-name>
+		<servlet-class>
+			br.remoto.servlet.PlotSpindleGraphs
+		</servlet-class>
+	</servlet>
+	
+	
+	
+	
+	
+
+	<!-- Standard Action Servlet Mapping -->
+	<servlet-mapping>
+	  <servlet-name>action</servlet-name>
+	  <url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+  	<!-- cactus -->
+	<servlet-mapping>
+    	<servlet-name>ServletTestRunner</servlet-name>
+    	<url-pattern>/ServletTestRunner</url-pattern>
+	</servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ServletRedirector</servlet-name>
+        <url-pattern>/ServletRedirector</url-pattern>
+    </servlet-mapping>
+  
+  	<servlet-mapping>
+		<servlet-name>ServletChartGenerator</servlet-name>
+		<url-pattern>/servlet/ServletChartGenerator</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ServletChartGeneratorApplet</servlet-name>
+		<url-pattern>/servlet/ServletChartGeneratorApplet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ProgressBarServlet</servlet-name>
+		<url-pattern>/servlet/ProgressBarServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>GTOStart</servlet-name>
+		<url-pattern>/servlet/GTOStart</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>GTOConfig</servlet-name>
+		<url-pattern>/servlet/GTOConfig</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>GTOConfig2</servlet-name>
+		<url-pattern>/servlet/GTOConfig2</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>GTOSimulation</servlet-name>
+		<url-pattern>/servlet/GTOSimulation</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>GTOResults</servlet-name>
+		<url-pattern>/servlet/GTOResults</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet-mapping>
+		<servlet-name>SpindleStart</servlet-name>
+		<url-pattern>/servlet/SpindleStart</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet-mapping>
+		<servlet-name>SpindleSimulation</servlet-name>
+		<url-pattern>/servlet/SpindleSimulation</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet-mapping>
+		<servlet-name>SpindleResults</servlet-name>
+		<url-pattern>/servlet/SpindleResults</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet-mapping>
+		<servlet-name>SpindleExportResultAsFigure</servlet-name>
+		<url-pattern>/servlet/SpindleExportResultAsFigure</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet-mapping>
+		<servlet-name>SpindleSendResultsToApplet</servlet-name>
+		<url-pattern>/servlet/SpindleSendResultsToApplet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SpindleSendResultsToApplet2</servlet-name>
+		<url-pattern>/servlet/SpindleSendResultsToApplet2</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SpindleExportResults</servlet-name>
+		<url-pattern>/servlet/SpindleExportResults</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet-mapping>
+		<servlet-name>PlotGTOGraphs</servlet-name>
+		<url-pattern>/servlet/PlotGTOGraphs</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>PlotGTOConstantInput</servlet-name>
+		<url-pattern>/servlet/PlotGTOConstantInput</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>PlotGTORampAndHoldInput</servlet-name>
+		<url-pattern>/servlet/PlotGTORampAndHoldInput</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>PlotGTOSinusoidalInput</servlet-name>
+		<url-pattern>/servlet/PlotGTOSinusoidalInput</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>PlotGTOTriangularInput</servlet-name>
+		<url-pattern>/servlet/PlotGTOTriangularInput</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>PlotGTOResult</servlet-name>
+		<url-pattern>/servlet/PlotGTOResult</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>PlotSpindleGraphs</servlet-name>
+		<url-pattern>/servlet/PlotSpindleGraphs</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+
+  <!-- The Usual Welcome File List -->
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+
+  <!-- Struts Tag Library Descriptors -->
+  	<taglib>
+    	<taglib-uri>/WEB-INF/struts-bean.tld</taglib-uri>
+    	<taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+  	</taglib>
+ 
+  	<taglib>
+    	<taglib-uri>/WEB-INF/struts-html.tld</taglib-uri>
+    	<taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+  	</taglib>
+
+  	<taglib>
+    	<taglib-uri>/WEB-INF/struts-logic.tld</taglib-uri>
+    	<taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+  	</taglib>
+
+  	<taglib>
+    	<taglib-uri>/WEB-INF/struts-nested.tld</taglib-uri>
+    	<taglib-location>/WEB-INF/struts-nested.tld</taglib-location>
+  	</taglib>
+ 
+ 	<taglib>
+    	<taglib-uri>/WEB-INF/struts-tiles.tld</taglib-uri>
+    	<taglib-location>/WEB-INF/struts-tiles.tld</taglib-location>
+  	</taglib>
+  
+</web-app>

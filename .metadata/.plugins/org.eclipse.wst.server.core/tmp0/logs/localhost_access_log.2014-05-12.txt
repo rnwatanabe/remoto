@@ -1,6 +1,0 @@
-162.253.66.74 - - [12/May/2014:07:02:09 -0300] "GET /DnSjEgA/ HTTP/1.0" 404 967
-202.206.106.128 - - [12/May/2014:07:55:42 -0300] "GET / HTTP/1.0" 404 951
-61.221.173.25 - - [12/May/2014:11:49:32 -0300] "GET /phpTest/zologize/axa.php HTTP/1.1" 404 999
-61.221.173.25 - - [12/May/2014:11:49:33 -0300] "GET /phpMyAdmin/scripts/setup.php HTTP/1.1" 404 1007
-61.221.173.25 - - [12/May/2014:11:49:34 -0300] "GET /pma/scripts/setup.php HTTP/1.1" 404 993
-61.221.173.25 - - [12/May/2014:11:49:35 -0300] "GET /myadmin/scripts/setup.php HTTP/1.1" 404 1001
