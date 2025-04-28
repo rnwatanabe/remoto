@@ -82,7 +82,7 @@ Before beginning, ensure you have the following software installed:
 5. Click `Finish`
 
 > [!NOTE]  
-> You may see two errors with the following message: "Access restriction: The type 'Type' is not AP" ...  
+> You may see two errors with the following message: "Access restriction: The type 'Type' is not API" ...  
 > These are expected and can be safely ignored.
 
 ### Step 6: Server Configuration
