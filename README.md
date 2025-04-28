@@ -15,6 +15,9 @@ This guide will walk you through the installation process for ReMoto. While the 
 
 ### Prerequisites
 
+> [!TIP]  
+> It is strongly recommended to use the exact versions of Apache Tomcat 7.0 and Eclipse IDE 2025-03 provided in the links below to ensure compatibility with ReMoto. Using different versions may lead to installation issues.
+
 Before beginning, ensure you have the following software installed:
 
 - [Apache Tomcat 7.0](https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.109/bin/)
@@ -25,14 +28,15 @@ Before beginning, ensure you have the following software installed:
 1. Launch Eclipse IDE
 2. Navigate to `Help` → `Install New Software...`
 3. In the "Work with" field, enter: `https://download.eclipse.org/releases/2025-03`
-4. Select and install the following components:
+4. Expand the section `Web, XML, Java EE and OSGi Enterprise Developement`.
+5. Select and install the following components:
    - Eclipse Java EE Developer Tools
    - Eclipse Java Web Developer Tools
    - Eclipse Web Developer Tools
    - JST Server Adapters
    - JST Server Adapters Extensions
    - JST UI
-5. Accept the license agreements and restart Eclipse when prompted
+6. Accept the license agreements and restart Eclipse when prompted
 
 ### Step 2: Clone and Import the Repository
 
@@ -52,7 +56,9 @@ Before beginning, ensure you have the following software installed:
 2. Expand `Server` → `Runtime Environments`
 3. Remove any existing Tomcat runtime environment
 4. Click `Add` and select `Apache` → `Apache Tomcat 7.0`
-5. Set the installation directory to your Tomcat 7.0 location
+5. Set the installation directory to your Tomcat 7.0 location. By default:
+   - Windows: `C:\Program Files\Apache Software Foundation\Tomcat 7.0`  
+   - Linux: `/usr/share/tomcat7`
 
 ### Step 4: Project Configuration
 
@@ -74,6 +80,10 @@ Before beginning, ensure you have the following software installed:
 3. Right-click the error and select `Quick Fix`
 4. Choose `Change Java project facet version to Java 1.8`
 5. Click `Finish`
+
+> [!NOTE]  
+> You may see two errors with the following message: "Access restriction: The type 'Type' is not AP" ...  
+> These are expected and can be safely ignored.
 
 ### Step 6: Server Configuration
 
@@ -108,7 +118,6 @@ Before beginning, ensure you have the following software installed:
 1. Start the database:
    - Run `start.sh` (Linux) or `start.bat` (Windows)
 2. In Eclipse:
-   - Ensure the workspace is set to `remotoPath`
    - Start the server from the `Servers` view
 3. Access the application:
    - For static IP: `http://youripaddress/remoto/overview.htm`
