@@ -42,7 +42,7 @@ Before beginning, ensure you have the following software installed:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/RaulSimpetru/remoto
+   git clone https://github.com/rnwatanabe/remoto
    ```
 > [!NOTE]  
 > The path to the cloned repository will be referred to as `remotoPath` throughout this guide.
