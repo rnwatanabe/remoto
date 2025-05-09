@@ -1,7 +1,0 @@
-INDEX VERSION 1.122+/home/renato/Documents/ReMoto/remoto2/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-244910112.index
-3032318517.index
-3320339430.index
-3402460001.index
-1296565976.index
-2939724036.index

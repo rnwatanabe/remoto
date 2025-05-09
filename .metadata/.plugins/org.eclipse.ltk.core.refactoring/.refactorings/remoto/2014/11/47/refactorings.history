@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;InputOutputScript.java&apos; to &apos;remoto/src/br.remoto.teste&apos;&#x0A;- Original project: &apos;remoto&apos;&#x0A;- Destination element: &apos;remoto/src/br.remoto.teste&apos;&#x0A;- Original element: &apos;br.remoto.teste.InputOutputScript.java&apos;" description="Copy compilation unit" destination="/src&lt;br.remoto.teste" element1="/src&lt;br.remoto.teste{InputOutputScript.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1416411638657" units="1" version="1.0"/>
-</session>

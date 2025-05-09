@@ -1,9 +1,0 @@
-221.0.170.99 - - [01/Oct/2013:01:23:08 -0300] "GET /science/browse/a/fulltext HTTP/1.1" 404 1001
-144.76.138.183 - - [01/Oct/2013:03:29:42 -0300] "GET /w00tw00t.at.blackhats.romanian.anti-sec:) HTTP/1.1" 404 1033
-144.76.138.183 - - [01/Oct/2013:03:29:42 -0300] "GET /phpMyAdmin/scripts/setup.php HTTP/1.1" 404 1007
-144.76.138.183 - - [01/Oct/2013:03:29:44 -0300] "GET /phpmyadmin/scripts/setup.php HTTP/1.1" 404 1007
-144.76.138.183 - - [01/Oct/2013:03:29:44 -0300] "GET /pma/scripts/setup.php HTTP/1.1" 404 993
-144.76.138.183 - - [01/Oct/2013:03:29:45 -0300] "GET /myadmin/scripts/setup.php HTTP/1.1" 404 1001
-144.76.138.183 - - [01/Oct/2013:03:29:45 -0300] "GET /MyAdmin/scripts/setup.php HTTP/1.1" 404 1001
-198.20.69.98 - - [01/Oct/2013:11:57:48 -0300] "GET / HTTP/1.1" 404 951
-198.20.69.98 - - [01/Oct/2013:11:57:48 -0300] "GET /robots.txt HTTP/1.1" 404 971

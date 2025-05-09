@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+.apply {
+	width: 100px;
+	text-align: center;
+	height: auto;
+	margin-right: auto;
+	margin-left: auto;
+}

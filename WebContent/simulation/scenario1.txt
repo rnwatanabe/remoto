@@ -1,0 +1,83 @@
+
+*******************************************
+*********   SIMULATION SCENARIO   *********
+*******************************************
+
+
+
+------CONFIGURATION-------
+
+conf.getCdJoint():             ankle
+conf.getCdJointModel():        isometric
+conf.getDecimationFrequency(): 20000.0
+conf.getRecruitmentOrderFES(): uniform
+conf.getStep():                0.05
+conf.getTFin():                100.0
+conf.isChangedConfiguration(): false
+conf.isKeepProperties():       false
+
+
+------NEURONS-------
+
+Only neurons present in the simulation are shown.
+
+
+
+------SYNAPSES-------
+
+Only conductances present in the simulation are shown.
+
+
+
+------DESCENDING COMMANDS-------
+
+Only DTs present in the simulation are shown.
+
+
+
+------NERVES-------
+
+Only nerves present in the simulation are shown.
+
+
+
+------JOINT-------
+
+conf.getCdJoint():                  ankle
+conf.getCdJointModel():             isometric
+conf.getJointVelocity():            0.0
+
+
+------MUSCLE-------
+
+conf.getCdMuscleModel(): SOCDS
+
+
+------EMG-------
+
+conf.getCdEMGModel(): emgModelHermiteRodriguez
+
+
+------MUSCLE SPINDLE-------
+
+conf.getCdSpindleModel():                spindleModelMileusnic
+conf.getGammaStatic():                   0.0
+conf.getGammaDynamic():                  0.0
+conf.getPrimaryBag1Gain():               20000.0
+conf.getPrimaryBag2AndChainGain():       10000.0
+conf.getSecondaryBag2AndChainGain():       7250.0
+conf.getInitialRecruitmentThresholdIa(): 0.0
+conf.getFinalRecruitmentThresholdIa():   30.0
+conf.getInitialRecruitmentThresholdII(): 0.0
+conf.getFinalRecruitmentThresholdII():   30.0
+
+
+------GOLGI TENDON ORGAN-------
+
+conf.getCdGtoModel():                    lumpedGtoModelCrago
+conf.getInitialRecruitmentThresholdIb(): 0.0
+conf.getFinalRecruitmentThresholdIb():   30.0
+
+
+------MISCELLANEOUS-------
+

@@ -1,1 +1,0 @@
-java -cp C:/ReMoto/workspace2/remoto/WebContent/WEB-INF/lib/hsqldb.jar org.hsqldb.Server -database.0 file:C:/ReMoto/workspace2/remoto/WebContent/db/remoto -dbname.0 remoto

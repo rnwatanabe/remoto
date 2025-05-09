@@ -1,6 +1,0 @@
-216.55.141.92 - - [19/Feb/2015:13:15:08 -0200] "GET /phppath/cgi_wrapper HTTP/1.0" 404 989
-186.48.56.92 - - [19/Feb/2015:14:57:27 -0200] "GET /ybyb/yby/yb.php HTTP/1.1" 404 981
-186.48.56.92 - - [19/Feb/2015:14:57:27 -0200] "GET /phpMyAdmin/scripts/setup.php HTTP/1.1" 404 1007
-186.48.56.92 - - [19/Feb/2015:14:57:27 -0200] "GET /pma/scripts/setup.php HTTP/1.1" 404 993
-186.48.56.92 - - [19/Feb/2015:14:57:28 -0200] "GET /myadmin/scripts/setup.php HTTP/1.1" 404 1001
-89.248.162.131 - - [19/Feb/2015:23:03:44 -0200] "GET / HTTP/1.0" 404 951
